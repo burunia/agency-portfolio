@@ -72,7 +72,6 @@ export default function AgencyPortfolio() {
             <nav className="flex flex-col items-start space-y-8 ml-8 mt-8 animate-fade-in-up">
               {[
                 'About Us',
-                'Our Work',
                 'Portfolio',
                 'Blog',
                 'Contact'

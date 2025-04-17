@@ -38,7 +38,6 @@ export default function AboutPage() {
               {[
                 'Home',
                 'About Us',
-                'Our Work',
                 'Portfolio',
                 'Blog',
                 'Contact'
@@ -292,11 +291,6 @@ export default function AboutPage() {
                 <li>
                   <Link href="/about" className="hover:text-gray-900">
                     About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Our Work
                   </Link>
                 </li>
                 <li>

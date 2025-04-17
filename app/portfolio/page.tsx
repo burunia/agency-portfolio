@@ -121,7 +121,6 @@ export default function PortfolioPage() {
               {[
                 'Home',
                 'About Us',
-                'Our Work',
                 'Portfolio',
                 'Blog',
                 'Contact'
@@ -307,18 +306,13 @@ export default function PortfolioPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Retouching & Editing
+                  <Link href="/portfolio" className="hover:text-gray-900">
+                    Portfolio
                   </Link>
                 </li>
                 <li>
                   <Link href="#" className="hover:text-gray-900">
-                    Graphic Design
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Amazon Optimization
+                    Blog
                   </Link>
                 </li>
               </ul>
@@ -329,11 +323,6 @@ export default function PortfolioPage() {
                 <li>
                   <Link href="/about" className="hover:text-gray-900">
                     About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Our Work
                   </Link>
                 </li>
                 <li>
