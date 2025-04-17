@@ -1,0 +1,68 @@
+{
+    # Global options
+    admin off
+}
+
+# Replace with your domain or IP
+:80 {
+    # For development without a domain name, just use the IP address
+    # For production, replace this with your domain
+
+    # Route to Next.js application (main site)
+    reverse_proxy nextjs:3000
+
+    # Optional - Enable gzip compression
+    encode gzip
+
+    # Optional - Enable logging
+    log {
+        output stdout
+        format console
+    }
+}
+
+# Supabase Studio access
+:8000 {
+    reverse_proxy studio:3000
+}
+
+# Supabase REST API
+:3000 {
+    reverse_proxy rest:3000
+}
+
+# Supabase Auth
+:9999 {
+    reverse_proxy auth:9999
+}
+
+# Supabase Realtime
+:4000 {
+    reverse_proxy realtime:4000
+}
+
+# For production with a domain:
+# yourdomain.com {
+#     tls your@email.com
+#     
+#     # Main website
+#     reverse_proxy nextjs:3000
+#     
+#     # Supabase API/Admin endpoints should be on subdomains in production:
+#     # header_up Host {http.request.host}
+#     
+#     encode gzip
+# }
+#
+# # Optional: Separate subdomains for Supabase services in production
+# api.yourdomain.com {
+#     tls your@email.com
+#     reverse_proxy rest:3000
+#     encode gzip
+# }
+#
+# studio.yourdomain.com {
+#     tls your@email.com
+#     reverse_proxy studio:3000
+#     encode gzip
+# } 
