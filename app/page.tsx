@@ -317,7 +317,7 @@ export default function AgencyPortfolio() {
           <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 text-[#d4b88e]">
-                <i className="fas fa-film fa-lg"></i>
+                <i className="fas fa-laptop-code fa-2xl"></i>
               </div>
               <h3 className="mb-2 text-lg font-medium">All-in-One Production</h3>
               <p className="text-sm text-gray-600">
@@ -326,7 +326,7 @@ export default function AgencyPortfolio() {
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 text-[#d4b88e]">
-                <i className="fab fa-amazon fa-lg"></i>
+                <i className="fab fa-amazon fa-2xl"></i>
               </div>
               <h3 className="mb-2 text-lg font-medium">Amazon-Proven Expertise</h3>
               <p className="text-sm text-gray-600">
@@ -335,7 +335,7 @@ export default function AgencyPortfolio() {
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 text-[#d4b88e]">
-                <i className="fas fa-chart-line fa-lg"></i>
+                <i className="fas fa-chart-line fa-2xl"></i>
               </div>
               <h3 className="mb-2 text-lg font-medium">Creative Meets Commerce</h3>
               <p className="text-sm text-gray-600">
