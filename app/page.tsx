@@ -7,10 +7,144 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import AnimatedRibbon from "@/components/animated-ribbon"
-import React from "react"
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem
+} from "@/components/ui/dropdown-menu"
+import React, { useState, useRef, ChangeEvent, FormEvent, useEffect } from "react"
+import emailjs from '@emailjs/browser'
+import ReCAPTCHA from "react-google-recaptcha"
 
 export default function AgencyPortfolio() {
-  const [menuOpen, setMenuOpen] = React.useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
+  const [formData, setFormData] = useState({
+    firstName: '',
+    lastName: '',
+    email: '',
+    service: '',
+    message: ''
+  })
+  const [formStatus, setFormStatus] = useState({
+    loading: false,
+    success: false,
+    error: false,
+    errorMessage: ''
+  })
+  const recaptchaRef = useRef<ReCAPTCHA>(null)
+
+  // Initialize EmailJS
+  useEffect(() => {
+    emailjs.init({
+      publicKey: 't-nDITmlVwB7mSBbT'
+    });
+  }, []);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target
+    setFormData(prev => ({
+      ...prev,
+      [id]: value
+    }))
+  }
+
+  const handleServiceChange = (value: string) => {
+    setFormData(prev => ({
+      ...prev,
+      service: value
+    }))
+  }
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setFormStatus({ loading: true, success: false, error: false, errorMessage: '' })
+
+    try {
+      let recaptchaToken = "development_token"
+      
+      // Only try to get a real reCAPTCHA token if not in development
+      if (recaptchaRef.current && process.env.NODE_ENV !== "development") {
+        try {
+          recaptchaToken = await recaptchaRef.current.executeAsync() || "token_error"
+          recaptchaRef.current.reset()
+        } catch (recaptchaError) {
+          console.warn("reCAPTCHA error:", recaptchaError)
+          // Continue with form submission even if reCAPTCHA fails
+        }
+      }
+
+      // Log for debugging
+      console.log("Sending form data:", {
+        name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        service: formData.service,
+        message: formData.message
+      })
+
+      // Validate required fields
+      if (!formData.firstName || !formData.lastName || !formData.email || !formData.service || !formData.message) {
+        throw new Error("Please fill out all required fields")
+      }
+
+      // Prepare template parameters
+      const templateParams = {
+        name: `${formData.firstName} ${formData.lastName}`,
+        from_name: `${formData.firstName} ${formData.lastName}`,
+        email: formData.email,
+        from_email: formData.email,
+        title: `${formData.service} Inquiry`,
+        service: formData.service,
+        message: formData.message,
+        'g-recaptcha-response': recaptchaToken
+      }
+
+      console.log("Sending with parameters:", templateParams)
+
+      try {
+        // Send email using EmailJS
+        const response = await emailjs.send(
+          'service_n02r79q', // Your EmailJS service ID
+          'template_dvnupyv', // Updated to the correct Contact Us template ID
+          templateParams
+        );
+        
+        console.log("EmailJS response:", response);
+        
+        // Reset form and show success message
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          service: '',
+          message: ''
+        });
+        setFormStatus({ loading: false, success: true, error: false, errorMessage: '' });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setFormStatus(prev => ({ ...prev, success: false }));
+        }, 5000);
+      } catch (emailError: any) {
+        console.error('EmailJS specific error:', emailError);
+        throw new Error(emailError.text || 'Failed to send email. Please check your network connection and try again.');
+      }
+    } catch (error: any) {
+      console.error('Form submission error:', error);
+      setFormStatus({ 
+        loading: false, 
+        success: false, 
+        error: true, 
+        errorMessage: error.message || 'Something went wrong. Please try again later.'
+      })
+      
+      // Reset error message after 8 seconds
+      setTimeout(() => {
+        setFormStatus(prev => ({ ...prev, error: false, errorMessage: '' }))
+      }, 8000)
+    }
+  }
+
   return (
     <div className="flex min-h-screen flex-col bg-[#fffdf9] relative">
       {/* Font Awesome CDN */}
@@ -461,26 +595,32 @@ content that make your products impossible to ignore
               </div>
             </div>
             <div className="rounded-lg border border-gray-100 bg-white p-6 shadow-sm">
-              <form className="space-y-4">
+              <form className="space-y-4" onSubmit={handleSubmit}>
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <label htmlFor="first-name" className="mb-1 block text-sm font-medium text-gray-700">
+                    <label htmlFor="firstName" className="mb-1 block text-sm font-medium text-gray-700">
                       First Name
                     </label>
                     <Input
-                      id="first-name"
+                      id="firstName"
+                      value={formData.firstName}
+                      onChange={handleInputChange}
                       placeholder="John"
                       className="w-full rounded-md border-gray-200 focus:border-[#d4b88e] focus:ring-[#d4b88e]"
+                      required
                     />
                   </div>
                   <div>
-                    <label htmlFor="last-name" className="mb-1 block text-sm font-medium text-gray-700">
+                    <label htmlFor="lastName" className="mb-1 block text-sm font-medium text-gray-700">
                       Last Name
                     </label>
                     <Input
-                      id="last-name"
+                      id="lastName"
+                      value={formData.lastName}
+                      onChange={handleInputChange}
                       placeholder="Doe"
                       className="w-full rounded-md border-gray-200 focus:border-[#d4b88e] focus:ring-[#d4b88e]"
+                      required
                     />
                   </div>
                 </div>
@@ -492,8 +632,11 @@ content that make your products impossible to ignore
                   <Input
                     id="email"
                     type="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
                     placeholder="john@example.com"
                     className="w-full rounded-md border-gray-200 focus:border-[#d4b88e] focus:ring-[#d4b88e]"
+                    required
                   />
                 </div>
 
@@ -501,7 +644,7 @@ content that make your products impossible to ignore
                   <label htmlFor="service" className="mb-1 block text-sm font-medium text-gray-700">
                     Service You're Interested In
                   </label>
-                  <Select>
+                  <Select value={formData.service} onValueChange={handleServiceChange} required>
                     <SelectTrigger className="w-full rounded-md border-gray-200 focus:border-[#d4b88e] focus:ring-[#d4b88e]">
                       <SelectValue placeholder="Select a service" />
                     </SelectTrigger>
@@ -522,15 +665,60 @@ content that make your products impossible to ignore
                   </label>
                   <Textarea
                     id="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
                     placeholder="Tell us about your project..."
                     rows={4}
                     className="w-full rounded-md border-gray-200 focus:border-[#d4b88e] focus:ring-[#d4b88e]"
+                    required
+                  />
+                </div>
+                
+                <div className="hidden">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    size="invisible"
+                    sitekey="6Lef-G4pAAAAANJNzqnYf3IW9Nk7n01JQzSngig2"
                   />
                 </div>
 
-                <Button className="w-full rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] focus:outline-none focus:ring-2 focus:ring-[#d4b88e] focus:ring-offset-2">
-                  Send Message
+                <Button 
+                  type="submit" 
+                  className="w-full rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] focus:outline-none focus:ring-2 focus:ring-[#d4b88e] focus:ring-offset-2"
+                  disabled={formStatus.loading}
+                >
+                  {formStatus.loading ? 'Sending...' : 'Send Message'}
                 </Button>
+
+                {formStatus.success && (
+                  <div className="rounded-md bg-green-50 p-4">
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <i className="fas fa-check-circle text-green-400"></i>
+                      </div>
+                      <div className="ml-3">
+                        <p className="text-sm font-medium text-green-800">
+                          Your message has been sent! We'll get back to you shortly.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                {formStatus.error && (
+                  <div className="rounded-md bg-red-50 p-4">
+                    <div className="flex">
+                      <div className="flex-shrink-0">
+                        <i className="fas fa-exclamation-circle text-red-400"></i>
+                      </div>
+                      <div className="ml-3">
+                        <p className="text-sm font-medium text-red-800">
+                          {formStatus.errorMessage || "Oops! Something went wrong. Please try again later."}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                )}
 
                 <p className="text-center text-xs text-gray-500">
                   By submitting this form, you agree to our Privacy Policy and Terms of Service.
