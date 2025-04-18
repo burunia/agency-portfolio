@@ -7,12 +7,6 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import AnimatedRibbon from "@/components/animated-ribbon"
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem
-} from "@/components/ui/dropdown-menu"
 import React from "react"
 
 export default function AgencyPortfolio() {
@@ -30,26 +24,56 @@ export default function AgencyPortfolio() {
       
       {/* Styled JSX for carousel effect */}
       <style jsx global>{`
-        #carousel-container {
-          padding: 20px 10px;
+        /* New carousel styling */
+        .work-carousel {
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 0 60px;
         }
         
-        .carousel-item {
-          height: 540px;
-          aspect-ratio: 0.74;
+        .work-carousel-item {
+          position: absolute;
+          width: 390px;
+          height: 390px;
+          transition: all 0.5s ease;
+          opacity: 0;
+          border-radius: 4px;
+          overflow: hidden;
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        #carousel-container:hover .carousel-item {
-          transform: scale(0.92);
-          filter: brightness(0.8);
-          margin: 0 -5px;
+        .work-carousel-item.active {
+          z-index: 30;
+          opacity: 1;
+          transform: translateX(0);
+          width: 619px;
+          height: 619px;
         }
         
-        #carousel-container .carousel-item:hover {
-          transform: scale(1.18);
-          filter: brightness(1);
+        .work-carousel-item.prev-2 {
           z-index: 10;
-          margin: 0 5px;
+          opacity: 0.4;
+          transform: translateX(-650px);
+        }
+        
+        .work-carousel-item.prev {
+          z-index: 20;
+          opacity: 0.7;
+          transform: translateX(-364px);
+        }
+        
+        .work-carousel-item.next {
+          z-index: 20;
+          opacity: 0.7;
+          transform: translateX(364px);
+        }
+        
+        .work-carousel-item.next-2 {
+          z-index: 10;
+          opacity: 0.4;
+          transform: translateX(650px);
         }
       `}</style>
       
@@ -146,7 +170,7 @@ export default function AgencyPortfolio() {
 
           <div className="container relative mx-auto text-center z-10 mt-16">
             <h1 className="mb-4 text-5xl font-bold uppercase tracking-tight md:text-6xl">WE DESIGN,</h1>
-            <p className="text-xl md:text-2xl">Create & Elevate E-Commerce Brands</p>
+            <p className="text-xl md:text-2xl">Enhancing the Way your Brand Sells</p>
           </div>
         </section>
 
@@ -155,51 +179,56 @@ export default function AgencyPortfolio() {
           <div className="mb-12 flex flex-col items-center">
             <div className="mb-4 flex items-center">
               <div className="h-[1px] w-10 bg-gray-300"></div>
-              <h2 className="mx-4 text-lg font-light">what we do</h2>
+              <h2 className="mx-4 text-lg font-light">how we help you</h2>
               <div className="h-[1px] w-10 bg-gray-300"></div>
             </div>
-            <h3 className="mb-4 text-center text-xl">Creative Services for Global Sellers</h3>
+            <h3 className="mb-4 text-center text-xl">Inspired Creations for Global Sellers</h3>
             <p className="max-w-2xl text-center text-gray-600">
-              We're a multidisciplinary team helping brands thrive in competitive marketplaces. Whether you sell on
-              Amazon, Etsy, Kickstarter, or your own DTC store – we craft the visuals and content that help you stand
-              out.
+            We're a global, 
+multidisciplinary creative team with 40+ years combined 
+experience in assisting eCommerce brands to thrive in busy and 
+crowded marketplaces. From Amazon to Etsy, Kickstarter or your 
+very own online store—we craft compelling visuals and exciting 
+content that make your products impossible to ignore 
             </p>
           </div>
 
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 justify-center mx-auto place-items-center">
-            <div className="space-y-2 text-center">
-              <p className="flex items-center">
-                <span className="mr-2 text-gray-400">·</span>
-                <span>Product Photography</span>
-              </p>
-              <p className="flex items-center">
-                <span className="mr-2 text-gray-400">·</span>
-                <span>Retouching & Editing</span>
-              </p>
-              <p className="flex items-center">
-                <span className="mr-2 text-gray-400">·</span>
-                <span>2D & 3D Graphic Design</span>
-              </p>
+          <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 mt-10">
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
+                <span className="text-[#d4b88e] text-center px-4">Amazon Listing Optimization</span>
+              </div>
             </div>
-            <div className="space-y-2 text-center">
-              <p className="flex items-center">
-                <span className="mr-2 text-gray-400">·</span>
-                <span>Amazon Listing Optimization</span>
-              </p>
-              <p className="flex items-center">
-                <span className="mr-2 text-gray-400">·</span>
-                <span>Packaging & Print Design</span>
-              </p>
-              <p className="flex items-center">
-                <span className="mr-2 text-gray-400">·</span>
-                <span>Brand Storytelling & Copywriting</span>
-              </p>
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
+                <span className="text-[#d4b88e] text-center px-4">Packaging & Print Design</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
+                <span className="text-[#d4b88e] text-center px-4">Retouching & Editing</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
+                <span className="text-[#d4b88e] text-center px-4">Brand Marketing & Copywriting</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
+                <span className="text-[#d4b88e] text-center px-4">Product Photography</span>
+              </div>
+            </div>
+            <div className="flex flex-col items-center text-center group">
+              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
+                <span className="text-[#d4b88e] text-center px-4">2D & 3D Product Design</span>
+              </div>
             </div>
           </div>
         </section>
 
         {/* Selected Work Section */}
-        <section className="container mx-auto py-16">
+        <section className="container mx-auto py-16 overflow-hidden">
           <div className="mb-12 flex flex-col items-center">
             <div className="mb-4 flex items-center">
               <div className="h-[1px] w-10 bg-gray-300"></div>
@@ -208,99 +237,151 @@ export default function AgencyPortfolio() {
             </div>
           </div>
 
-          <div className="relative">
-            <div className="overflow-hidden">
-              <div
-                id="carousel-container"
-                className="flex gap-6 transition-transform duration-500 ease-in-out"
-                style={{ transform: "translateX(0px)" }}
+          <div className="relative mx-auto max-w-6xl">
+            {/* New Carousel Implementation */}
+            <div className="work-carousel" style={{ height: "680px" }}>
+              {/* Navigation Arrows */}
+              <button 
+                onClick={() => {
+                  const items = Array.from(document.querySelectorAll('.work-carousel-item'));
+                  if (items.length <= 0) return;
+                  
+                  // Find the current active slide and its index
+                  const activeSlide = document.querySelector('.work-carousel-item.active');
+                  const activeIndex = activeSlide ? items.indexOf(activeSlide as HTMLElement) : 0;
+                  
+                  // Calculate new indices with circular logic
+                  const prevIndex = (activeIndex - 1 + items.length) % items.length;
+                  
+                  // Clear all position classes
+                  items.forEach(item => {
+                    item.classList.remove('active', 'prev', 'prev-2', 'next', 'next-2');
+                  });
+                  
+                  // Assign all positions consistently based on the new active index
+                  items[prevIndex].classList.add('active');
+                  items[(prevIndex + 1) % items.length].classList.add('next');
+                  items[(prevIndex + 2) % items.length].classList.add('next-2');
+                  items[(prevIndex - 1 + items.length) % items.length].classList.add('prev');
+                  items[(prevIndex - 2 + items.length) % items.length].classList.add('prev-2');
+                }}
+                className="absolute left-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
+                aria-label="Previous slide"
               >
-                <div className="carousel-item min-w-[400px] h-[540px] overflow-hidden rounded-lg transform transition-all duration-300 cursor-pointer hover:z-10">
-                  <Image
-                    src="/Pouf-Ottoman_life7_3D.jpg?height=540&width=400"
-                    alt="Interior design project"
-                    width={400}
-                    height={540}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="carousel-item min-w-[400px] h-[540px] overflow-hidden rounded-lg transform transition-all duration-300 cursor-pointer hover:z-10">
-                  <Image
-                    src="/24-208_KP_Cube.jpg?height=540&width=400"
-                    alt="Calendar design"
-                    width={400}
-                    height={540}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="carousel-item min-w-[400px] h-[540px] overflow-hidden rounded-lg transform transition-all duration-300 cursor-pointer hover:z-10">
-                  <Image
-                    src="/Caligraphy.jpg?height=540&width=400"
-                    alt="Product photography"
-                    width={400}
-                    height={540}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="carousel-item min-w-[400px] h-[540px] overflow-hidden rounded-lg transform transition-all duration-300 cursor-pointer hover:z-10">
-                  <Image
-                    src="/Fluted-Storage-Boxes_Sage.jpg?height=540&width=400"
-                    alt="Brand identity"
-                    width={400}
-                    height={540}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
-                <div className="carousel-item min-w-[400px] h-[540px] overflow-hidden rounded-lg transform transition-all duration-300 cursor-pointer hover:z-10">
-                  <Image
-                    src="/placeholder.svg?height=540&width=400"
-                    alt="Packaging design"
-                    width={400}
-                    height={540}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+                <i className="fas fa-chevron-left text-black"></i>
+              </button>
+              
+              <button 
+                onClick={() => {
+                  const items = Array.from(document.querySelectorAll('.work-carousel-item'));
+                  if (items.length <= 0) return;
+                  
+                  // Find the current active slide and its index
+                  const activeSlide = document.querySelector('.work-carousel-item.active');
+                  const activeIndex = activeSlide ? items.indexOf(activeSlide as HTMLElement) : 0;
+                  
+                  // Calculate new indices with circular logic
+                  const nextIndex = (activeIndex + 1) % items.length;
+                  
+                  // Clear all position classes
+                  items.forEach(item => {
+                    item.classList.remove('active', 'prev', 'prev-2', 'next', 'next-2');
+                  });
+                  
+                  // Assign all positions consistently based on the new active index
+                  items[nextIndex].classList.add('active');
+                  items[(nextIndex + 1) % items.length].classList.add('next');
+                  items[(nextIndex + 2) % items.length].classList.add('next-2');
+                  items[(nextIndex - 1 + items.length) % items.length].classList.add('prev');
+                  items[(nextIndex - 2 + items.length) % items.length].classList.add('prev-2');
+                }}
+                className="absolute right-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
+                aria-label="Next slide"
+              >
+                <i className="fas fa-chevron-right text-black"></i>
+              </button>
+
+              {/* Carousel Items */}
+              <div className="work-carousel-item prev-2">
+                <Image
+                  src="/24-208_KP_Cube.jpg"
+                  alt="Calendar design"
+                  width={600}
+                  height={600}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              
+              <div className="work-carousel-item prev">
+                <Image
+                  src="/Fluted-Storage-Boxes_Sage.jpg"
+                  alt="Storage boxes"
+                  width={600}
+                  height={600}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              
+              <div className="work-carousel-item active">
+                <Image
+                  src="/Caligraphy.jpg"
+                  alt="Product photography"
+                  width={600}
+                  height={600}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              
+              <div className="work-carousel-item next">
+                <Image
+                  src="/Pouf-Ottoman_life7_3D.jpg"
+                  alt="Interior design"
+                  width={600}
+                  height={600}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+              
+              <div className="work-carousel-item next-2">
+                <Image
+                  src="/placeholder.svg"
+                  alt="Product design 1"
+                  width={600}
+                  height={600}
+                  className="h-full w-full object-cover bg-[#f5f0e6]"
+                />
+              </div>
+              
+              <div className="work-carousel-item">
+                <Image
+                  src="/placeholder.svg"
+                  alt="Product design 2"
+                  width={600}
+                  height={600}
+                  className="h-full w-full object-cover bg-[#e0d6c3]"
+                />
+              </div>
+              
+              <div className="work-carousel-item">
+                <Image
+                  src="/placeholder.svg"
+                  alt="Product design 3"
+                  width={600}
+                  height={600}
+                  className="h-full w-full object-cover bg-[#d4b88e]"
+                />
+              </div>
+              
+              <div className="work-carousel-item">
+                <Image
+                  src="/placeholder.svg"
+                  alt="Product design 4"
+                  width={600}
+                  height={600}
+                  className="h-full w-full object-cover bg-[#c5a97f]"
+                />
               </div>
             </div>
-            <button
-              onClick={() => {
-                const container = document.getElementById("carousel-container")
-                if (!container) return
-                const currentTransform = container.style.transform
-                const currentX = Number.parseInt(currentTransform.replace(/[^-\d.]/g, "")) || 0
-
-                // Don't scroll past the beginning
-                if (currentX >= 0) return
-
-                const newX = Math.min(0, currentX + 406) // 400px width + 6px gap
-                container.style.transform = `translateX(${newX}px)`
-              }}
-              className="absolute left-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
-            >
-              <i className="fas fa-chevron-left fa-lg text-black"></i>
-            </button>
-            <button
-              onClick={() => {
-                const container = document.getElementById("carousel-container")
-                if (!container || !container.parentElement) return
-                const currentTransform = container.style.transform
-                const currentX = Number.parseInt(currentTransform.replace(/[^-\d.]/g, "")) || 0
-
-                // Calculate max scroll (container width - visible width)
-                const containerWidth = container.scrollWidth
-                const visibleWidth = container.parentElement.clientWidth
-                const maxScroll = -(containerWidth - visibleWidth)
-
-                // Don't scroll past the end
-                if (currentX <= maxScroll) return
-
-                const newX = Math.max(maxScroll, currentX - 406) // 400px width + 6px gap
-                container.style.transform = `translateX(${newX}px)`
-              }}
-              className="absolute right-4 top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
-            >
-              <i className="fas fa-chevron-right fa-lg text-black"></i>
-            </button>
           </div>
         </section>
 
@@ -309,7 +390,7 @@ export default function AgencyPortfolio() {
           <div className="mb-12 flex flex-col items-center">
             <div className="mb-4 flex items-center">
               <div className="h-[1px] w-10 bg-gray-300"></div>
-              <h2 className="mx-4 text-lg font-light">why work with us</h2>
+              <h2 className="mx-4 text-lg font-light">why choose us?</h2>
               <div className="h-[1px] w-10 bg-gray-300"></div>
             </div>
           </div>
@@ -319,27 +400,28 @@ export default function AgencyPortfolio() {
               <div className="mb-4 text-[#d4b88e]">
                 <i className="fas fa-laptop-code fa-2xl"></i>
               </div>
-              <h3 className="mb-2 text-lg font-medium">All-in-One Production</h3>
+              <h3 className="mb-2 text-lg font-medium">**All-around Creative Help**</h3>
               <p className="text-sm text-gray-600">
-                Everything from concept to final visuals – handled by one agile team.
+              Our flexible team takes you from concept to final visuals
               </p>
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 text-[#d4b88e]">
                 <i className="fab fa-amazon fa-2xl"></i>
               </div>
-              <h3 className="mb-2 text-lg font-medium">Amazon-Proven Expertise</h3>
+              <h3 className="mb-2 text-lg font-medium">**Proven Amazon Expertise**</h3>
               <p className="text-sm text-gray-600">
-                We've helped dozens of brands scale on Amazon with content that sells.
+              Helping brands grow on Amazon by turning browsers into 
+              buyers
               </p>
             </div>
             <div className="flex flex-col items-center text-center">
               <div className="mb-4 text-[#d4b88e]">
                 <i className="fas fa-chart-line fa-2xl"></i>
               </div>
-              <h3 className="mb-2 text-lg font-medium">Creative Meets Commerce</h3>
+              <h3 className="mb-2 text-lg font-medium">**Creativity that Converts**</h3>
               <p className="text-sm text-gray-600">
-                Our work isn't just beautiful – it performs. We blend strategy with stunning execution.
+              Our eye-catching designs help drive your revenue.
               </p>
             </div>
           </div>
@@ -559,14 +641,3 @@ export default function AgencyPortfolio() {
     </div>
   )
 }
-
-/* Add this to your global CSS or Tailwind config for animation */
-/*
-@keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-.animate-fade-in-up {
-  animation: fade-in-up 0.5s cubic-bezier(0.4,0,0.2,1) both;
-}
-*/
