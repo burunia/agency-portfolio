@@ -70,17 +70,8 @@ export default function AgencyPortfolio() {
           recaptchaRef.current.reset()
         } catch (recaptchaError) {
           console.warn("reCAPTCHA error:", recaptchaError)
-          // Continue with form submission even if reCAPTCHA fails
         }
       }
-
-      // Log for debugging
-      console.log("Sending form data:", {
-        name: `${formData.firstName} ${formData.lastName}`,
-        email: formData.email,
-        service: formData.service,
-        message: formData.message
-      })
 
       // Validate required fields
       if (!formData.firstName || !formData.lastName || !formData.email || !formData.service || !formData.message) {
@@ -99,17 +90,13 @@ export default function AgencyPortfolio() {
         'g-recaptcha-response': recaptchaToken
       }
 
-      console.log("Sending with parameters:", templateParams)
-
       try {
         // Send email using EmailJS
         const response = await emailjs.send(
-          'service_n02r79q', // Your EmailJS service ID
-          'template_dvnupyv', // Updated to the correct Contact Us template ID
+          'service_n02r79q',
+          'template_dvnupyv',
           templateParams
         );
-        
-        console.log("EmailJS response:", response);
         
         // Reset form and show success message
         setFormData({
@@ -126,11 +113,9 @@ export default function AgencyPortfolio() {
           setFormStatus(prev => ({ ...prev, success: false }));
         }, 5000);
       } catch (emailError: any) {
-        console.error('EmailJS specific error:', emailError);
         throw new Error(emailError.text || 'Failed to send email. Please check your network connection and try again.');
       }
     } catch (error: any) {
-      console.error('Form submission error:', error);
       setFormStatus({ 
         loading: false, 
         success: false, 
