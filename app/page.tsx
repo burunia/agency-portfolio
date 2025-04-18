@@ -116,7 +116,7 @@ export default function AgencyPortfolio() {
             className="object-contain"
           />
         </div>
-        <div className="flex items-center space-x-6 mr-8">
+        <div className="hidden md:flex items-center space-x-6 mr-8">
           <Link href="#" className="p-1.5 rounded-full hover:bg-gray-100 transition-colors">
             <i className="fab fa-facebook-f fa-lg text-black"></i>
             <span className="sr-only">Facebook</span>
