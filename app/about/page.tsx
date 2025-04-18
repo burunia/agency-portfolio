@@ -42,7 +42,7 @@ export default function AboutPage() {
                 'Blog',
                 'Contact'
               ].map((item) => (
-                <a
+                <Link
                   key={item}
                   href={
                     item === 'Home' ? '/' : 
@@ -53,7 +53,7 @@ export default function AboutPage() {
                   onClick={() => setMenuOpen(false)}
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -121,7 +121,7 @@ export default function AboutPage() {
                 We're a global creative studio built for modern commerce. From product concept to polished visuals, we design, shoot, and deliver content that helps e-commerce brands grow — beautifully and strategically.
               </p>
               
-              <Button className="mt-8 bg-[#5D5FEF] hover:bg-[#4a4cd8] text-white px-8 py-6 rounded-lg text-lg">
+              <Button className="mt-8 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg">
                 Work With Us
               </Button>
             </div>
@@ -141,7 +141,7 @@ export default function AboutPage() {
         </section>
         
         {/* Content Sections */}
-        <section className="container mx-auto py-16 bg-white rounded-3xl my-16">
+        <section className="container mx-auto py-16 bg-[#f5f0e6] rounded-3xl my-16">
           <div className="max-w-5xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
               {/* Who We Are Section */}
@@ -204,7 +204,7 @@ export default function AboutPage() {
               <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
                 Record and send videos to reach prospects, connect with customers
               </h2>
-              <Button className="mt-4 bg-[#5D5FEF] hover:bg-[#4a4cd8] text-white px-8 py-6 rounded-lg text-lg">
+              <Button className="mt-4 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg">
                 Get Started
               </Button>
             </div>
@@ -313,10 +313,10 @@ export default function AboutPage() {
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase">Contact</h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>hello@agencyname.com</li>
-                <li>+1 (555) 123-4567</li>
-                <li>123 Design Street</li>
-                <li>New York, NY 10001</li>
+                <li>contact@chromepress.com</li>
+                <li>1611 W. Warren St</li>
+                <li>Boise, Idaho</li>
+                <li>83706</li>
               </ul>
             </div>
           </div>

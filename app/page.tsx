@@ -456,7 +456,7 @@ content that make your products impossible to ignore
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5f0e6] text-[#d4b88e]">
                     <i className="fas fa-envelope fa-lg"></i>
                   </div>
-                  <span className="text-sm text-gray-600">hello@agencyname.com</span>
+                  <span className="text-sm text-gray-600">contact@chromepress.com</span>
                 </div>
               </div>
             </div>
@@ -626,10 +626,10 @@ content that make your products impossible to ignore
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase">Contact</h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>hello@agencyname.com</li>
-                <li>+1 (555) 123-4567</li>
-                <li>123 Design Street</li>
-                <li>New York, NY 10001</li>
+                <li>contact@chromepress.com</li>
+                <li>1611 W. Warren St</li>
+                <li>Boise, Idaho</li>
+                <li>83706</li>
               </ul>
             </div>
           </div>
