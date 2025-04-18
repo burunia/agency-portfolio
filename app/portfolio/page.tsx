@@ -1,78 +1,155 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 
+// Define interfaces for type safety
+interface AdditionalImage {
+  src: string;
+  alt: string;
+}
+
+interface PortfolioItem {
+  id: number;
+  title: string;
+  category: string;
+  image: string;
+  client: string;
+  gridClass: string;
+  bgColor?: string;
+  description?: string;
+  additionalImages?: AdditionalImage[];
+}
+
 export default function PortfolioPage() {
   const [menuOpen, setMenuOpen] = useState(false)
   const [activeFilter, setActiveFilter] = useState("all")
+  const [modalOpen, setModalOpen] = useState(false)
+  const [selectedItem, setSelectedItem] = useState<PortfolioItem | null>(null)
+  const [isFiltered, setIsFiltered] = useState(false)
 
-  // Portfolio items data with categories
-  const portfolioItems = [
+  // Portfolio items data with categories and custom sizes
+  const portfolioItems: PortfolioItem[] = [
     {
       id: 1,
-      title: "Premium Watch Photography",
+      title: "Lifestyle Photography",
       category: "Product Photography",
-      image: "/placeholder.svg?height=540&width=400",
-      client: "Luxe Timepieces",
+      image: "/24-208_KP_Cube.jpg",
+      client: "Home Accessories",
+      gridClass: "col-span-5 row-span-6",
+      description: "A collection of minimalist home accessories designed to enhance modern living spaces. The photography focuses on clean lines and natural materials, highlighting the products' timeless appeal.",
+      additionalImages: [
+        { src: "/24-208_KP_Cube.jpg", alt: "Home accessory closeup" },
+        { src: "/Caligraphy.jpg", alt: "Product in context" },
+        { src: "/Fluted-Storage-Boxes_Sage.jpg", alt: "Detail shot" }
+      ]
     },
     {
       id: 2,
-      title: "Home Goods Product Retouching",
-      category: "Retouching & Editing",
-      image: "/placeholder.svg?height=540&width=400",
-      client: "Modern Home Co.",
+      title: "Minimalist Planner",
+      category: "Product Photography",
+      image: "/Caligraphy.jpg",
+      client: "Stationery Brand",
+      gridClass: "col-span-3 row-span-3"
     },
     {
       id: 3,
-      title: "Perfume Bottle 3D Rendering",
-      category: "3D Modeling",
-      image: "/placeholder.svg?height=540&width=400", 
-      client: "Scent Luxury",
+      title: "Kids Room Design",
+      category: "Interior Design",
+      image: "/Fluted-Storage-Boxes_Sage.jpg",
+      client: "Children's Furniture",
+      gridClass: "col-span-4 row-span-3"
     },
     {
       id: 4,
-      title: "Beauty Brand Identity",
-      category: "Graphic Design",
-      image: "/placeholder.svg?height=540&width=400",
-      client: "Glow Cosmetics",
+      title: "Kitchen Accessories",
+      category: "Product Photography",
+      image: "/Pouf-Ottoman_life7_3D.jpg",
+      client: "Cookware Collection",
+      gridClass: "col-span-3 row-span-3"
     },
     {
       id: 5, 
-      title: "Organic Tea Packaging",
-      category: "Packaging",
-      image: "/placeholder.svg?height=540&width=400",
-      client: "Natural Brews",
+      title: "Bathroom Ceramics",
+      category: "Product Photography",
+      image: "/placeholder.svg",
+      bgColor: "bg-[#f5f0e6]",
+      client: "Modern Bath",
+      gridClass: "col-span-4 row-span-3"
     },
     {
       id: 6,
-      title: "Event Brochure Design",
-      category: "Print Design",
-      image: "/placeholder.svg?height=540&width=400",
-      client: "Annual Summit",
+      title: "Branding Materials",
+      category: "Graphic Design",
+      image: "/placeholder.svg",
+      bgColor: "bg-[#e0d6c3]",
+      client: "Stationery Brand",
+      gridClass: "col-span-5 row-span-3"
     },
     {
       id: 7,
-      title: "Skincare Product Photography",
-      category: "Product Photography",
-      image: "/placeholder.svg?height=540&width=400",
-      client: "Pure Skin",
+      title: "Monthly Calendar",
+      category: "Print Design",
+      image: "/placeholder.svg",
+      bgColor: "bg-[#d4b88e]",
+      client: "Lifestyle Collection",
+      gridClass: "col-span-4 row-span-5"
     },
     {
       id: 8,
-      title: "Fashion Catalog Retouching",
-      category: "Retouching & Editing",
-      image: "/placeholder.svg?height=540&width=400",
-      client: "Style Collection",
+      title: "Motivational Cards",
+      category: "Print Design",
+      image: "/placeholder.svg",
+      bgColor: "bg-[#c5a97f]",
+      client: "Wellness Brand",
+      gridClass: "col-span-3 row-span-3"
     },
     {
       id: 9,
-      title: "Headphone 3D Model",
-      category: "3D Modeling",
-      image: "/placeholder.svg?height=540&width=400",
-      client: "Audio Tech",
+      title: "Ottoman Furniture",
+      category: "Product Photography",
+      image: "/placeholder.svg",
+      bgColor: "bg-[#f8f5f0]",
+      client: "Home Decor",
+      gridClass: "col-span-3 row-span-2"
+    },
+    {
+      id: 10,
+      title: "Natural Ceramics",
+      category: "Product Photography",
+      image: "/placeholder.svg",
+      bgColor: "bg-[#efe8d8]",
+      client: "Artisan Collection",
+      gridClass: "col-span-5 row-span-4"
+    },
+    {
+      id: 11,
+      title: "Eco-Friendly Kitchenware",
+      category: "Product Photography",
+      image: "/placeholder.svg",
+      bgColor: "bg-[#d8e5e0]",
+      client: "Green Living",
+      gridClass: "col-span-3 row-span-4"
+    },
+    {
+      id: 12,
+      title: "Handmade Textiles",
+      category: "Interior Design",
+      image: "/placeholder.svg",
+      bgColor: "bg-[#e9d9c9]",
+      client: "Textile Artisans",
+      gridClass: "col-span-4 row-span-3"
+    },
+    {
+      id: 13,
+      title: "Wellness Products",
+      category: "Product Photography",
+      image: "/placeholder.svg",
+      bgColor: "bg-[#dae1d9]",
+      client: "Organic Spa",
+      gridClass: "col-span-4 row-span-4"
     },
   ]
 
@@ -80,10 +157,8 @@ export default function PortfolioPage() {
   const categories = [
     "all",
     "Product Photography",
-    "Retouching & Editing",
-    "3D Modeling",
+    "Interior Design",
     "Graphic Design",
-    "Packaging",
     "Print Design"
   ]
 
@@ -91,6 +166,33 @@ export default function PortfolioPage() {
   const filteredItems = activeFilter === "all" 
     ? portfolioItems 
     : portfolioItems.filter(item => item.category === activeFilter)
+
+  // Handle portfolio item click
+  const handleItemClick = (item: PortfolioItem) => {
+    if (activeFilter === "all" || !isFiltered) {
+      // First click filters by category
+      setActiveFilter(item.category)
+      setIsFiltered(true)
+    } else {
+      // Second click opens the modal with details
+      setSelectedItem(item)
+      setModalOpen(true)
+      document.body.style.overflow = 'hidden' // Prevent scrolling when modal is open
+    }
+  }
+
+  // Close modal and reset body overflow
+  const closeModal = () => {
+    setModalOpen(false)
+    document.body.style.overflow = 'auto'
+  }
+
+  // Reset isFiltered when activeFilter changes to "all"
+  useEffect(() => {
+    if (activeFilter === "all") {
+      setIsFiltered(false)
+    }
+  }, [activeFilter])
 
   return (
     <div className="flex min-h-screen flex-col bg-[#fffdf9] relative">
@@ -125,7 +227,7 @@ export default function PortfolioPage() {
                 'Blog',
                 'Contact'
               ].map((item) => (
-                <a
+                <Link
                   key={item}
                   href={
                     item === 'Home' ? '/' : 
@@ -136,7 +238,7 @@ export default function PortfolioPage() {
                   onClick={() => setMenuOpen(false)}
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
@@ -215,40 +317,208 @@ export default function PortfolioPage() {
           </div>
         </section>
 
-        {/* Portfolio Grid */}
-        <section className="py-8 container mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Portfolio Grid - Custom Masonry Layout */}
+        <section className="py-8 container mx-auto px-4">
+          <style jsx>{`
+            .masonry-grid {
+              display: grid;
+              grid-template-columns: repeat(12, 1fr);
+              grid-auto-rows: 160px;
+              gap: 16px;
+            }
+            
+            /* Desktop to Tablet Transition */
+            @media (max-width: 1200px) {
+              .masonry-grid {
+                grid-template-columns: repeat(6, 1fr);
+                grid-auto-rows: 140px;
+              }
+              
+              .masonry-grid > div {
+                grid-column: span min(var(--cols, 3), 6) !important;
+              }
+              
+              .masonry-grid > div.col-span-5 {
+                --cols: 6;
+              }
+              
+              .masonry-grid > div.col-span-4 {
+                --cols: 3;
+              }
+              
+              .masonry-grid > div.col-span-3 {
+                --cols: 3;
+              }
+            }
+            
+            /* Tablet to Mobile Transition */
+            @media (max-width: 768px) {
+              .masonry-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-auto-rows: 220px;
+                gap: 12px;
+              }
+              
+              .masonry-grid > div {
+                grid-column: span 2 !important;
+                grid-row: span 1 !important;
+              }
+            }
+            
+            /* Small Mobile */
+            @media (max-width: 480px) {
+              .masonry-grid {
+                grid-template-columns: 1fr;
+                grid-auto-rows: 300px;
+                gap: 10px;
+              }
+              
+              .masonry-grid > div {
+                grid-column: span 1 !important;
+              }
+            }
+            
+            /* Hover effect styles */
+            .image-overlay {
+              position: absolute;
+              inset: 0;
+              background: rgba(0, 0, 0, 0.3);
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+              opacity: 0;
+              transition: opacity 0.3s ease;
+              color: white;
+              text-align: center;
+              padding: 2rem;
+            }
+            
+            .portfolio-item:hover .image-overlay {
+              opacity: 1;
+            }
+            
+            .image-overlay h3 {
+              font-size: 2rem;
+              font-weight: 300;
+              margin-bottom: 0.5rem;
+            }
+            
+            .image-overlay p {
+              font-size: 1.2rem;
+              opacity: 0.9;
+            }
+            
+            @media (max-width: 768px) {
+              .image-overlay h3 {
+                font-size: 1.5rem;
+              }
+              
+              .image-overlay p {
+                font-size: 1rem;
+              }
+            }
+          `}</style>
+          
+          <div className="masonry-grid">
             {filteredItems.map((item) => (
-              <div key={item.id} className="group overflow-hidden rounded-lg shadow-sm border border-gray-100 bg-white transition-all hover:shadow-md">
-                <div className="relative h-80 overflow-hidden">
+              <div 
+                key={item.id} 
+                className={`portfolio-item group overflow-hidden rounded-lg transition-all ${item.gridClass} cursor-pointer`}
+                data-col={item.gridClass.split('-')[2]}
+                onClick={() => handleItemClick(item)}
+              >
+                <div className="relative h-full w-full overflow-hidden">
                   <Image
                     src={item.image}
                     alt={item.title}
-                    width={400}
-                    height={540}
-                    className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-105"
+                    width={1200}
+                    height={1200}
+                    className={`h-full w-full object-cover transition-transform duration-300 group-hover:scale-105 ${item.bgColor || ''}`}
                   />
-                  <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6">
-                  <span className="text-sm text-[#d4b88e] font-medium">{item.category}</span>
-                  <h3 className="text-xl font-medium mt-1 mb-2">{item.title}</h3>
-                  <p className="text-sm text-gray-500">Client: {item.client}</p>
-                  <div className="mt-4 pt-4 border-t border-gray-100">
-                    <Link 
-                      href="#" 
-                      className="inline-flex items-center text-sm font-medium text-[#d4b88e] hover:text-[#c5a97f]"
-                    >
-                      View Case Study
-                      <svg className="ml-2 h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                      </svg>
-                    </Link>
+                  <div className="image-overlay">
+                    <h3>{item.title}</h3>
+                    <p>{item.category}</p>
                   </div>
                 </div>
               </div>
             ))}
           </div>
+
+          {/* Detailed Project Modal */}
+          {modalOpen && selectedItem && (
+            <div className="fixed inset-0 bg-black bg-opacity-75 z-50 overflow-y-auto">
+              <div className="min-h-screen px-4 flex items-center justify-center">
+                <div className="bg-white w-full max-w-6xl rounded-lg overflow-hidden flex flex-col md:flex-row">
+                  {/* Close button */}
+                  <button 
+                    onClick={closeModal} 
+                    className="absolute top-4 right-4 text-white text-2xl z-50 h-10 w-10 flex items-center justify-center rounded-full bg-black bg-opacity-50 hover:bg-opacity-70"
+                  >
+                    ×
+                  </button>
+                  
+                  {/* Left side: Scrollable images */}
+                  <div className="md:w-2/3 p-0 overflow-y-auto max-h-[90vh] md:max-h-[80vh]">
+                    <div className="sticky top-0 bg-white p-6 md:hidden">
+                      <h2 className="text-2xl font-medium">{selectedItem.title}</h2>
+                      <p className="text-gray-500">{selectedItem.category}</p>
+                    </div>
+                    
+                    <div className="space-y-4 p-4">
+                      {/* Main image */}
+                      <div className="w-full">
+                        <Image
+                          src={selectedItem.image}
+                          alt={selectedItem.title}
+                          width={1200}
+                          height={800}
+                          className="w-full h-auto object-cover rounded-lg"
+                        />
+                      </div>
+                      
+                      {/* Additional images */}
+                      {selectedItem.additionalImages && selectedItem.additionalImages.map((img: AdditionalImage, index: number) => (
+                        <div key={index} className="w-full">
+                          <Image
+                            src={img.src}
+                            alt={img.alt}
+                            width={1200}
+                            height={800}
+                            className="w-full h-auto object-cover rounded-lg"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  
+                  {/* Right side: Project details */}
+                  <div className="md:w-1/3 p-6 bg-[#f8f8f8] hidden md:block">
+                    <div className="sticky top-6">
+                      <h2 className="text-3xl font-medium mb-3">{selectedItem.title}</h2>
+                      <p className="text-gray-500 mb-6">{selectedItem.category}</p>
+                      
+                      <div className="mb-8">
+                        <h3 className="text-lg font-medium mb-2">About this project</h3>
+                        <p className="text-gray-600 leading-relaxed">
+                          {selectedItem.description || "A beautifully crafted project showcasing our expertise in " + selectedItem.category + "."}
+                        </p>
+                      </div>
+                      
+                      <div className="mb-8">
+                        <h3 className="text-lg font-medium mb-2">Client</h3>
+                        <p className="text-gray-600">{selectedItem.client}</p>
+                      </div>
+                      
+                      <Button className="w-full py-6 rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] text-white">
+                        Contact Us About This Project
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
         </section>
 
         {/* CTA Section */}

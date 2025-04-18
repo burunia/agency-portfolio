@@ -100,7 +100,7 @@ export default function AgencyPortfolio() {
                 'Blog',
                 'Contact'
               ].map((item) => (
-                <a
+                <Link
                   key={item}
                   href={
                     item === 'About Us' ? '/about' : 
@@ -110,7 +110,7 @@ export default function AgencyPortfolio() {
                   onClick={() => setMenuOpen(false)}
                 >
                   {item}
-                </a>
+                </Link>
               ))}
             </nav>
           </div>
