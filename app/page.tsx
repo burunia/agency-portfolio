@@ -505,43 +505,45 @@ content that make your products impossible to ignore
         </section>
 
         {/* Why Work With Us Section */}
-        <section className="container mx-auto py-16">
-          <div className="mb-12 flex flex-col items-center">
-            <div className="mb-4 flex items-center">
-              <div className="h-[1px] w-10 bg-gray-300"></div>
-              <h2 className="mx-4 text-lg font-light">why choose us?</h2>
-              <div className="h-[1px] w-10 bg-gray-300"></div>
+        <section className="py-24 bg-[#d4b88e] w-screen">
+          <div className="container mx-auto">
+            <div className="mb-16 flex flex-col items-center">
+              <div className="mb-6 flex items-center">
+                <div className="h-[1px] w-10 bg-white/60"></div>
+                <h2 className="mx-4 text-lg font-light text-white">why choose us?</h2>
+                <div className="h-[1px] w-10 bg-white/60"></div>
+              </div>
             </div>
-          </div>
 
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3">
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-4 text-[#d4b88e]">
-                <i className="fas fa-laptop-code fa-2xl"></i>
+            <div className="grid grid-cols-1 gap-16 md:grid-cols-3">
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-6 text-white">
+                  <i className="fas fa-laptop-code fa-3x"></i>
+                </div>
+                <h3 className="mb-4 text-xl font-medium text-white">**All-around Creative Help**</h3>
+                <p className="text-sm text-white/80">
+                Our flexible team takes you from concept to final visuals
+                </p>
               </div>
-              <h3 className="mb-2 text-lg font-medium">**All-around Creative Help**</h3>
-              <p className="text-sm text-gray-600">
-              Our flexible team takes you from concept to final visuals
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-4 text-[#d4b88e]">
-                <i className="fab fa-amazon fa-2xl"></i>
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-6 text-white">
+                  <i className="fab fa-amazon fa-3x"></i>
+                </div>
+                <h3 className="mb-4 text-xl font-medium text-white">**Proven Amazon Expertise**</h3>
+                <p className="text-sm text-white/80">
+                Helping brands grow on Amazon by turning browsers into 
+                buyers
+                </p>
               </div>
-              <h3 className="mb-2 text-lg font-medium">**Proven Amazon Expertise**</h3>
-              <p className="text-sm text-gray-600">
-              Helping brands grow on Amazon by turning browsers into 
-              buyers
-              </p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="mb-4 text-[#d4b88e]">
-                <i className="fas fa-chart-line fa-2xl"></i>
+              <div className="flex flex-col items-center text-center">
+                <div className="mb-6 text-white">
+                  <i className="fas fa-chart-line fa-3x"></i>
+                </div>
+                <h3 className="mb-4 text-xl font-medium text-white">**Creativity that Converts**</h3>
+                <p className="text-sm text-white/80">
+                Our eye-catching designs help drive your revenue.
+                </p>
               </div>
-              <h3 className="mb-2 text-lg font-medium">**Creativity that Converts**</h3>
-              <p className="text-sm text-gray-600">
-              Our eye-catching designs help drive your revenue.
-              </p>
             </div>
           </div>
         </section>
