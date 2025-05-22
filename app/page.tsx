@@ -223,7 +223,8 @@ export default function AgencyPortfolio() {
                   key={item}
                   href={
                     item === 'About Us' ? '/about' : 
-                    item === 'Portfolio' ? '/portfolio' : '#'
+                    item === 'Portfolio' ? '/portfolio' : 
+                    item === 'Contact' ? '/contact' : '#'
                   }
                   className="text-4xl md:text-5xl font-light text-white/80 hover:text-white transition-colors duration-200"
                   onClick={() => setMenuOpen(false)}

@@ -32,18 +32,18 @@ export default function PortfolioPage() {
 
   // Portfolio items data with categories and custom sizes
   const portfolioItems: PortfolioItem[] = [
-    {
+     {
       id: 1,
-      title: "Lifestyle Photography",
-      category: "Product Photography",
-      image: "/24-208_KP_Cube.jpg",
-      client: "Home Accessories",
-      gridClass: "col-span-5 row-span-6",
-      description: "A collection of minimalist home accessories designed to enhance modern living spaces. The photography focuses on clean lines and natural materials, highlighting the products' timeless appeal.",
+      title: "Magnetic Calendar",
+      category: "Print Design",
+      image: "/id1/id1_25-036-01.jpg",
+      client: "Stationery Brand",
+      gridClass: "col-span-6 row-span-5",
+      description: "Magnetic Calendar. This sleek magnetic calendar combines minimal design with everyday practicality, making it perfect for brightening up kitchens, home offices or dorms. The spacious monthly layout and striking typography offer an elegant solution for organizing schedules at a glance.",
       additionalImages: [
-        { src: "/24-208_KP_Cube.jpg", alt: "Home accessory closeup" },
-        { src: "/Caligraphy.jpg", alt: "Product in context" },
-        { src: "/Fluted-Storage-Boxes_Sage.jpg", alt: "Detail shot" }
+        { src: "/id1/id1_25-036-02.jpg", alt: "Calendar detail" },
+        { src: "/id1/id1_25-036-03.jpg", alt: "Calendar spread" },
+        { src: "/id1/id1_25-036-04.jpg", alt: "Front cover" },
       ]
     },
     {
