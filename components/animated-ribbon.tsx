@@ -4,9 +4,15 @@ import { useEffect, useRef } from "react"
 
 export default function AnimatedRibbon() {
   const ribbonGroupRef = useRef<SVGGElement>(null)
+  const animationRef = useRef(0)
 
   useEffect(() => {
     if (!ribbonGroupRef.current) return
+
+    // Clean up any previous paths before starting new animation
+    while (ribbonGroupRef.current.firstChild) {
+      ribbonGroupRef.current.removeChild(ribbonGroupRef.current.firstChild)
+    }
 
     const group = ribbonGroupRef.current
     const numLines = 55
@@ -66,11 +72,13 @@ export default function AnimatedRibbon() {
       animationRef.current = requestAnimationFrame(animate)
     }
 
-    const animationRef = { current: 0 }
     animationRef.current = requestAnimationFrame(animate)
 
     return () => {
       cancelAnimationFrame(animationRef.current)
+      if (ribbonGroupRef.current) {
+        ribbonGroupRef.current.innerHTML = ""
+      }
     }
   }, [])
 
