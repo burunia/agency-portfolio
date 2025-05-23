@@ -16,6 +16,9 @@ import {
 import React, { useState, useRef, ChangeEvent, FormEvent, useEffect } from "react"
 import emailjs from '@emailjs/browser'
 import ReCAPTCHA from "react-google-recaptcha"
+import { motion } from "framer-motion"
+import { Typewriter } from "react-simple-typewriter"
+import Header from "@/components/header"
 
 export default function AgencyPortfolio() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -33,6 +36,12 @@ export default function AgencyPortfolio() {
     errorMessage: ''
   })
   const recaptchaRef = useRef<ReCAPTCHA>(null)
+  const [showLogo, setShowLogo] = useState(false)
+  const [showSocials, setShowSocials] = useState(false)
+  const [showHeadline, setShowHeadline] = useState(false)
+  const [showRest, setShowRest] = useState(false)
+  const [headlineText, setHeadlineText] = useState('')
+  const [subtitleText, setSubtitleText] = useState('')
 
   // Initialize EmailJS
   useEffect(() => {
@@ -40,6 +49,43 @@ export default function AgencyPortfolio() {
       publicKey: 't-nDITmlVwB7mSBbT'
     });
   }, []);
+
+  useEffect(() => {
+    setTimeout(() => setShowLogo(true), 800)
+    setTimeout(() => setShowSocials(true), 1400)
+    setTimeout(() => setShowHeadline(true), 1800)
+  }, [])
+
+  // Custom typing effect for headline and subtitle
+  useEffect(() => {
+    if (showHeadline) {
+      const headline = "WE DESIGN,_"
+      let currentIndex = 0
+      
+      const interval = setInterval(() => {
+        if (currentIndex < headline.length) {
+          setHeadlineText(prev => prev + headline[currentIndex])
+          currentIndex++
+        } else {
+          clearInterval(interval)
+          // Start typing subtitle after headline is done
+          const subtitle = "Enhancing the Way your Brand Sells"
+          let subtitleIndex = 0
+          
+          const subtitleInterval = setInterval(() => {
+            if (subtitleIndex < subtitle.length) {
+              setSubtitleText(prev => prev + subtitle[subtitleIndex])
+              subtitleIndex++
+            } else {
+              clearInterval(subtitleInterval)
+              // Start the rest of the animations after both texts are done
+              setShowRest(true)
+            }
+          }, 100)
+        }
+      }, 100)
+    }
+  }, [showHeadline])
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { id, value } = e.target
@@ -237,65 +283,45 @@ export default function AgencyPortfolio() {
         </div>
       )}
       {/* Header */}
-      <header className="container mx-auto flex items-center justify-between py-6 relative z-50">
-        {/* Hamburger Button (hidden when menu is open) */}
-        {!menuOpen && (
-          <button
-            className="text-gray-800 focus:outline-none z-50 ml-8"
-            onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
-          >
-            <i className="fas fa-bars fa-lg text-black"></i>
-          </button>
-        )}
-        {/* Spacer div when hamburger is hidden to maintain header layout */}
-        {menuOpen && <div className="ml-8 w-6"></div>}
-        {/* Logo (remains visible above overlay) */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-          <Image 
-            src="/Logo.png" 
-            alt="Logo" 
-            width={156} 
-            height={52}
-            className="object-contain"
-          />
-        </div>
-        <div className="hidden md:flex items-center space-x-6 mr-8">
-          <Link href="#" className="p-1.5 rounded-full hover:bg-gray-100 transition-colors">
-            <i className="fab fa-facebook-f fa-lg text-black"></i>
-            <span className="sr-only">Facebook</span>
-          </Link>
-          <Link href="#" className="p-1.5 rounded-full hover:bg-gray-100 transition-colors">
-            <i className="fab fa-instagram fa-lg text-black"></i>
-            <span className="sr-only">Instagram</span>
-          </Link>
-          <Link href="#" className="p-1.5 rounded-full hover:bg-gray-100 transition-colors">
-            <i className="fab fa-twitter fa-lg text-black"></i>
-            <span className="sr-only">Twitter</span>
-          </Link>
-          <Link href="#" className="p-1.5 rounded-full hover:bg-gray-100 transition-colors">
-            <i className="fab fa-linkedin-in fa-lg text-black"></i>
-            <span className="sr-only">LinkedIn</span>
-          </Link>
-        </div>
-      </header>
+      <Header showAnimations={true} />
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative py-36 overflow-hidden w-screen">
-          {/* Animated Ribbon Background - covers entire hero section */}
+        <section className="relative h-screen w-screen overflow-hidden">
           <div className="absolute inset-0 w-full h-full">
             <AnimatedRibbon />
           </div>
-
-          <div className="container relative mx-auto text-center z-10 mt-16">
-            <h1 className="mb-4 text-5xl font-bold uppercase tracking-tight md:text-6xl">WE DESIGN,</h1>
-            <p className="text-xl md:text-2xl">Enhancing the Way your Brand Sells</p>
+          <div className="container relative mx-auto text-center z-10 h-full flex flex-col justify-center">
+            {/* Headline typewriter */}
+            <motion.h1
+              className="mb-4 text-5xl font-bold uppercase tracking-tight md:text-6xl"
+              initial={{ opacity: 0 }}
+              animate={showHeadline ? { opacity: 1 } : {}}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              <span style={{ color: '#d4b88e' }}>
+                {headlineText}
+              </span>
+            </motion.h1>
+            {/* Subtitle typewriter */}
+            <motion.p
+              className="text-xl md:text-2xl"
+              initial={{ opacity: 0 }}
+              animate={showHeadline ? { opacity: 1 } : {}}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+            >
+              {subtitleText}
+            </motion.p>
           </div>
         </section>
 
         {/* What We Do Section */}
-        <section className="container mx-auto py-16">
+        <motion.section
+          className="container mx-auto py-16"
+          initial={{ opacity: 0 }}
+          animate={showRest ? { opacity: 1 } : {}}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
+        >
           <div className="mb-12 flex flex-col items-center">
             <div className="mb-4 flex items-center">
               <div className="h-[1px] w-10 bg-gray-300"></div>
@@ -313,7 +339,12 @@ content that make your products impossible to ignore
             </p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 mt-10">
+          <motion.div 
+            className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 mt-10"
+            initial={{ opacity: 0, y: 20 }}
+            animate={showRest ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.8 }}
+          >
             <div className="flex flex-col items-center text-center group">
               <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
                 <span className="text-[#d4b88e] text-center px-4">Amazon Listing Optimization</span>
@@ -344,8 +375,8 @@ content that make your products impossible to ignore
                 <span className="text-[#d4b88e] text-center px-4">2D & 3D Product Design</span>
               </div>
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </motion.section>
 
         {/* Selected Work Section */}
         <section className="container mx-auto py-16 overflow-hidden">
@@ -521,8 +552,13 @@ content that make your products impossible to ignore
           </div>
         </section>
 
-        {/* Why Work With Us Section */}
-        <section className="py-24 bg-[#d4b88e] w-screen">
+        {/* Why Choose Us Section */}
+        <motion.section
+          className="py-24 bg-[#d4b88e] w-screen"
+          initial={{ opacity: 0 }}
+          animate={showRest ? { opacity: 1 } : {}}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+        >
           <div className="container mx-auto">
             <div className="mb-16 flex flex-col items-center">
               <div className="mb-6 flex items-center">
@@ -563,10 +599,15 @@ content that make your products impossible to ignore
               </div>
             </div>
           </div>
-        </section>
+        </motion.section>
 
         {/* Contact Form Section */}
-        <section className="container mx-auto py-16">
+        <motion.section
+          className="container mx-auto py-16"
+          initial={{ opacity: 0 }}
+          animate={showRest ? { opacity: 1 } : {}}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
+        >
           <div className="mb-12 flex flex-col items-center">
             <div className="mb-4 flex items-center">
               <div className="h-[1px] w-10 bg-gray-300"></div>
@@ -730,7 +771,7 @@ content that make your products impossible to ignore
               </form>
             </div>
           </div>
-        </section>
+        </motion.section>
       </main>
 
       {/* Footer */}

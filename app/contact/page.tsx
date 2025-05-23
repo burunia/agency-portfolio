@@ -9,6 +9,7 @@ import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import emailjs from '@emailjs/browser'
 import ReCAPTCHA from "react-google-recaptcha"
+import Header from "@/components/header"
 
 export default function ContactPage() {
   const [menuOpen, setMenuOpen] = useState(false)
@@ -134,93 +135,7 @@ export default function ContactPage() {
         referrerPolicy="no-referrer" 
       />
       
-      {/* Animated Overlay Menu */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-40" style={{background: 'rgba(203, 184, 136, 0.9)'}}>
-          {/* Close Button in header-aligned container */}
-          <div className="container mx-auto flex flex-col py-6">
-            <button
-              className="w-20 h-20 flex items-center justify-center rounded-2xl border-2 border-white bg-transparent text-white ml-8 hover:bg-white/10 transition-colors cursor-pointer pointer-events-auto"
-              onClick={() => setMenuOpen(false)}
-              aria-label="Close menu"
-              style={{ WebkitTapHighlightColor: 'transparent' }}
-            >
-              <span className="sr-only">Close menu</span>
-              <i className="fas fa-times fa-lg text-white"></i>
-            </button>
-            
-            {/* Menu Items aligned under close button */}
-            <nav className="flex flex-col items-start space-y-8 ml-8 mt-8 animate-fade-in-up">
-              {[
-                'Home',
-                'About Us',
-                'Portfolio',
-                'Blog',
-                'Contact'
-              ].map((item) => (
-                <Link
-                  key={item}
-                  href={
-                    item === 'Home' ? '/' : 
-                    item === 'About Us' ? '/about' : 
-                    item === 'Portfolio' ? '/portfolio' : 
-                    item === 'Contact' ? '/contact' : '#'
-                  }
-                  className="text-4xl md:text-5xl font-light text-white/80 hover:text-white transition-colors duration-200"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </div>
-      )}
-      {/* Header */}
-      <header className="container mx-auto flex items-center justify-between py-6 relative z-50">
-        {/* Hamburger Button (hidden when menu is open) */}
-        {!menuOpen && (
-          <button
-            className="text-gray-800 focus:outline-none z-50 ml-8"
-            onClick={() => setMenuOpen(true)}
-            aria-label="Open menu"
-          >
-            <i className="fas fa-bars fa-lg text-black"></i>
-          </button>
-        )}
-        {/* Spacer div when hamburger is hidden to maintain header layout */}
-        {menuOpen && <div className="ml-8 w-6"></div>}
-        {/* Logo (remains visible above overlay) */}
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 z-50">
-          <Link href="/">
-            <Image 
-              src="/Logo.png" 
-              alt="Logo" 
-              width={156} 
-              height={52}
-              className="object-contain"
-            />
-          </Link>
-        </div>
-        <div className="hidden md:flex items-center space-x-6 mr-8">
-          <Link href="#" className="p-1.5 rounded-full hover:bg-gray-100 transition-colors">
-            <i className="fab fa-facebook-f fa-lg text-black"></i>
-            <span className="sr-only">Facebook</span>
-          </Link>
-          <Link href="#" className="p-1.5 rounded-full hover:bg-gray-100 transition-colors">
-            <i className="fab fa-instagram fa-lg text-black"></i>
-            <span className="sr-only">Instagram</span>
-          </Link>
-          <Link href="#" className="p-1.5 rounded-full hover:bg-gray-100 transition-colors">
-            <i className="fab fa-twitter fa-lg text-black"></i>
-            <span className="sr-only">Twitter</span>
-          </Link>
-          <Link href="#" className="p-1.5 rounded-full hover:bg-gray-100 transition-colors">
-            <i className="fab fa-linkedin-in fa-lg text-black"></i>
-            <span className="sr-only">LinkedIn</span>
-          </Link>
-        </div>
-      </header>
+      <Header />
 
       <main className="flex-1">
         {/* Hero Section */}

@@ -32,10 +32,19 @@ export default function AnimatedRibbon() {
 
     const paths: SVGPathElement[] = []
 
-    // Create all the path elements
+    // Create all the path elements with initial stretched state
     for (let i = 0; i < numLines; i++) {
       const p = document.createElementNS("http://www.w3.org/2000/svg", "path")
-      p.setAttribute("d", baseShapes[0])
+      const offsetY = (i - numLines / 2) * lineOffset
+      const initialPath = baseShapes[0].replace(/-?[\d.]+/g, (match, index) => {
+        if (index % 2 === 1) { // Only modify Y coordinates
+          return (parseFloat(match) + offsetY).toString()
+        }
+        return match
+      })
+      p.setAttribute("d", initialPath)
+      p.setAttribute("fill", "url(#golden)")
+      p.setAttribute("opacity", "0.1")
       group.appendChild(p)
       paths.push(p)
     }
@@ -90,9 +99,8 @@ export default function AnimatedRibbon() {
         position: "absolute",
         left: 0,
         top: 0,
-        width: "200%",
+        width: "100%",
         height: "100%",
-        transform: "translateX(-25%)",
         zIndex: 0,
         pointerEvents: "none",
       }}
