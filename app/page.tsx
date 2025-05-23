@@ -424,7 +424,7 @@ content that make your products impossible to ignore
               {/* Carousel Items */}
               <div className="work-carousel-item prev-2">
                 <Image
-                  src="/24-208_KP_Cube.jpg"
+                  src="/id1/id1_25-036-01.jpg"
                   alt="Calendar design"
                   width={600}
                   height={600}
@@ -434,7 +434,7 @@ content that make your products impossible to ignore
               
               <div className="work-carousel-item prev">
                 <Image
-                  src="/Fluted-Storage-Boxes_Sage.jpg"
+                  src="/id3/id3_23-137-01.jpg"
                   alt="Storage boxes"
                   width={600}
                   height={600}
@@ -444,7 +444,7 @@ content that make your products impossible to ignore
               
               <div className="work-carousel-item active">
                 <Image
-                  src="/Caligraphy.jpg"
+                  src="/id6/id6_after-02.jpg"
                   alt="Product photography"
                   width={600}
                   height={600}
@@ -454,7 +454,7 @@ content that make your products impossible to ignore
               
               <div className="work-carousel-item next">
                 <Image
-                  src="/Pouf-Ottoman_life7_3D.jpg"
+                  src="/id8/23_010_23_010_Swear_word_to_do_planner2.jpg"
                   alt="Interior design"
                   width={600}
                   height={600}
@@ -464,7 +464,7 @@ content that make your products impossible to ignore
               
               <div className="work-carousel-item next-2">
                 <Image
-                  src="/placeholder.svg"
+                  src="/id9/id9_24-150-01.jpg"
                   alt="Product design 1"
                   width={600}
                   height={600}
@@ -474,7 +474,7 @@ content that make your products impossible to ignore
               
               <div className="work-carousel-item">
                 <Image
-                  src="/placeholder.svg"
+                  src="/id10/id10_24-086-01.jpg"
                   alt="Product design 2"
                   width={600}
                   height={600}
@@ -484,7 +484,7 @@ content that make your products impossible to ignore
               
               <div className="work-carousel-item">
                 <Image
-                  src="/placeholder.svg"
+                  src="/id11/id11_24-247_Concrete book end_packaging_24-247-01.jpg"
                   alt="Product design 3"
                   width={600}
                   height={600}
@@ -494,7 +494,7 @@ content that make your products impossible to ignore
               
               <div className="work-carousel-item">
                 <Image
-                  src="/placeholder.svg"
+                  src="/id12/id12_23-217-05.jpg"
                   alt="Product design 4"
                   width={600}
                   height={600}
