@@ -245,10 +245,9 @@ additionalImages: [
   // Filter categories 
   const categories = [
     "all",
-    "Product Photography",
-    "Interior Design",
-    "Graphic Design",
     "Print Design",
+    "Graphic Design",
+    "Product Photography",
     "Product Design"
   ]
 
