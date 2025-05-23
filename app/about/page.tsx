@@ -121,9 +121,11 @@ export default function AboutPage() {
                 We're a global creative studio built for modern commerce. From product concept to polished visuals, we design, shoot, and deliver content that helps e-commerce brands grow — beautifully and strategically.
               </p>
               
-              <Button className="mt-8 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg">
-                Work With Us
-              </Button>
+              <Link href="/contact">
+                <Button className="mt-8 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg">
+                  Work With Us
+                </Button>
+              </Link>
             </div>
             
             <div className="relative">

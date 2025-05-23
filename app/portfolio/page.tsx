@@ -166,7 +166,7 @@ additionalImages: [
 {
         id: 9,
         title: "Christmas Cards",
-        category: ["Print Design"],
+        category: ["Print Design","Graphic Design","Product Photography"],
         image: "/id9/id9_24-150-01.jpg",
         gridClass: "col-span-3 row-span-3",
         description: ".",
@@ -195,7 +195,7 @@ additionalImages: [
           {
             id: 11,
             title: "Concrete book end packaging" ,
-            category: ["Print Design"],
+            category: ["Print Design","Graphic Design",],
             image: "/id11/modern bookends1 mockup.jpg",
             gridClass: "col-span-6 row-span-3",
             client: "Furniture Brand",
@@ -276,6 +276,12 @@ additionalImages: [
       setIsFiltered(false)
     }
   }, [activeFilter])
+
+  useEffect(() => {
+    return () => {
+      document.body.style.overflow = 'auto';
+    };
+  }, []);
 
   return (
     <div className="flex min-h-screen flex-col bg-[#fffdf9] relative">
@@ -603,9 +609,11 @@ additionalImages: [
                         <p className="text-gray-600">{selectedItem.client}</p>
                       </div>
                       
-                      <Button className="w-full py-6 rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] text-white">
-                        Contact Us About This Project
-                      </Button>
+                      <Link href="/contact" onClick={() => { document.body.style.overflow = 'auto'; }}>
+                        <Button className="w-full py-6 rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] text-white">
+                          Contact Us About This Project
+                        </Button>
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -701,7 +709,7 @@ additionalImages: [
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-900">
+                  <Link href="/contact" className="hover:text-gray-900">
                     Contact
                   </Link>
                 </li>
