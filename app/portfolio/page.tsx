@@ -208,24 +208,38 @@ additionalImages: [
 
             ]
             },
-    {
-      id: 12,
-      title: "Handmade Textiles",
-      category: ["Interior Design"],
-      image: "/placeholder.svg",
-      bgColor: "bg-[#e9d9c9]",
-      client: "Textile Artisans",
-      gridClass: "col-span-4 row-span-3"
-    },
-    {
-      id: 13,
-      title: "Wellness Products",
-      category: ["Product Photography"],
-      image: "/placeholder.svg",
-      bgColor: "bg-[#dae1d9]",
-      client: "Organic Spa",
-      gridClass: "col-span-4 row-span-4"
-    },
+            {
+              id: 12,
+              title: "Tummy Time Sensory Toy" ,
+              category: ["Product Design","Product Photography"],
+              image: "/id12/id12_23-217-01.jpg",
+              gridClass: "col-span-3 row-span-3",
+              description: ".",
+              client: "Furniture Brand",
+              additionalImages: [
+              { src: "/id12/id12_24-217-02.jpg", alt: "" },
+              { src: "/id12/id12_23-217-03.jpg", alt: "" },
+              { src: "/id12/id12_23-217-04.jpg", alt: "" },
+              { src: "/id12/id12_23-217-05.jpg", alt: "" },
+              ]
+              },
+              {
+                id: 13,
+                title: "Kids Cooking Set" ,
+                category: ["Product Design"],
+                image: "/id13/id13_23-219-01.jpg",
+                gridClass: "col-span-3 row-span-3",
+                description: ".",
+                client: "Furniture Brand",
+                additionalImages: [
+                { src: "/id13/id13_23-219-02.jpg", alt: "" },
+                { src: "/id13/id13_23-219-03.jpg", alt: "" },
+                { src: "/id13/id13_23-219-04.jpg", alt: "" },
+                { src: "/id13/id13_23-219-04.jpg", alt: "" },
+                { src: "/id13/id13_23-219-05.jpg", alt: "" },
+                { src: "/id13/id13_23-219-06.jpg", alt: "" },
+                ]
+                },
   ]
 
   // Filter categories 
