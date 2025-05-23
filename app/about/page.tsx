@@ -129,11 +129,11 @@ export default function AboutPage() {
             <div className="relative">
               <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-[#d4b88e]/20"></div>
               <Image 
-                src="/team.jpg?height=500&width=500" 
+                src="/website png-05.png?height=500&width=500" 
                 alt="Creative work environment"
-                width={600} 
-                height={600}
-                className="rounded-full border-4 border-white shadow-xl"
+                width={700} 
+                height={700}
+                // className="rounded-full border-4 border-white shadow-xl"
               />
               <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-[#d4b88e] -z-10"></div>
             </div>

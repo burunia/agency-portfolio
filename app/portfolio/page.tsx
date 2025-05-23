@@ -46,21 +46,33 @@ export default function PortfolioPage() {
         { src: "/id1/id1_25-036-04.jpg", alt: "Front cover" },
       ]
     },
-    {
+     {
       id: 2,
-      title: "Minimalist Planner",
-      category: "Product Photography",
-      image: "/Caligraphy.jpg",
+      title: "Adult Coloring Book",
+      category: "Print Design",
+      image: "/id2/id2_25-036-01.jpg",
       client: "Stationery Brand",
-      gridClass: "col-span-3 row-span-3"
+      gridClass: "col-span-3 row-span-3",
+      description: "Adult Coloring Book. This set of two adult coloring books promotes self-expression and relaxation through art. Each book features 64 pages of unique designs paired with inspirational quotes, offering a soothing, creative escape.",
+      additionalImages: [
+        { src: "/id2/id2_25-036-02.jpg", alt: "Book spread" },
+        { src: "/id2/id2_25-036-03.jpg", alt: "Book detail" },
+        { src: "/id2/id2_25-036-04.jpg", alt: "Infographic" }
+      ]
     },
-    {
+     {
       id: 3,
-      title: "Kids Room Design",
-      category: "Interior Design",
-      image: "/Fluted-Storage-Boxes_Sage.jpg",
-      client: "Children's Furniture",
-      gridClass: "col-span-4 row-span-3"
+      title: "Adult Coloring Book",
+      category: "Print Design",
+      image: "/id3/id3_23-137-01.jpg",
+      client: "Stationery Brand",
+      gridClass: "col-span-3 row-span-3",
+      description: "Adult Coloring Book. This set of two adult coloring books promotes self-expression and relaxation through art. Each book features 64 pages of unique designs paired with inspirational quotes, offering a soothing, creative escape.",
+      additionalImages: [
+        { src: "/id3/id3_23-137-02.jpg", alt: "Book spread" },
+        { src: "/id3/id3_23-137-03.jpg", alt: "Book detail" },
+        { src: "/id3/id3_23-137-04.jpg", alt: "Infographic" }
+      ]
     },
     {
       id: 4,
@@ -232,7 +244,8 @@ export default function PortfolioPage() {
                   href={
                     item === 'Home' ? '/' : 
                     item === 'About Us' ? '/about' : 
-                    item === 'Portfolio' ? '/portfolio' : '#'
+                    item === 'Portfolio' ? '/portfolio' : 
+                    item === 'Contact' ? '/contact' : '#'
                   }
                   className="text-4xl md:text-5xl font-light text-white/80 hover:text-white transition-colors duration-200"
                   onClick={() => setMenuOpen(false)}
@@ -528,9 +541,11 @@ export default function PortfolioPage() {
             <p className="max-w-2xl mx-auto text-gray-600 mb-8">
               Let's create something amazing together. Our creative team is ready to help you bring your vision to life.
             </p>
-            <Button className="rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] px-8 py-2 text-white">
-              Contact Us
-            </Button>
+            <Link href="/contact">
+              <Button className="rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] px-8 py-2 text-white">
+                Contact Us
+              </Button>
+            </Link>
           </div>
         </section>
       </main>
