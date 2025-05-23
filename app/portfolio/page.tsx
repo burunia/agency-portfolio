@@ -14,7 +14,7 @@ interface AdditionalImage {
 interface PortfolioItem {
   id: number;
   title: string;
-  category: string;
+  category: string[];
   image: string;
   client: string;
   gridClass: string;
@@ -35,7 +35,7 @@ export default function PortfolioPage() {
      {
       id: 1,
       title: "Magnetic Calendar",
-      category: "Print Design",
+      category: ["Print Design"],
       image: "/id1/id1_25-036-01.jpg",
       client: "Stationery Brand",
       gridClass: "col-span-6 row-span-5",
@@ -49,7 +49,7 @@ export default function PortfolioPage() {
      {
       id: 2,
       title: "Adult Coloring Book",
-      category: "Print Design",
+      category: ["Print Design"],
       image: "/id2/id2_25-036-01.jpg",
       client: "Stationery Brand",
       gridClass: "col-span-3 row-span-3",
@@ -60,50 +60,75 @@ export default function PortfolioPage() {
         { src: "/id2/id2_25-036-04.jpg", alt: "Infographic" }
       ]
     },
-     {
-      id: 3,
-      title: "Adult Coloring Book",
-      category: "Print Design",
-      image: "/id3/id3_23-137-01.jpg",
-      client: "Stationery Brand",
-      gridClass: "col-span-3 row-span-3",
-      description: "Adult Coloring Book. This set of two adult coloring books promotes self-expression and relaxation through art. Each book features 64 pages of unique designs paired with inspirational quotes, offering a soothing, creative escape.",
-      additionalImages: [
-        { src: "/id3/id3_23-137-02.jpg", alt: "Book spread" },
-        { src: "/id3/id3_23-137-03.jpg", alt: "Book detail" },
-        { src: "/id3/id3_23-137-04.jpg", alt: "Infographic" }
-      ]
-    },
-    {
-      id: 4,
-      title: "Kitchen Accessories",
-      category: "Product Photography",
-      image: "/Pouf-Ottoman_life7_3D.jpg",
-      client: "Cookware Collection",
-      gridClass: "col-span-3 row-span-3"
-    },
-    {
-      id: 5, 
-      title: "Bathroom Ceramics",
-      category: "Product Photography",
-      image: "/placeholder.svg",
-      bgColor: "bg-[#f5f0e6]",
-      client: "Modern Bath",
-      gridClass: "col-span-4 row-span-3"
-    },
-    {
-      id: 6,
-      title: "Branding Materials",
-      category: "Graphic Design",
-      image: "/placeholder.svg",
-      bgColor: "bg-[#e0d6c3]",
-      client: "Stationery Brand",
-      gridClass: "col-span-5 row-span-3"
-    },
+     
+{
+id: 3,
+title: "High Contrast Baby Book Toy Set of 3",
+category: ["Product Design"],
+image: "/id3/id3_23-137-01.jpg",
+client: "Children's Toys",
+gridClass: "col-span-3 row-span-3",
+description: "This baby book toy set supports early development in babies aged 3 months and up. It includes a soft cotton, 4-double-page book with a tie rope and built-in sounder, a crinkle toy with a teether, and a toy block featuring a rattle. Made from fabrics designed for safety, each piece inspires play that stimulates visual and tactile senses.",
+additionalImages: [
+{ src: "/id3/id3_23-137-02.jpg", alt: "Book spread" },
+{ src: "/id3/id3_23-137-03.jpg", alt: "Toy detail" },
+{ src: "/id3/id3_23-137-04.jpg", alt: "Set overview" }
+]
+},
+    
+{
+  id: 4,
+  title: "Soft Baby Book",
+  category: ["Product Design", "Product Photography"],
+  image: "/id4/id4_22-040-01.jpg",
+  client: "Stationery Brand",
+  gridClass: "col-span-3 row-span-3",
+  description: "This soft baby book was designed to aid in the sensory development of infants through gentle textures and calming colors. Featuring a variety of soft fabrics, every detail supports sensory exploration and early development.",
+  additionalImages: [
+    { src: "/id4/id4_22-040-02.jpg", alt: "Book spread" },
+    { src: "/id4/id4_22-040-03.jpg", alt: "Book detail" },
+    { src: "/id4/id4_22-040-04.jpg", alt: "Texture close-up" },
+    { src: "/id4/id4_22-040-05.jpg", alt: "Book pages" },
+    { src: "/id4/id4_22-040-06.jpg", alt: "Full set" }
+  ]
+},
+{
+  id: 5,
+  title: "Kids Gardening Set",
+  category: ["Product Design"],
+  image: "/id5/id5_24-069-01.jpg",
+  client: "Children's Toys",
+  gridClass: "col-span-3 row-span-3",
+  description: "This fun gardening set for kids inspires hands-on learning and outdoor play. Available in pink for girls and sage for boys—it includes all the tools a young one needs to go outside and get gardening. Featuring high-quality materials and wooden handles, every detail was created with safety, style, and functionality in mind.",
+  additionalImages: [
+    { src: "/id5/id5_24-069-02.jpg", alt: "Garden tools set" },
+    { src: "/id5/id5_24-069-03.jpg", alt: "Tools detail" },
+    { src: "/id5/id5_24-069-04.jpg", alt: "Set overview" },
+    { src: "/id5/id5_24-069-05.jpg", alt: "Tools in use" },
+    { src: "/id5/id5_24-069-06.jpg", alt: "Full collection" }
+  ]
+},
+    
+{
+  id: 6,
+  title: "Product Photography",
+  category: ["Product Photography"],
+  image: "/id6/id6_after-02.jpg",
+  client: "E-commerce Brands",
+  gridClass: "col-span-5 row-span-6",
+  description: "Our photography and editing work evolves everyday product shots into visually pleasing images for online marketplaces. Our team balances natural light, thoughtful composition, and expert retouching to create scenes that elevate your brand while showcasing product details with clarity and style. No matter the product, our stand-out visuals are crafted to capture attention, build trust, and drive sales.",
+  additionalImages: [
+    { src: "/id6/id6_after-02.jpg", alt: "Before and after product shot" },
+    { src: "/id6/id6_before-03.jpg", alt: "Raw product photography" },
+    { src: "/id6/id6_after-04.jpg", alt: "Enhanced product image" },
+    { src: "/id6/id6_before-05.jpg", alt: "Original product photo" },
+    { src: "/id6/id6_after-06.jpg", alt: "Final product showcase" }
+  ]
+},
     {
       id: 7,
       title: "Monthly Calendar",
-      category: "Print Design",
+      category: ["Print Design"],
       image: "/placeholder.svg",
       bgColor: "bg-[#d4b88e]",
       client: "Lifestyle Collection",
@@ -112,7 +137,7 @@ export default function PortfolioPage() {
     {
       id: 8,
       title: "Motivational Cards",
-      category: "Print Design",
+      category: ["Print Design"],
       image: "/placeholder.svg",
       bgColor: "bg-[#c5a97f]",
       client: "Wellness Brand",
@@ -121,7 +146,7 @@ export default function PortfolioPage() {
     {
       id: 9,
       title: "Ottoman Furniture",
-      category: "Product Photography",
+      category: ["Product Photography"],
       image: "/placeholder.svg",
       bgColor: "bg-[#f8f5f0]",
       client: "Home Decor",
@@ -130,7 +155,7 @@ export default function PortfolioPage() {
     {
       id: 10,
       title: "Natural Ceramics",
-      category: "Product Photography",
+      category: ["Product Photography"],
       image: "/placeholder.svg",
       bgColor: "bg-[#efe8d8]",
       client: "Artisan Collection",
@@ -139,7 +164,7 @@ export default function PortfolioPage() {
     {
       id: 11,
       title: "Eco-Friendly Kitchenware",
-      category: "Product Photography",
+      category: ["Product Photography"],
       image: "/placeholder.svg",
       bgColor: "bg-[#d8e5e0]",
       client: "Green Living",
@@ -148,7 +173,7 @@ export default function PortfolioPage() {
     {
       id: 12,
       title: "Handmade Textiles",
-      category: "Interior Design",
+      category: ["Interior Design"],
       image: "/placeholder.svg",
       bgColor: "bg-[#e9d9c9]",
       client: "Textile Artisans",
@@ -157,7 +182,7 @@ export default function PortfolioPage() {
     {
       id: 13,
       title: "Wellness Products",
-      category: "Product Photography",
+      category: ["Product Photography"],
       image: "/placeholder.svg",
       bgColor: "bg-[#dae1d9]",
       client: "Organic Spa",
@@ -171,19 +196,20 @@ export default function PortfolioPage() {
     "Product Photography",
     "Interior Design",
     "Graphic Design",
-    "Print Design"
+    "Print Design",
+    "Product Design"
   ]
 
   // Filter the portfolio items based on the active filter
   const filteredItems = activeFilter === "all" 
     ? portfolioItems 
-    : portfolioItems.filter(item => item.category === activeFilter)
+    : portfolioItems.filter(item => item.category.includes(activeFilter))
 
   // Handle portfolio item click
   const handleItemClick = (item: PortfolioItem) => {
     if (activeFilter === "all" || !isFiltered) {
       // First click filters by category
-      setActiveFilter(item.category)
+      setActiveFilter(item.category[0])
       setIsFiltered(true)
     } else {
       // Second click opens the modal with details
@@ -451,7 +477,7 @@ export default function PortfolioPage() {
                   />
                   <div className="image-overlay">
                     <h3>{item.title}</h3>
-                    <p>{item.category}</p>
+                    <p>{item.category.join(', ')}</p>
                   </div>
                 </div>
               </div>
@@ -475,7 +501,7 @@ export default function PortfolioPage() {
                   <div className="md:w-2/3 p-0 overflow-y-auto max-h-[90vh] md:max-h-[80vh]">
                     <div className="sticky top-0 bg-white p-6 md:hidden">
                       <h2 className="text-2xl font-medium">{selectedItem.title}</h2>
-                      <p className="text-gray-500">{selectedItem.category}</p>
+                      <p className="text-gray-500">{selectedItem.category.join(', ')}</p>
                     </div>
                     
                     <div className="space-y-4 p-4">
@@ -509,12 +535,12 @@ export default function PortfolioPage() {
                   <div className="md:w-1/3 p-6 bg-[#f8f8f8] hidden md:block">
                     <div className="sticky top-6">
                       <h2 className="text-3xl font-medium mb-3">{selectedItem.title}</h2>
-                      <p className="text-gray-500 mb-6">{selectedItem.category}</p>
+                      <p className="text-gray-500 mb-6">{selectedItem.category.join(', ')}</p>
                       
                       <div className="mb-8">
                         <h3 className="text-lg font-medium mb-2">About this project</h3>
                         <p className="text-gray-600 leading-relaxed">
-                          {selectedItem.description || "A beautifully crafted project showcasing our expertise in " + selectedItem.category + "."}
+                          {selectedItem.description || "A beautifully crafted project showcasing our expertise in " + selectedItem.category.join(', ') + "."}
                         </p>
                       </div>
                       
