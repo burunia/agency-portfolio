@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
+import dynamic from "next/dynamic"
+
+const BeforeAfterSlider = dynamic(() => import("@/components/BeforeAfterSlider"), { ssr: false })
 
 // Define interfaces for type safety
 interface AdditionalImage {
@@ -21,6 +24,8 @@ interface PortfolioItem {
   bgColor?: string;
   description?: string;
   additionalImages?: AdditionalImage[];
+  beforeImage?: string;
+  afterImage?: string;
 }
 
 export default function PortfolioPage() {
@@ -115,8 +120,10 @@ additionalImages: [
   category: ["Product Photography"],
   image: "/id6/id6_after-02.jpg",
   client: "E-commerce Brands",
-  gridClass: "col-span-5 row-span-6",
+  gridClass: "col-span-3 row-span-3",
   description: "Our photography and editing work evolves everyday product shots into visually pleasing images for online marketplaces. Our team balances natural light, thoughtful composition, and expert retouching to create scenes that elevate your brand while showcasing product details with clarity and style. No matter the product, our stand-out visuals are crafted to capture attention, build trust, and drive sales.",
+  beforeImage: "/id6/id6_after-01.jpg",
+  afterImage: "/id6/id6_after-02.jpg",
   additionalImages: [
     { src: "/id6/id6_after-02.jpg", alt: "Before and after product shot" },
     { src: "/id6/id6_before-03.jpg", alt: "Raw product photography" },
@@ -125,33 +132,51 @@ additionalImages: [
     { src: "/id6/id6_after-06.jpg", alt: "Final product showcase" }
   ]
 },
-    {
-      id: 7,
-      title: "Monthly Calendar",
-      category: ["Print Design"],
-      image: "/placeholder.svg",
-      bgColor: "bg-[#d4b88e]",
-      client: "Lifestyle Collection",
-      gridClass: "col-span-4 row-span-5"
-    },
-    {
-      id: 8,
-      title: "Motivational Cards",
-      category: ["Print Design"],
-      image: "/placeholder.svg",
-      bgColor: "bg-[#c5a97f]",
-      client: "Wellness Brand",
-      gridClass: "col-span-3 row-span-3"
-    },
-    {
-      id: 9,
-      title: "Ottoman Furniture",
-      category: ["Product Photography"],
-      image: "/placeholder.svg",
-      bgColor: "bg-[#f8f5f0]",
-      client: "Home Decor",
-      gridClass: "col-span-3 row-span-2"
-    },
+{
+  id: 7,
+  title: "Musical Instruments for Kids",
+  category: ["Product Design"],
+  image: "/id7/id7_musical instruments_23-191-01.jpg",
+  gridClass: "col-span-3 row-span-3",
+  description: "",
+  client: "Children's Toys",
+  additionalImages: [
+    { src: "/id7/id7_musical instruments_23-191-02.jpg", alt: "Musical instruments" },
+    { src: "/id7/id7_musical instruments_23-191-03.jpg", alt: "Musical instruments" },
+    { src: "/id7/id7_musical instruments_23-191-04.jpg", alt: "Musical instruments" },
+    { src: "/id7/id7_musical instruments_23-191-05.jpg", alt: "Musical instruments" },
+    { src: "/id7/id7_musical instruments_23-191-06.jpg", alt: "Musical instruments" }
+  ]
+},
+ {
+  id: 8,
+  title: "Spiral Notebook",
+  category: ["Print Design"],
+  image: "/id8/23_010-02.jpg",
+  client: "Stationery Brand",
+  gridClass: "col-span-3 row-span-3",
+  description: "Spiral notebook with handmade floral art and cheeky calligraphy.",
+  additionalImages: [
+    { src: "/id8/23_010_23_010_Swear_word_to_do_planner4.jpg", alt: "Front mockup on marble tray" },
+    { src: "/id8/23_010_23_010_Swear_word_to_do_planner2.jpg", alt: "Hand painting florals" },
+    { src: "/id8/23_010_23_010_Swear_word_to_do_planner3.jpg", alt: "Top-down mockup with pens" },
+    { src: "/id8/23_010-02.jpg", alt: "Front cover" }
+  ]
+},
+{
+        id: 9,
+        title: "Christmas Cards",
+        category: ["Print Design"],
+        image: "/id9/id9_24-150-01.jpg",
+        gridClass: "col-span-3 row-span-3",
+        description: ".",
+        additionalImages: [
+          { src: "/id9/id9_24-150-02.jpg", alt: "" },
+          { src: "/id9/id9_24-150-03.jpg", alt: "" },
+          { src: "/id9/id9_24-150-04.jpg", alt: "" },
+          { src: "/id9/id9_24-150-05.jpg", alt: "" }
+        ]
+      },
     {
       id: 10,
       title: "Natural Ceramics",
@@ -207,16 +232,9 @@ additionalImages: [
 
   // Handle portfolio item click
   const handleItemClick = (item: PortfolioItem) => {
-    if (activeFilter === "all" || !isFiltered) {
-      // First click filters by category
-      setActiveFilter(item.category[0])
-      setIsFiltered(true)
-    } else {
-      // Second click opens the modal with details
-      setSelectedItem(item)
-      setModalOpen(true)
-      document.body.style.overflow = 'hidden' // Prevent scrolling when modal is open
-    }
+    setSelectedItem(item)
+    setModalOpen(true)
+    document.body.style.overflow = 'hidden' // Prevent scrolling when modal is open
   }
 
   // Close modal and reset body overflow
@@ -486,8 +504,8 @@ additionalImages: [
 
           {/* Detailed Project Modal */}
           {modalOpen && selectedItem && (
-            <div className="fixed inset-0 bg-black bg-opacity-75 z-50 overflow-y-auto">
-              <div className="min-h-screen px-4 flex items-center justify-center">
+            <div className="fixed inset-0 bg-black bg-opacity-75 z-50 overflow-y-auto" style={{ pointerEvents: 'none' }}>
+              <div className="min-h-screen px-4 flex items-center justify-center" style={{ pointerEvents: 'auto', zIndex: 99999 }}>
                 <div className="bg-white w-full max-w-6xl rounded-lg overflow-hidden flex flex-col md:flex-row">
                   {/* Close button */}
                   <button 
@@ -507,13 +525,22 @@ additionalImages: [
                     <div className="space-y-4 p-4">
                       {/* Main image */}
                       <div className="w-full">
-                        <Image
-                          src={selectedItem.image}
-                          alt={selectedItem.title}
-                          width={1200}
-                          height={800}
-                          className="w-full h-auto object-cover rounded-lg"
-                        />
+                        {selectedItem.beforeImage && selectedItem.afterImage ? (
+                          <BeforeAfterSlider
+                            before={selectedItem.beforeImage}
+                            after={selectedItem.afterImage}
+                            altBefore="Przed edycją"
+                            altAfter="Po edycji"
+                          />
+                        ) : (
+                          <Image
+                            src={selectedItem.image}
+                            alt={selectedItem.title}
+                            width={1200}
+                            height={800}
+                            className="w-full h-auto object-cover rounded-lg"
+                          />
+                        )}
                       </div>
                       
                       {/* Additional images */}
