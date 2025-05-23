@@ -170,6 +170,7 @@ additionalImages: [
         image: "/id9/id9_24-150-01.jpg",
         gridClass: "col-span-3 row-span-3",
         description: ".",
+        client: "Stationery Brand",
         additionalImages: [
           { src: "/id9/id9_24-150-02.jpg", alt: "" },
           { src: "/id9/id9_24-150-03.jpg", alt: "" },
@@ -177,24 +178,36 @@ additionalImages: [
           { src: "/id9/id9_24-150-05.jpg", alt: "" }
         ]
       },
-    {
-      id: 10,
-      title: "Natural Ceramics",
-      category: ["Product Photography"],
-      image: "/placeholder.svg",
-      bgColor: "bg-[#efe8d8]",
-      client: "Artisan Collection",
-      gridClass: "col-span-5 row-span-4"
-    },
-    {
-      id: 11,
-      title: "Eco-Friendly Kitchenware",
-      category: ["Product Photography"],
-      image: "/placeholder.svg",
-      bgColor: "bg-[#d8e5e0]",
-      client: "Green Living",
-      gridClass: "col-span-3 row-span-4"
-    },
+      {
+        id: 10,
+        title: "Boucle pouf ottoman",
+        category: ["Product Design", "Product Photography"],
+        image: "/id10/id10_24-086-01.jpg",
+        gridClass: "col-span-6 row-span-6",
+        description: ".",
+        client: "Furniture Brand",
+        additionalImages: [
+          { src: "/id10/id10_24-086-02.jpg", alt: "" },
+          { src: "/id10/id10_24-086-03.jpg", alt: "" },
+        { src: "/id10/id10_24-086-04.jpg", alt: "" }
+        ]
+          },
+          {
+            id: 11,
+            title: "Concrete book end packaging" ,
+            category: ["Print Design"],
+            image: "/id11/modern bookends1 mockup.jpg",
+            gridClass: "col-span-6 row-span-3",
+            client: "Furniture Brand",
+            description: ".",
+            additionalImages: [
+            { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-01.jpg", alt: "" },
+            { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-02.jpg", alt: "" },
+            { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-03.jpg", alt: "" },
+            { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-04.jpg", alt: "" },
+
+            ]
+            },
     {
       id: 12,
       title: "Handmade Textiles",
