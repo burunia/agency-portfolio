@@ -423,83 +423,99 @@ content that make your products impossible to ignore
 
               {/* Carousel Items */}
               <div className="work-carousel-item prev-2">
-                <Image
-                  src="/id1/id1_25-036-01.jpg"
-                  alt="Calendar design"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover"
-                />
+                <Link href="/portfolio">
+                  <Image
+                    src="/id1/id1_25-036-01.jpg"
+                    alt="Calendar design"
+                    width={600}
+                    height={600}
+                    className="h-full w-full object-cover"
+                  />
+                </Link>
               </div>
               
               <div className="work-carousel-item prev">
-                <Image
-                  src="/id3/id3_23-137-01.jpg"
-                  alt="Storage boxes"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover"
-                />
+                <Link href="/portfolio">
+                  <Image
+                    src="/id3/id3_23-137-01.jpg"
+                    alt="Storage boxes"
+                    width={600}
+                    height={600}
+                    className="h-full w-full object-cover"
+                  />
+                </Link>
               </div>
               
               <div className="work-carousel-item active">
-                <Image
-                  src="/id6/id6_after-02.jpg"
-                  alt="Product photography"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover"
-                />
+                <Link href="/portfolio">
+                  <Image
+                    src="/id6/id6_after-02.jpg"
+                    alt="Product photography"
+                    width={600}
+                    height={600}
+                    className="h-full w-full object-cover"
+                  />
+                </Link>
               </div>
               
               <div className="work-carousel-item next">
-                <Image
-                  src="/id8/23_010_23_010_Swear_word_to_do_planner2.jpg"
-                  alt="Interior design"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover"
-                />
+                <Link href="/portfolio">
+                  <Image
+                    src="/id8/23_010_23_010_Swear_word_to_do_planner2.jpg"
+                    alt="Interior design"
+                    width={600}
+                    height={600}
+                    className="h-full w-full object-cover"
+                  />
+                </Link>
               </div>
               
               <div className="work-carousel-item next-2">
-                <Image
-                  src="/id9/id9_24-150-01.jpg"
-                  alt="Product design 1"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover bg-[#f5f0e6]"
-                />
+                <Link href="/portfolio">
+                  <Image
+                    src="/id9/id9_24-150-01.jpg"
+                    alt="Product design 1"
+                    width={600}
+                    height={600}
+                    className="h-full w-full object-cover bg-[#f5f0e6]"
+                  />
+                </Link>
               </div>
               
               <div className="work-carousel-item">
-                <Image
-                  src="/id10/id10_24-086-01.jpg"
-                  alt="Product design 2"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover bg-[#e0d6c3]"
-                />
+                <Link href="/portfolio">
+                  <Image
+                    src="/id10/id10_24-086-01.jpg"
+                    alt="Product design 2"
+                    width={600}
+                    height={600}
+                    className="h-full w-full object-cover bg-[#e0d6c3]"
+                  />
+                </Link>
               </div>
               
               <div className="work-carousel-item">
-                <Image
-                  src="/id11/id11_24-247_Concrete book end_packaging_24-247-01.jpg"
-                  alt="Product design 3"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover bg-[#d4b88e]"
-                />
+                <Link href="/portfolio">
+                  <Image
+                    src="/id11/id11_24-247_Concrete book end_packaging_24-247-01.jpg"
+                    alt="Product design 3"
+                    width={600}
+                    height={600}
+                    className="h-full w-full object-cover bg-[#d4b88e]"
+                  />
+                </Link>
               </div>
               
               <div className="work-carousel-item">
-                <Image
-                  src="/id12/id12_23-217-05.jpg"
-                  alt="Product design 4"
-                  width={600}
-                  height={600}
-                  className="h-full w-full object-cover bg-[#c5a97f]"
-                />
+                <Link href="/portfolio">
+                  <Image
+                    src="/id12/id12_23-217-05.jpg"
+                    alt="Product design 4"
+                    width={600}
+                    height={600}
+                    className="h-full w-full object-cover bg-[#c5a97f]"
+                  />
+                </Link>
               </div>
             </div>
           </div>
