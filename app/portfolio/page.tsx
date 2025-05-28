@@ -454,9 +454,9 @@ export default function PortfolioPage() {
 
           {/* Detailed Project Modal */}
           {modalOpen && selectedItem && (
-            <div className="fixed inset-0 bg-black bg-opacity-75 z-50 overflow-y-auto" style={{ pointerEvents: 'none' }}>
-              <div className="min-h-screen px-4 flex items-center justify-center" style={{ pointerEvents: 'auto', zIndex: 99999 }}>
-                <div className="bg-white w-full max-w-6xl rounded-lg overflow-hidden flex flex-col md:flex-row">
+            <div className="fixed inset-0 bg-black bg-opacity-75 z-50 overflow-y-auto" style={{ pointerEvents: 'auto' }} onClick={closeModal}>
+              <div className="min-h-screen px-4 flex items-center justify-center" style={{ zIndex: 99999 }}>
+                <div className="bg-white w-full max-w-6xl rounded-lg overflow-hidden flex flex-col md:flex-row" onClick={e => e.stopPropagation()}>
                   {/* Close button */}
                   <button 
                     onClick={closeModal} 
@@ -562,7 +562,7 @@ export default function PortfolioPage() {
             <div className="space-y-4">
               <div>
                 <Image 
-                  src="/Logo.png" 
+                  src="/sello_art.svg" 
                   alt="Logo" 
                   width={156} 
                   height={52}

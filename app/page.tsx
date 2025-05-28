@@ -178,11 +178,11 @@ export default function AgencyPortfolio() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="relative h-screen w-screen overflow-hidden">
+        <section className="relative h-[calc(100vh-80px)] w-screen overflow-hidden">
           <div className="absolute inset-0 w-full h-full">
             <AnimatedRibbon />
           </div>
-          <div className="container relative mx-auto text-center z-10 h-full flex flex-col justify-center">
+          <div className="container absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[30%] mx-auto text-center z-10 flex flex-col items-center justify-center">
             <motion.h1
               className="mb-4 text-5xl font-bold uppercase tracking-tight md:text-6xl"
               initial={{ opacity: 0 }}

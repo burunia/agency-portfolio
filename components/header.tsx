@@ -51,8 +51,9 @@ export default function Header({ showAnimations = false }: HeaderProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          className="fixed inset-0 z-[100]"
+          className="fixed inset-0 z-[100] flex items-center justify-start pl-8"
           style={{background: 'rgba(203, 184, 136, 0.9)'}}
+          onClick={() => setMenuOpen(false)}
         >
           {/* Close button */}
           <motion.button
@@ -69,14 +70,15 @@ export default function Header({ showAnimations = false }: HeaderProps) {
           </motion.button>
 
           {/* Menu content */}
-          <div className="container mx-auto flex flex-col py-6">
-            <nav className="flex flex-col items-start space-y-8 ml-8 mt-32 animate-fade-in-up">
+          <div className="flex flex-col py-6 max-w-fit" onClick={e => e.stopPropagation()}>
+            <nav className="flex flex-col items-start space-y-8 animate-fade-in-up">
               {menuItems.map((item) => (
                 <Link
                   key={item.name}
                   href={item.href}
                   className="text-4xl md:text-5xl font-light text-white/80 hover:text-white transition-all duration-300 transform hover:scale-110"
                   onClick={() => setMenuOpen(false)}
+                  passHref
                 >
                   {item.name}
                 </Link>
@@ -101,7 +103,7 @@ export default function Header({ showAnimations = false }: HeaderProps) {
                 onClick={() => setMenuOpen(true)}
                 aria-label="Open menu"
               >
-                <i className="fas fa-bars fa-lg text-black"></i>
+                <i className="fas fa-bars fa-xl text-black"></i>
               </button>
             </motion.div>
           )}
@@ -118,16 +120,19 @@ export default function Header({ showAnimations = false }: HeaderProps) {
 
         {/* Center: logo */}
         <div className="flex-1 flex justify-center">
-          <div className="w-[468px] h-[156px]">
+          <div className="w-[234px] h-[78px]">
             <Link href="/">
-              {animationData && (
-                <Lottie
-                  animationData={animationData}
-                  loop={false}
-                  autoplay={true}
-                  style={{ width: '100%', height: '100%' }}
-                />
-              )}
+              <motion.img
+                src="/sello_art.svg"
+                alt="Logo animation"
+                width={234}
+                height={78}
+                className="object-contain w-full h-full mix-blend-multiply"
+                style={{ display: 'block' }}
+                initial={{ opacity: 0 }}
+                animate={showLogo ? { opacity: 1 } : {}}
+                transition={{ duration: 0.8, ease: 'easeOut' }}
+              />
             </Link>
           </div>
         </div>

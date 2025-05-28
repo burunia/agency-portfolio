@@ -154,7 +154,7 @@ export default function AboutPage() {
             <div className="space-y-4">
               <div>
                 <Image 
-                  src="/Logo.png" 
+                  src="/sello_art.svg" 
                   alt="Logo" 
                   width={156} 
                   height={52}
