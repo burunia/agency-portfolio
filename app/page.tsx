@@ -7,21 +7,13 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import AnimatedRibbon from "@/components/animated-ribbon"
-import {
-  DropdownMenu,
-  DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem
-} from "@/components/ui/dropdown-menu"
 import React, { useState, useRef, ChangeEvent, FormEvent, useEffect } from "react"
 import emailjs from '@emailjs/browser'
 import ReCAPTCHA from "react-google-recaptcha"
 import { motion } from "framer-motion"
-import { Typewriter } from "react-simple-typewriter"
 import Header from "@/components/header"
 
 export default function AgencyPortfolio() {
-  const [menuOpen, setMenuOpen] = useState(false)
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -36,12 +28,10 @@ export default function AgencyPortfolio() {
     errorMessage: ''
   })
   const recaptchaRef = useRef<ReCAPTCHA>(null)
-  const [showLogo, setShowLogo] = useState(false)
-  const [showSocials, setShowSocials] = useState(false)
   const [showHeadline, setShowHeadline] = useState(false)
-  const [showRest, setShowRest] = useState(false)
   const [headlineText, setHeadlineText] = useState('')
   const [subtitleText, setSubtitleText] = useState('')
+  const [activeSlide, setActiveSlide] = useState(2)
 
   // Initialize EmailJS
   useEffect(() => {
@@ -51,9 +41,7 @@ export default function AgencyPortfolio() {
   }, []);
 
   useEffect(() => {
-    setTimeout(() => setShowLogo(true), 800)
-    setTimeout(() => setShowSocials(true), 1400)
-    setTimeout(() => setShowHeadline(true), 1800)
+    setTimeout(() => setShowHeadline(true), 800)
   }, [])
 
   // Custom typing effect for headline and subtitle
@@ -78,8 +66,6 @@ export default function AgencyPortfolio() {
               subtitleIndex++
             } else {
               clearInterval(subtitleInterval)
-              // Start the rest of the animations after both texts are done
-              setShowRest(true)
             }
           }, 100)
         }
@@ -109,7 +95,6 @@ export default function AgencyPortfolio() {
     try {
       let recaptchaToken = "development_token"
       
-      // Only try to get a real reCAPTCHA token if not in development
       if (recaptchaRef.current && process.env.NODE_ENV !== "development") {
         try {
           recaptchaToken = await recaptchaRef.current.executeAsync() || "token_error"
@@ -119,12 +104,10 @@ export default function AgencyPortfolio() {
         }
       }
 
-      // Validate required fields
       if (!formData.firstName || !formData.lastName || !formData.email || !formData.service || !formData.message) {
         throw new Error("Please fill out all required fields")
       }
 
-      // Prepare template parameters
       const templateParams = {
         name: `${formData.firstName} ${formData.lastName}`,
         from_name: `${formData.firstName} ${formData.lastName}`,
@@ -137,14 +120,12 @@ export default function AgencyPortfolio() {
       }
 
       try {
-        // Send email using EmailJS
-        const response = await emailjs.send(
+        await emailjs.send(
           'service_n02r79q',
           'template_dvnupyv',
           templateParams
         );
         
-        // Reset form and show success message
         setFormData({
           firstName: '',
           lastName: '',
@@ -154,7 +135,6 @@ export default function AgencyPortfolio() {
         });
         setFormStatus({ loading: false, success: true, error: false, errorMessage: '' });
         
-        // Reset success message after 5 seconds
         setTimeout(() => {
           setFormStatus(prev => ({ ...prev, success: false }));
         }, 5000);
@@ -169,11 +149,18 @@ export default function AgencyPortfolio() {
         errorMessage: error.message || 'Something went wrong. Please try again later.'
       })
       
-      // Reset error message after 8 seconds
       setTimeout(() => {
         setFormStatus(prev => ({ ...prev, error: false, errorMessage: '' }))
       }, 8000)
     }
+  }
+
+  const handlePrevSlide = () => {
+    setActiveSlide((prev) => (prev - 1 + 8) % 8)
+  }
+
+  const handleNextSlide = () => {
+    setActiveSlide((prev) => (prev + 1) % 8)
   }
 
   return (
@@ -187,102 +174,6 @@ export default function AgencyPortfolio() {
         referrerPolicy="no-referrer" 
       />
       
-      {/* Styled JSX for carousel effect */}
-      <style jsx global>{`
-        /* New carousel styling */
-        .work-carousel {
-          position: relative;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          padding: 0 60px;
-        }
-        
-        .work-carousel-item {
-          position: absolute;
-          width: 390px;
-          height: 390px;
-          transition: all 0.5s ease;
-          opacity: 0;
-          border-radius: 4px;
-          overflow: hidden;
-          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .work-carousel-item.active {
-          z-index: 30;
-          opacity: 1;
-          transform: translateX(0);
-          width: 619px;
-          height: 619px;
-        }
-        
-        .work-carousel-item.prev-2 {
-          z-index: 10;
-          opacity: 0.4;
-          transform: translateX(-650px);
-        }
-        
-        .work-carousel-item.prev {
-          z-index: 20;
-          opacity: 0.7;
-          transform: translateX(-364px);
-        }
-        
-        .work-carousel-item.next {
-          z-index: 20;
-          opacity: 0.7;
-          transform: translateX(364px);
-        }
-        
-        .work-carousel-item.next-2 {
-          z-index: 10;
-          opacity: 0.4;
-          transform: translateX(650px);
-        }
-      `}</style>
-      
-      {/* Animated Overlay Menu */}
-      {menuOpen && (
-        <div className="fixed inset-0 z-40" style={{background: 'rgba(203, 184, 136, 0.9)'}}>
-          {/* Close Button in header-aligned container */}
-          <div className="container mx-auto flex flex-col py-6">
-            <button
-              className="w-20 h-20 flex items-center justify-center rounded-2xl border-2 border-white bg-transparent text-white ml-8 hover:bg-white/10 transition-colors cursor-pointer pointer-events-auto"
-              onClick={() => setMenuOpen(false)}
-              aria-label="Close menu"
-              style={{ WebkitTapHighlightColor: 'transparent' }}
-            >
-              <span className="sr-only">Close menu</span>
-              <i className="fas fa-times fa-lg text-white"></i>
-            </button>
-            
-            {/* Menu Items aligned under close button */}
-            <nav className="flex flex-col items-start space-y-8 ml-8 mt-8 animate-fade-in-up">
-              {[
-                'About Us',
-                'Portfolio',
-                'Blog',
-                'Contact'
-              ].map((item) => (
-                <Link
-                  key={item}
-                  href={
-                    item === 'About Us' ? '/about' : 
-                    item === 'Portfolio' ? '/portfolio' : 
-                    item === 'Contact' ? '/contact' : '#'
-                  }
-                  className="text-4xl md:text-5xl font-light text-white/80 hover:text-white transition-colors duration-200"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {item}
-                </Link>
-              ))}
-            </nav>
-          </div>
-        </div>
-      )}
-      {/* Header */}
       <Header showAnimations={true} />
 
       <main className="flex-1">
@@ -292,7 +183,6 @@ export default function AgencyPortfolio() {
             <AnimatedRibbon />
           </div>
           <div className="container relative mx-auto text-center z-10 h-full flex flex-col justify-center">
-            {/* Headline typewriter */}
             <motion.h1
               className="mb-4 text-5xl font-bold uppercase tracking-tight md:text-6xl"
               initial={{ opacity: 0 }}
@@ -303,7 +193,6 @@ export default function AgencyPortfolio() {
                 {headlineText}
               </span>
             </motion.h1>
-            {/* Subtitle typewriter */}
             <motion.p
               className="text-xl md:text-2xl"
               initial={{ opacity: 0 }}
@@ -313,13 +202,36 @@ export default function AgencyPortfolio() {
               {subtitleText}
             </motion.p>
           </div>
+          <motion.div
+            className="absolute bottom-[108px] left-0 right-0 mx-auto w-fit"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ 
+              delay: 2,
+              duration: 0.5,
+              ease: "easeOut"
+            }}
+          >
+            <motion.div
+              animate={{ y: [0, 10, 0] }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+              className="flex flex-col items-center"
+            >
+              <span className="text-[#d4b88e] text-sm mb-2">Scroll Down</span>
+              <i className="fas fa-chevron-down text-[#d4b88e] text-2xl"></i>
+            </motion.div>
+          </motion.div>
         </section>
 
         {/* What We Do Section */}
         <motion.section
           className="container mx-auto py-16"
           initial={{ opacity: 0 }}
-          animate={showRest ? { opacity: 1 } : {}}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
         >
           <div className="mb-12 flex flex-col items-center">
@@ -330,51 +242,34 @@ export default function AgencyPortfolio() {
             </div>
             <h3 className="mb-4 text-center text-xl">Inspired Creations for Global Sellers</h3>
             <p className="max-w-2xl text-center text-gray-600">
-            We're a global, 
-multidisciplinary creative team with 40+ years combined 
-experience in assisting eCommerce brands to thrive in busy and 
-crowded marketplaces. From Amazon to Etsy, Kickstarter or your 
-very own online store—we craft compelling visuals and exciting 
-content that make your products impossible to ignore 
+              We're a global, multidisciplinary creative team with 40+ years combined 
+              experience in assisting eCommerce brands to thrive in busy and 
+              crowded marketplaces. From Amazon to Etsy, Kickstarter or your 
+              very own online store—we craft compelling visuals and exciting 
+              content that make your products impossible to ignore 
             </p>
           </div>
 
           <motion.div 
             className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 mt-10"
             initial={{ opacity: 0, y: 20 }}
-            animate={showRest ? { opacity: 1, y: 0 } : {}}
+            animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, ease: "easeOut", delay: 0.8 }}
           >
-            <div className="flex flex-col items-center text-center group">
-              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
-                <span className="text-[#d4b88e] text-center px-4">Amazon Listing Optimization</span>
+            {[
+              'Amazon Listing Optimization',
+              'Packaging & Print Design',
+              'Retouching & Editing',
+              'Brand Marketing & Copywriting',
+              'Product Photography',
+              '2D & 3D Product Design'
+            ].map((service, index) => (
+              <div key={service} className="flex flex-col items-center text-center group">
+                <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
+                  <span className="text-[#d4b88e] text-center px-4">{service}</span>
+                </div>
               </div>
-            </div>
-            <div className="flex flex-col items-center text-center group">
-              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
-                <span className="text-[#d4b88e] text-center px-4">Packaging & Print Design</span>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center group">
-              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
-                <span className="text-[#d4b88e] text-center px-4">Retouching & Editing</span>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center group">
-              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
-                <span className="text-[#d4b88e] text-center px-4">Brand Marketing & Copywriting</span>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center group">
-              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
-                <span className="text-[#d4b88e] text-center px-4">Product Photography</span>
-              </div>
-            </div>
-            <div className="flex flex-col items-center text-center group">
-              <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
-                <span className="text-[#d4b88e] text-center px-4">2D & 3D Product Design</span>
-              </div>
-            </div>
+            ))}
           </motion.div>
         </motion.section>
 
@@ -389,33 +284,9 @@ content that make your products impossible to ignore
           </div>
 
           <div className="relative mx-auto max-w-6xl">
-            {/* New Carousel Implementation */}
-            <div className="work-carousel" style={{ height: "680px" }}>
-              {/* Navigation Arrows */}
+            <div className="work-carousel relative" style={{ height: "500px", margin: "0 auto" }}>
               <button 
-                onClick={() => {
-                  const items = Array.from(document.querySelectorAll('.work-carousel-item'));
-                  if (items.length <= 0) return;
-                  
-                  // Find the current active slide and its index
-                  const activeSlide = document.querySelector('.work-carousel-item.active');
-                  const activeIndex = activeSlide ? items.indexOf(activeSlide as HTMLElement) : 0;
-                  
-                  // Calculate new indices with circular logic
-                  const prevIndex = (activeIndex - 1 + items.length) % items.length;
-                  
-                  // Clear all position classes
-                  items.forEach(item => {
-                    item.classList.remove('active', 'prev', 'prev-2', 'next', 'next-2');
-                  });
-                  
-                  // Assign all positions consistently based on the new active index
-                  items[prevIndex].classList.add('active');
-                  items[(prevIndex + 1) % items.length].classList.add('next');
-                  items[(prevIndex + 2) % items.length].classList.add('next-2');
-                  items[(prevIndex - 1 + items.length) % items.length].classList.add('prev');
-                  items[(prevIndex - 2 + items.length) % items.length].classList.add('prev-2');
-                }}
+                onClick={handlePrevSlide}
                 className="absolute left-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
                 aria-label="Previous slide"
               >
@@ -423,130 +294,72 @@ content that make your products impossible to ignore
               </button>
               
               <button 
-                onClick={() => {
-                  const items = Array.from(document.querySelectorAll('.work-carousel-item'));
-                  if (items.length <= 0) return;
-                  
-                  // Find the current active slide and its index
-                  const activeSlide = document.querySelector('.work-carousel-item.active');
-                  const activeIndex = activeSlide ? items.indexOf(activeSlide as HTMLElement) : 0;
-                  
-                  // Calculate new indices with circular logic
-                  const nextIndex = (activeIndex + 1) % items.length;
-                  
-                  // Clear all position classes
-                  items.forEach(item => {
-                    item.classList.remove('active', 'prev', 'prev-2', 'next', 'next-2');
-                  });
-                  
-                  // Assign all positions consistently based on the new active index
-                  items[nextIndex].classList.add('active');
-                  items[(nextIndex + 1) % items.length].classList.add('next');
-                  items[(nextIndex + 2) % items.length].classList.add('next-2');
-                  items[(nextIndex - 1 + items.length) % items.length].classList.add('prev');
-                  items[(nextIndex - 2 + items.length) % items.length].classList.add('prev-2');
-                }}
+                onClick={handleNextSlide}
                 className="absolute right-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
                 aria-label="Next slide"
               >
                 <i className="fas fa-chevron-right text-black"></i>
               </button>
 
-              {/* Carousel Items */}
-              <div className="work-carousel-item prev-2">
-                <Link href="/portfolio">
-                  <Image
-                    src="/id1/id1_25-036-01.jpg"
-                    alt="Calendar design"
-                    width={600}
-                    height={600}
-                    className="h-full w-full object-cover"
-                  />
-                </Link>
-              </div>
-              
-              <div className="work-carousel-item prev">
-                <Link href="/portfolio">
-                  <Image
-                    src="/id3/id3_23-137-01.jpg"
-                    alt="Storage boxes"
-                    width={600}
-                    height={600}
-                    className="h-full w-full object-cover"
-                  />
-                </Link>
-              </div>
-              
-              <div className="work-carousel-item active">
-                <Link href="/portfolio">
-                  <Image
-                    src="/id6/id6_after-02.jpg"
-                    alt="Product photography"
-                    width={600}
-                    height={600}
-                    className="h-full w-full object-cover"
-                  />
-                </Link>
-              </div>
-              
-              <div className="work-carousel-item next">
-                <Link href="/portfolio">
-                  <Image
-                    src="/id8/23_010_23_010_Swear_word_to_do_planner2.jpg"
-                    alt="Interior design"
-                    width={600}
-                    height={600}
-                    className="h-full w-full object-cover"
-                  />
-                </Link>
-              </div>
-              
-              <div className="work-carousel-item next-2">
-                <Link href="/portfolio">
-                  <Image
-                    src="/id9/id9_24-150-01.jpg"
-                    alt="Product design 1"
-                    width={600}
-                    height={600}
-                    className="h-full w-full object-cover bg-[#f5f0e6]"
-                  />
-                </Link>
-              </div>
-              
-              <div className="work-carousel-item">
-                <Link href="/portfolio">
-                  <Image
-                    src="/id10/id10_24-086-01.jpg"
-                    alt="Product design 2"
-                    width={600}
-                    height={600}
-                    className="h-full w-full object-cover bg-[#e0d6c3]"
-                  />
-                </Link>
-              </div>
-              
-              <div className="work-carousel-item">
-                <Link href="/portfolio">
-                  <Image
-                    src="/id11/id11_24-247_Concrete book end_packaging_24-247-01.jpg"
-                    alt="Product design 3"
-                    width={600}
-                    height={600}
-                    className="h-full w-full object-cover bg-[#d4b88e]"
-                  />
-                </Link>
-              </div>
-              
-              <div className="work-carousel-item">
-                <Link href="/portfolio">
-                  <Image
-                    src="/id12/id12_23-217-05.jpg"
-                    alt="Product design 4"
-                    width={600}
-                    height={600}
-                    className="h-full w-full object-cover bg-[#c5a97f]"
-                  />
-                </Link>
+              <div className="relative w-full h-full">
+                {[
+                  { src: "/id1/id1_25-036-01.jpg", alt: "Calendar design" },
+                  { src: "/id3/id3_23-137-01.jpg", alt: "Storage boxes" },
+                  { src: "/id6/id6_after-02.jpg", alt: "Product photography" },
+                  { src: "/id8/23_010_23_010_Swear_word_to_do_planner2.jpg", alt: "Interior design" },
+                  { src: "/id9/id9_24-150-01.jpg", alt: "Product design 1" },
+                  { src: "/id10/id10_24-086-01.jpg", alt: "Product design 2" },
+                  { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-01.jpg", alt: "Product design 3" },
+                  { src: "/id12/id12_23-217-05.jpg", alt: "Product design 4" }
+                ].map((item, index) => {
+                  const position = (index - activeSlide + 8) % 8
+                  const isActive = position === 0
+                  const isPrev = position === 7
+                  const isPrev2 = position === 6
+                  const isNext = position === 1
+                  const isNext2 = position === 2
+
+                  return (
+                    <div 
+                      key={item.src} 
+                      className={`work-carousel-item absolute transition-all duration-500 ease-in-out ${
+                        isActive ? 'active' : 
+                        isPrev ? 'prev' : 
+                        isPrev2 ? 'prev-2' : 
+                        isNext ? 'next' : 
+                        isNext2 ? 'next-2' : ''
+                      }`}
+                      style={{ 
+                        transform: isActive ? 'translate(-50%, -50%) scale(1.3)' : 
+                                 isPrev ? 'translate(-120%, -50%) scale(0.9)' :
+                                 isPrev2 ? 'translate(-180%, -50%) scale(0.8)' :
+                                 isNext ? 'translate(20%, -50%) scale(0.9)' :
+                                 isNext2 ? 'translate(80%, -50%) scale(0.8)' :
+                                 'translate(80%, -50%) scale(0.8)',
+                        opacity: isActive ? 1 :
+                                isPrev || isNext ? 0.8 :
+                                isPrev2 || isNext2 ? 0.5 : 0,
+                        zIndex: isActive ? 2 :
+                                isPrev || isNext ? 1 : 0,
+                        width: '400px',
+                        height: '400px',
+                        left: '50%',
+                        top: '50%',
+                        transformOrigin: 'center center'
+                      }}
+                    >
+                      <Link href="/portfolio">
+                        <Image
+                          src={item.src}
+                          alt={item.alt}
+                          width={400}
+                          height={400}
+                          className="h-full w-full object-cover rounded-lg shadow-lg"
+                        />
+                      </Link>
+                    </div>
+                  )
+                })}
               </div>
             </div>
           </div>
@@ -556,7 +369,7 @@ content that make your products impossible to ignore
         <motion.section
           className="py-24 bg-[#d4b88e] w-screen"
           initial={{ opacity: 0 }}
-          animate={showRest ? { opacity: 1 } : {}}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
         >
           <div className="container mx-auto">
@@ -569,34 +382,31 @@ content that make your products impossible to ignore
             </div>
 
             <div className="grid grid-cols-1 gap-16 md:grid-cols-3">
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-6 text-white">
-                  <i className="fas fa-laptop-code fa-3x"></i>
+              {[
+                {
+                  icon: 'fa-laptop-code',
+                  title: 'All-around Creative Help',
+                  description: 'Our flexible team takes you from concept to final visuals'
+                },
+                {
+                  icon: 'fa-amazon',
+                  title: 'Proven Amazon Expertise',
+                  description: 'Helping brands grow on Amazon by turning browsers into buyers'
+                },
+                {
+                  icon: 'fa-chart-line',
+                  title: 'Creativity that Converts',
+                  description: 'Our eye-catching designs help drive your revenue.'
+                }
+              ].map((item) => (
+                <div key={item.title} className="flex flex-col items-center text-center">
+                  <div className="mb-6 text-white">
+                    <i className={`${item.icon === 'fa-amazon' ? 'fab' : 'fas'} ${item.icon} fa-3x`}></i>
+                  </div>
+                  <h3 className="mb-4 text-xl font-medium text-white">{item.title}</h3>
+                  <p className="text-sm text-white/80">{item.description}</p>
                 </div>
-                <h3 className="mb-4 text-xl font-medium text-white">**All-around Creative Help**</h3>
-                <p className="text-sm text-white/80">
-                Our flexible team takes you from concept to final visuals
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-6 text-white">
-                  <i className="fab fa-amazon fa-3x"></i>
-                </div>
-                <h3 className="mb-4 text-xl font-medium text-white">**Proven Amazon Expertise**</h3>
-                <p className="text-sm text-white/80">
-                Helping brands grow on Amazon by turning browsers into 
-                buyers
-                </p>
-              </div>
-              <div className="flex flex-col items-center text-center">
-                <div className="mb-6 text-white">
-                  <i className="fas fa-chart-line fa-3x"></i>
-                </div>
-                <h3 className="mb-4 text-xl font-medium text-white">**Creativity that Converts**</h3>
-                <p className="text-sm text-white/80">
-                Our eye-catching designs help drive your revenue.
-                </p>
-              </div>
+              ))}
             </div>
           </div>
         </motion.section>
@@ -605,7 +415,7 @@ content that make your products impossible to ignore
         <motion.section
           className="container mx-auto py-16"
           initial={{ opacity: 0 }}
-          animate={showRest ? { opacity: 1 } : {}}
+          animate={{ opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
         >
           <div className="mb-12 flex flex-col items-center">
@@ -780,80 +590,58 @@ content that make your products impossible to ignore
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div className="space-y-4">
               <div>
-                <Image 
-                  src="/Logo.png" 
-                  alt="Logo" 
-                  width={156} 
-                  height={52}
-                  className="object-contain"
+                <video 
+                  src="/sello_art 2_2.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-[156px] h-[52px] object-contain"
                 />
               </div>
               <p className="text-sm text-gray-600">
                 We help e-commerce brands stand out with stunning visuals and strategic content.
               </p>
               <div className="flex space-x-4">
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-facebook-f fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-instagram fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-twitter fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-linkedin-in fa-lg text-black"></i>
-                </Link>
+                {["facebook-f", "instagram", "twitter", "linkedin-in"].map((icon) => (
+                  <Link key={icon} href="#" className="hover:text-gray-900">
+                    <i className={`fab fa-${icon} fa-lg text-black`}></i>
+                  </Link>
+                ))}
               </div>
             </div>
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase">Services</h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Product Photography
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Retouching & Editing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Graphic Design
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Amazon Optimization
-                  </Link>
-                </li>
+                {[
+                  'Product Photography',
+                  'Retouching & Editing',
+                  'Graphic Design',
+                  'Amazon Optimization'
+                ].map((service) => (
+                  <li key={service}>
+                    <Link href="#" className="hover:text-gray-900">
+                      {service}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase">Company</h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>
-                  <Link href="/about" className="hover:text-gray-900">
-                    About Us
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/portfolio" className="hover:text-gray-900">
-                    Portfolio
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Blog
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Contact
-                  </Link>
-                </li>
+                {[
+                  { name: 'About Us', href: '/about' },
+                  { name: 'Portfolio', href: '/portfolio' },
+                  { name: 'Blog', href: '#' },
+                  { name: 'Contact', href: '#' }
+                ].map((item) => (
+                  <li key={item.name}>
+                    <Link href={item.href} className="hover:text-gray-900">
+                      {item.name}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>

@@ -2,12 +2,14 @@
 
 import Image from "next/image"
 import Link from "next/link"
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import { motion } from "framer-motion"
 import Header from "@/components/header"
 
 export default function AboutPage() {
   const [menuOpen, setMenuOpen] = React.useState(false)
+
   return (
     <div className="flex min-h-screen flex-col bg-[#fffdf9] relative">
       {/* Font Awesome CDN */}
@@ -28,21 +30,18 @@ export default function AboutPage() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-800">
-                Creativity <span className="relative inline-block">
-                  Without Borders
-                  <span className="absolute bottom-2 left-0 w-full h-3 bg-[#d4b88e]/20 -z-10"></span>
-                </span>
+              <h1 className="text-5xl md:text-6xl font-bold leading-tight text-black">
+                Creativity Without Borders
               </h1>
               
-              <p className="text-lg md:text-xl text-gray-700 mt-6">
+              <p className="text-lg md:text-xl text-black mt-6">
                 We're a global creative studio built for modern commerce. From product concept to polished visuals, we design, shoot, and deliver content that helps e-commerce brands grow — beautifully and strategically.
               </p>
               
               <Link href="/contact">
-              <Button className="mt-8 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg">
-                Work With Us
-              </Button>
+                <Button className="mt-8 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg">
+                  Work With Us
+                </Button>
               </Link>
             </div>
             

@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { useState, useEffect } from "react"
+import Lottie from "lottie-react"
 
 interface HeaderProps {
   showAnimations?: boolean
@@ -13,6 +14,7 @@ export default function Header({ showAnimations = false }: HeaderProps) {
   const [menuOpen, setMenuOpen] = useState(false)
   const [showLogo, setShowLogo] = useState(false)
   const [showSocials, setShowSocials] = useState(false)
+  const [animationData, setAnimationData] = useState(null)
 
   useEffect(() => {
     if (showAnimations) {
@@ -23,6 +25,23 @@ export default function Header({ showAnimations = false }: HeaderProps) {
       setShowSocials(true)
     }
   }, [showAnimations])
+
+  useEffect(() => {
+    fetch('/data.json')
+      .then(response => response.json())
+      .then(data => setAnimationData(data))
+  }, [])
+
+  const menuItems = [
+    { name: 'Home', href: '/' },
+    { name: 'About Us', href: '/about' },
+    { name: 'Portfolio', href: '/portfolio' },
+    { name: 'Photography', href: '/photography' },
+    { name: 'Blog', href: '/blog' },
+    { name: 'Contact', href: '/contact' }
+  ]
+
+  const socialIcons = ["facebook-f", "instagram", "twitter", "linkedin-in"]
 
   return (
     <>
@@ -52,25 +71,14 @@ export default function Header({ showAnimations = false }: HeaderProps) {
           {/* Menu content */}
           <div className="container mx-auto flex flex-col py-6">
             <nav className="flex flex-col items-start space-y-8 ml-8 mt-32 animate-fade-in-up">
-              {[
-                'Home',
-                'About Us',
-                'Portfolio',
-                'Blog',
-                'Contact'
-              ].map((item) => (
+              {menuItems.map((item) => (
                 <Link
-                  key={item}
-                  href={
-                    item === 'Home' ? '/' : 
-                    item === 'About Us' ? '/about' : 
-                    item === 'Portfolio' ? '/portfolio' : 
-                    item === 'Contact' ? '/contact' : '#'
-                  }
+                  key={item.name}
+                  href={item.href}
                   className="text-4xl md:text-5xl font-light text-white/80 hover:text-white transition-all duration-300 transform hover:scale-110"
                   onClick={() => setMenuOpen(false)}
                 >
-                  {item}
+                  {item.name}
                 </Link>
               ))}
             </nav>
@@ -110,21 +118,18 @@ export default function Header({ showAnimations = false }: HeaderProps) {
 
         {/* Center: logo */}
         <div className="flex-1 flex justify-center">
-          <motion.div
-            initial={showAnimations ? { y: -100, opacity: 0 } : false}
-            animate={showLogo ? { y: 0, opacity: 1 } : {}}
-            transition={{ duration: 0.7, ease: "easeOut" }}
-          >
+          <div className="w-[468px] h-[156px]">
             <Link href="/">
-              <Image 
-                src="/Logo.png" 
-                alt="Logo" 
-                width={156} 
-                height={52}
-                className="object-contain"
-              />
+              {animationData && (
+                <Lottie
+                  animationData={animationData}
+                  loop={false}
+                  autoplay={true}
+                  style={{ width: '100%', height: '100%' }}
+                />
+              )}
             </Link>
-          </motion.div>
+          </div>
         </div>
 
         {/* Right column: social icons */}
@@ -138,7 +143,7 @@ export default function Header({ showAnimations = false }: HeaderProps) {
             }}
             className="flex items-center space-x-6"
           >
-            {["facebook-f", "instagram", "twitter", "linkedin-in"].map((icon, i) => (
+            {socialIcons.map((icon) => (
               <motion.div
                 key={icon}
                 variants={{

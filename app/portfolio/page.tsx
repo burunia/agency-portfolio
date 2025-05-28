@@ -38,24 +38,27 @@ export default function PortfolioPage() {
 
   // Portfolio items data with categories and custom sizes
   const portfolioItems: PortfolioItem[] = [
-     {
+    {
       id: 1,
-      title: "Magnetic Calendar",
-      category: ["Print Design"],
-      image: "/id1/id1_25-036-01.jpg",
-      client: "Stationery Brand",
+      title: "Kids Cooking Set",
+      category: ["Product Design","3D Modeling","Product Photography"],
+      image: "/id13/id13_23-219-01.jpg",
       gridClass: "col-span-6 row-span-5",
-      description: "Magnetic Calendar. This sleek magnetic calendar combines minimal design with everyday practicality, making it perfect for brightening up kitchens, home offices or dorms. The spacious monthly layout and striking typography offer an elegant solution for organizing schedules at a glance.",
+      client: "Children's Toys",
+      description: "This kids' cooking set is charmingly presented through clean, well-lit images that highlight each piece with supreme clarity. The soft colors give it a cohesive, high-quality look. Lifestyle shots featuring children actively using the product bring it to life and help parents envision real use. The packaging design is modern, minimal, and informative—clearly tailored for gifting and appeal. The images and box design make this product instantly attractive and ready for retail.",
       additionalImages: [
-        { src: "/id1/id1_25-036-02.jpg", alt: "Calendar detail" },
-        { src: "/id1/id1_25-036-03.jpg", alt: "Calendar spread" },
-        { src: "/id1/id1_25-036-04.jpg", alt: "Front cover" },
+        { src: "/id13/id13_23-219-02.jpg", alt: "" },
+        { src: "/id13/id13_23-219-03.jpg", alt: "" },
+        { src: "/id13/id13_23-219-04.jpg", alt: "" },
+        { src: "/id13/id13_23-219-04.jpg", alt: "" },
+        { src: "/id13/id13_23-219-05.jpg", alt: "" },
+        { src: "/id13/id13_23-219-06.jpg", alt: "" }
       ]
     },
-     {
+    {
       id: 2,
       title: "Adult Coloring Book",
-      category: ["Print Design"],
+      category: ["Print Design","Product Photography"],
       image: "/id2/id2_25-036-01.jpg",
       client: "Stationery Brand",
       gridClass: "col-span-3 row-span-3",
@@ -66,181 +69,174 @@ export default function PortfolioPage() {
         { src: "/id2/id2_25-036-04.jpg", alt: "Infographic" }
       ]
     },
-     
-{
-id: 3,
-title: "High Contrast Baby Book Toy Set of 3",
-category: ["Product Design"],
-image: "/id3/id3_23-137-01.jpg",
-client: "Children's Toys",
-gridClass: "col-span-3 row-span-3",
-description: "This baby book toy set supports early development in babies aged 3 months and up. It includes a soft cotton, 4-double-page book with a tie rope and built-in sounder, a crinkle toy with a teether, and a toy block featuring a rattle. Made from fabrics designed for safety, each piece inspires play that stimulates visual and tactile senses.",
-additionalImages: [
-{ src: "/id3/id3_23-137-02.jpg", alt: "Book spread" },
-{ src: "/id3/id3_23-137-03.jpg", alt: "Toy detail" },
-{ src: "/id3/id3_23-137-04.jpg", alt: "Set overview" }
-]
-},
-    
-{
-  id: 4,
-  title: "Soft Baby Book",
-  category: ["Product Design", "Product Photography"],
-  image: "/id4/id4_22-040-01.jpg",
-  client: "Stationery Brand",
-  gridClass: "col-span-3 row-span-3",
-  description: "This soft baby book was designed to aid in the sensory development of infants through gentle textures and calming colors. Featuring a variety of soft fabrics, every detail supports sensory exploration and early development.",
-  additionalImages: [
-    { src: "/id4/id4_22-040-02.jpg", alt: "Book spread" },
-    { src: "/id4/id4_22-040-03.jpg", alt: "Book detail" },
-    { src: "/id4/id4_22-040-04.jpg", alt: "Texture close-up" },
-    { src: "/id4/id4_22-040-05.jpg", alt: "Book pages" },
-    { src: "/id4/id4_22-040-06.jpg", alt: "Full set" }
-  ]
-},
-{
-  id: 5,
-  title: "Kids Gardening Set",
-  category: ["Product Design"],
-  image: "/id5/id5_24-069-01.jpg",
-  client: "Children's Toys",
-  gridClass: "col-span-3 row-span-3",
-  description: "This fun gardening set for kids inspires hands-on learning and outdoor play. Available in pink for girls and sage for boys—it includes all the tools a young one needs to go outside and get gardening. Featuring high-quality materials and wooden handles, every detail was created with safety, style, and functionality in mind.",
-  additionalImages: [
-    { src: "/id5/id5_24-069-02.jpg", alt: "Garden tools set" },
-    { src: "/id5/id5_24-069-03.jpg", alt: "Tools detail" },
-    { src: "/id5/id5_24-069-04.jpg", alt: "Set overview" },
-    { src: "/id5/id5_24-069-05.jpg", alt: "Tools in use" },
-    { src: "/id5/id5_24-069-06.jpg", alt: "Full collection" }
-  ]
-},
-    
-{
-  id: 6,
-  title: "Product Photography",
-  category: ["Product Photography"],
-  image: "/id6/id6_after-02.jpg",
-  client: "E-commerce Brands",
-  gridClass: "col-span-3 row-span-3",
-  description: "Our photography and editing work evolves everyday product shots into visually pleasing images for online marketplaces. Our team balances natural light, thoughtful composition, and expert retouching to create scenes that elevate your brand while showcasing product details with clarity and style. No matter the product, our stand-out visuals are crafted to capture attention, build trust, and drive sales.",
-  beforeImage: "/id6/id6_after-01.jpg",
-  afterImage: "/id6/id6_after-02.jpg",
-  additionalImages: [
-    { src: "/id6/id6_after-02.jpg", alt: "Before and after product shot" },
-    { src: "/id6/id6_before-03.jpg", alt: "Raw product photography" },
-    { src: "/id6/id6_after-04.jpg", alt: "Enhanced product image" },
-    { src: "/id6/id6_before-05.jpg", alt: "Original product photo" },
-    { src: "/id6/id6_after-06.jpg", alt: "Final product showcase" }
-  ]
-},
-{
-  id: 7,
-  title: "Musical Instruments for Kids",
-  category: ["Product Design"],
-  image: "/id7/id7_musical instruments_23-191-01.jpg",
-  gridClass: "col-span-3 row-span-3",
-  description: "",
-  client: "Children's Toys",
-  additionalImages: [
-    { src: "/id7/id7_musical instruments_23-191-02.jpg", alt: "Musical instruments" },
-    { src: "/id7/id7_musical instruments_23-191-03.jpg", alt: "Musical instruments" },
-    { src: "/id7/id7_musical instruments_23-191-04.jpg", alt: "Musical instruments" },
-    { src: "/id7/id7_musical instruments_23-191-05.jpg", alt: "Musical instruments" },
-    { src: "/id7/id7_musical instruments_23-191-06.jpg", alt: "Musical instruments" }
-  ]
-},
- {
-  id: 8,
-  title: "Spiral Notebook",
-  category: ["Print Design"],
-  image: "/id8/23_010-02.jpg",
-  client: "Stationery Brand",
-  gridClass: "col-span-3 row-span-3",
-  description: "Spiral notebook with handmade floral art and cheeky calligraphy.",
-  additionalImages: [
-    { src: "/id8/23_010_23_010_Swear_word_to_do_planner4.jpg", alt: "Front mockup on marble tray" },
-    { src: "/id8/23_010_23_010_Swear_word_to_do_planner2.jpg", alt: "Hand painting florals" },
-    { src: "/id8/23_010_23_010_Swear_word_to_do_planner3.jpg", alt: "Top-down mockup with pens" },
-    { src: "/id8/23_010-02.jpg", alt: "Front cover" }
-  ]
-},
-{
-        id: 9,
-        title: "Christmas Cards",
-        category: ["Print Design","Graphic Design","Product Photography"],
-        image: "/id9/id9_24-150-01.jpg",
-        gridClass: "col-span-3 row-span-3",
-        description: ".",
-        client: "Stationery Brand",
-        additionalImages: [
-          { src: "/id9/id9_24-150-02.jpg", alt: "" },
-          { src: "/id9/id9_24-150-03.jpg", alt: "" },
-          { src: "/id9/id9_24-150-04.jpg", alt: "" },
-          { src: "/id9/id9_24-150-05.jpg", alt: "" }
-        ]
-      },
-      {
-        id: 10,
-        title: "Boucle pouf ottoman",
-        category: ["Product Design", "Product Photography"],
-        image: "/id10/id10_24-086-01.jpg",
-        gridClass: "col-span-6 row-span-6",
-        description: ".",
-        client: "Furniture Brand",
-        additionalImages: [
-          { src: "/id10/id10_24-086-02.jpg", alt: "" },
-          { src: "/id10/id10_24-086-03.jpg", alt: "" },
+    {
+      id: 3,
+      title: "High Contrast Baby Book Toy Set of 3",
+      category: ["Product Design"],
+      image: "/id3/id3_23-137-01.jpg",
+      client: "Children's Toys",
+      gridClass: "col-span-3 row-span-3",
+      description: "This baby book toy set supports early development in babies aged 3 months and up. It includes a soft cotton, 4-double-page book with a tie rope and built-in sounder, a crinkle toy with a teether, and a toy block featuring a rattle. Made from fabrics designed for safety, each piece inspires play that stimulates visual and tactile senses.",
+      additionalImages: [
+        { src: "/id3/id3_23-137-02.jpg", alt: "Book spread" },
+        { src: "/id3/id3_23-137-03.jpg", alt: "Toy detail" },
+        { src: "/id3/id3_23-137-04.jpg", alt: "Set overview" }
+      ]
+    },
+    {
+      id: 4,
+      title: "Soft Baby Book",
+      category: ["Product Design", "Product Photography"],
+      image: "/id4/id4_22-040-01.jpg",
+      client: "Stationery Brand",
+      gridClass: "col-span-3 row-span-3",
+      description: "This soft baby book was designed to aid in the sensory development of infants through gentle textures and calming colors. Featuring a variety of soft fabrics, every detail supports sensory exploration and early development.",
+      additionalImages: [
+        { src: "/id4/id4_22-040-02.jpg", alt: "Book spread" },
+        { src: "/id4/id4_22-040-03.jpg", alt: "Book detail" },
+        { src: "/id4/id4_22-040-04.jpg", alt: "Texture close-up" },
+        { src: "/id4/id4_22-040-05.jpg", alt: "Book pages" },
+        { src: "/id4/id4_22-040-06.jpg", alt: "Full set" }
+      ]
+    },
+    {
+      id: 5,
+      title: "Kids Gardening Set",
+      category: ["Product Design"],
+      image: "/id5/id5_24-069-01.jpg",
+      client: "Children's Toys",
+      gridClass: "col-span-3 row-span-3",
+      description: "This fun gardening set for kids inspires hands-on learning and outdoor play. Available in pink for girls and sage for boys—it includes all the tools a young one needs to go outside and get gardening. Featuring high-quality materials and wooden handles, every detail was created with safety, style, and functionality in mind.",
+      additionalImages: [
+        { src: "/id5/id5_24-069-02.jpg", alt: "Garden tools set" },
+        { src: "/id5/id5_24-069-03.jpg", alt: "Tools detail" },
+        { src: "/id5/id5_24-069-04.jpg", alt: "Set overview" },
+        { src: "/id5/id5_24-069-05.jpg", alt: "Tools in use" },
+        { src: "/id5/id5_24-069-06.jpg", alt: "Full collection" }
+      ]
+    },
+    {
+      id: 6,
+      title: "Product Photography",
+      category: ["Product Photography"],
+      image: "/id6/id6_after-02.jpg",
+      client: "E-commerce Brands",
+      gridClass: "col-span-3 row-span-3",
+      description: "Our photography and editing work evolves everyday product shots into visually pleasing images for online marketplaces. Our team balances natural light, thoughtful composition, and expert retouching to create scenes that elevate your brand while showcasing product details with clarity and style. No matter the product, our stand-out visuals are crafted to capture attention, build trust, and drive sales.",
+      beforeImage: "/id6/id6_after-01.jpg",
+      afterImage: "/id6/id6_after-02.jpg",
+      additionalImages: [
+        { src: "/id6/id6_after-02.jpg", alt: "Before and after product shot" },
+        { src: "/id6/id6_before-03.jpg", alt: "Raw product photography" },
+        { src: "/id6/id6_after-04.jpg", alt: "Enhanced product image" },
+        { src: "/id6/id6_before-05.jpg", alt: "Original product photo" },
+        { src: "/id6/id6_after-06.jpg", alt: "Final product showcase" }
+      ]
+    },
+    {
+      id: 7,
+      title: "Musical Instruments for Kids",
+      category: ["3D Modeling","Product Photography","Print Design"],
+      image: "/id7/id7_musical instruments_23-191-01.jpg",
+      gridClass: "col-span-3 row-span-3",
+      client: "Children's Toys",
+      description: "Using high-quality 3D modeling, product rendering and lifestyle photography, we created a visually striking design for a children's instrument set. Each instrument was carefully modeled and rendered to highlight natural textures and pastel tones. Paired with engaging lifestyle shots and a fun packaging design, the result is a polished, standout presentation that garners trust from parents and interest in online marketplaces.",
+      additionalImages: [
+        { src: "/id7/id7_musical instruments_23-191-02.jpg", alt: "Musical instruments" },
+        { src: "/id7/id7_musical instruments_23-191-03.jpg", alt: "Musical instruments" },
+        { src: "/id7/id7_musical instruments_23-191-04.jpg", alt: "Musical instruments" },
+        { src: "/id7/id7_musical instruments_23-191-05.jpg", alt: "Musical instruments" },
+        { src: "/id7/id7_musical instruments_23-191-06.jpg", alt: "Musical instruments" }
+      ]
+    },
+    {
+      id: 8,
+      title: "Spiral Notebook",
+      category: ["Print Design","Product Photography","Graphic Design"],
+      image: "/id8/23_010-02.jpg",
+      client: "Stationery Brand",
+      gridClass: "col-span-3 row-span-3",
+      description: "This bold to do planner combines floral artwork with playful profanity to create a vibrant and empowering product. The richly colored botanical illustrations bring energy and personality to the dark, textured cover. Providing motivational quotes and allowing you to track your health and fitness, this standout product balances artistic charm with retail-ready attitude.",
+      additionalImages: [
+        { src: "/id8/23_010_23_010_Swear_word_to_do_planner4.jpg", alt: "Front mockup on marble tray" },
+        { src: "/id8/23_010_23_010_Swear_word_to_do_planner2.jpg", alt: "Hand painting florals" },
+        { src: "/id8/23_010_23_010_Swear_word_to_do_planner3.jpg", alt: "Top-down mockup with pens" },
+        { src: "/id8/23_010-02.jpg", alt: "Front cover" }
+      ]
+    },
+    {
+      id: 9,
+      title: "Christmas Cards",
+      category: ["Print Design","Graphic Design","Product Photography"],
+      image: "/id9/id9_24-150-01.jpg",
+      gridClass: "col-span-3 row-span-3",
+      client: "Stationery Brand",
+      description: "This festive set of 20 Watercolor Christmas Cards features beautifully painted holiday scenes. The cards are paired with a set of 20 kraft envelopes as well as 20 matching stickers. The packaging design highlights the warmth and grace of the holiday, with natural textures and soft, seasonal tones that enhance shelf appeal. Every element was carefully coordinated to evoke a personal, heartfelt feel while remaining polished and retail-ready.",
+      additionalImages: [
+        { src: "/id9/id9_24-150-02.jpg", alt: "" },
+        { src: "/id9/id9_24-150-03.jpg", alt: "" },
+        { src: "/id9/id9_24-150-04.jpg", alt: "" },
+        { src: "/id9/id9_24-150-05.jpg", alt: "" }
+      ]
+    },
+    {
+      id: 10,
+      title: "Boucle pouf ottoman",
+      category: ["3D Modeling", "Product Photography"],
+      image: "/id10/id10_24-086-01.jpg",
+      gridClass: "col-span-6 row-span-6",
+      client: "Furniture Brand",
+      description: "High-resolution, thoughtfully styled images showcase the boucle ottoman pouf's versatility as a footrest, side table, or extra seat. Its neutral tones and soft texture are captured beautifully, helping customers envision it in both minimalist and cozy spaces—enhancing its aesthetic and sales appeal",
+      additionalImages: [
+        { src: "/id10/id10_24-086-02.jpg", alt: "" },
+        { src: "/id10/id10_24-086-03.jpg", alt: "" },
         { src: "/id10/id10_24-086-04.jpg", alt: "" }
-        ]
-          },
-          {
-            id: 11,
-            title: "Concrete book end packaging" ,
-            category: ["Print Design","Graphic Design",],
-            image: "/id11/modern bookends1 mockup.jpg",
-            gridClass: "col-span-6 row-span-3",
-            client: "Furniture Brand",
-            description: ".",
-            additionalImages: [
-            { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-01.jpg", alt: "" },
-            { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-02.jpg", alt: "" },
-            { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-03.jpg", alt: "" },
-            { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-04.jpg", alt: "" },
-
-            ]
-            },
-            {
-              id: 12,
-              title: "Tummy Time Sensory Toy" ,
-              category: ["Product Design","Product Photography"],
-              image: "/id12/id12_23-217-01.jpg",
-              gridClass: "col-span-3 row-span-3",
-              description: ".",
-              client: "Furniture Brand",
-              additionalImages: [
-              { src: "/id12/id12_24-217-02.jpg", alt: "" },
-              { src: "/id12/id12_23-217-03.jpg", alt: "" },
-              { src: "/id12/id12_23-217-04.jpg", alt: "" },
-              { src: "/id12/id12_23-217-05.jpg", alt: "" },
-              ]
-              },
-              {
-                id: 13,
-                title: "Kids Cooking Set" ,
-                category: ["Product Design"],
-                image: "/id13/id13_23-219-01.jpg",
-                gridClass: "col-span-3 row-span-3",
-                description: ".",
-                client: "Furniture Brand",
-                additionalImages: [
-                { src: "/id13/id13_23-219-02.jpg", alt: "" },
-                { src: "/id13/id13_23-219-03.jpg", alt: "" },
-                { src: "/id13/id13_23-219-04.jpg", alt: "" },
-                { src: "/id13/id13_23-219-04.jpg", alt: "" },
-                { src: "/id13/id13_23-219-05.jpg", alt: "" },
-                { src: "/id13/id13_23-219-06.jpg", alt: "" },
-                ]
-                },
+      ]
+    },
+    {
+      id: 11,
+      title: "Concrete book end packaging",
+      category: ["Print Design","Graphic Design"],
+      image: "/id11/modern bookends1 mockup.jpg",
+      gridClass: "col-span-6 row-span-3",
+      client: "Furniture Brand",
+      description: "For this project we designed sleek, modern packaging with bold typography and minimal line art to reflect the product's style. The layout highlights functionality while clearly conveying durability, quality, and brand identity",
+      additionalImages: [
+        { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-01.jpg", alt: "" },
+        { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-02.jpg", alt: "" },
+        { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-03.jpg", alt: "" },
+        { src: "/id11/id11_24-247_Concrete book end_packaging_24-247-04.jpg", alt: "" }
+      ]
+    },
+    {
+      id: 12,
+      title: "Tummy Time Sensory Toy",
+      category: ["Product Design","Product Photography"],
+      image: "/id12/id12_23-217-01.jpg",
+      gridClass: "col-span-6 row-span-5",
+      client: "Children's Toys",
+      description: "Vibrant, high-res images of the Tummy Time Sensory Toy showcase its textures and features, clearly communicating quality and sensory benefits. Featuring a baby in use adds emotional appeal and builds trust, helping parents feel confident in their purchase",
+      additionalImages: [
+        { src: "/id12/id12_24-217-02.jpg", alt: "" },
+        { src: "/id12/id12_23-217-03.jpg", alt: "" },
+        { src: "/id12/id12_23-217-04.jpg", alt: "" },
+        { src: "/id12/id12_23-217-05.jpg", alt: "" }
+      ]
+    },
+    {
+      id: 13,
+      title: "Magnetic Calendar",
+      category: ["Print Design"],
+      image: "/id1/id1_25-036-01.jpg",
+      client: "Stationery Brand",
+      gridClass: "col-span-3 row-span-3",
+      description: "Magnetic Calendar. This sleek magnetic calendar combines minimal design with everyday practicality, making it perfect for brightening up kitchens, home offices or dorms. The spacious monthly layout and striking typography offer an elegant solution for organizing schedules at a glance.",
+      additionalImages: [
+        { src: "/id1/id1_25-036-02.jpg", alt: "Calendar detail" },
+        { src: "/id1/id1_25-036-03.jpg", alt: "Calendar spread" },
+        { src: "/id1/id1_25-036-04.jpg", alt: "Front cover" }
+      ]
+    }
   ]
 
   // Filter categories 
@@ -249,7 +245,8 @@ additionalImages: [
     "Print Design",
     "Graphic Design",
     "Product Photography",
-    "Product Design"
+    "Product Design",
+    "3D Modeling"
   ]
 
   // Filter the portfolio items based on the active filter
