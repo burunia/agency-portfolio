@@ -139,19 +139,20 @@ export default function ContactPage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="container mx-auto py-20">
+        <section className="container mx-auto py-16">
           <div className="uppercase tracking-wider text-[#d4b88e] font-medium mb-4 ml-4 md:ml-0">GET IN TOUCH</div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-800">
+              <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-800 font-vidaloka">
                 Let's <span className="relative inline-block">
                   Create Together
                   <span className="absolute bottom-2 left-0 w-full h-3 bg-[#d4b88e]/20 -z-10"></span>
                 </span>
               </h1>
+              <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
               
-              <p className="text-lg md:text-xl text-gray-700 mt-6">
+              <p className="paragraph-main">
                 Ready to elevate your brand with stunning visuals? We're here to help you stand out in the competitive marketplace and turn browsers into buyers.
               </p>
               
@@ -161,8 +162,8 @@ export default function ContactPage() {
                     <i className="fas fa-map-marker-alt fa-lg"></i>
                   </div>
                   <div>
-                    <h3 className="font-medium">Our Location</h3>
-                    <p className="text-gray-600">1611 W. Warren St, Boise, Idaho 83706</p>
+                    <h3 className="font-medium font-vidaloka">Our Location</h3>
+                    <p className="text-gray-600 font-roboto">1611 W. Warren St, Boise, Idaho 83706</p>
                   </div>
                 </div>
                 
@@ -171,8 +172,8 @@ export default function ContactPage() {
                     <i className="fas fa-phone fa-lg"></i>
                   </div>
                   <div>
-                    <h3 className="font-medium">Phone Number</h3>
-                    <p className="text-gray-600">+1 (555) 123-4567</p>
+                    <h3 className="font-medium font-vidaloka">Phone Number</h3>
+                    <p className="text-gray-600 font-roboto">+1 (555) 123-4567</p>
                   </div>
                 </div>
                 
@@ -181,8 +182,8 @@ export default function ContactPage() {
                     <i className="fas fa-envelope fa-lg"></i>
                   </div>
                   <div>
-                    <h3 className="font-medium">Email Address</h3>
-                    <p className="text-gray-600">contact@chromepress.com</p>
+                    <h3 className="font-medium font-vidaloka">Email Address</h3>
+                    <p className="text-gray-600 font-roboto">contact@chromepress.com</p>
                   </div>
                 </div>
               </div>
@@ -205,12 +206,9 @@ export default function ContactPage() {
         {/* Contact Form Section */}
         <section className="container mx-auto py-16 mb-20">
           <div className="mb-12 flex flex-col items-center">
-            <div className="mb-4 flex items-center">
-              <div className="h-[1px] w-10 bg-gray-300"></div>
-              <h2 className="mx-4 text-lg font-light">send us a message</h2>
-              <div className="h-[1px] w-10 bg-gray-300"></div>
-            </div>
-            <h3 className="mb-4 text-center text-xl max-w-2xl">Fill out the form below and our team will get back to you within 24 hours</h3>
+            <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">send us a message</h2>
+            <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
+            <h3 className="mb-4 text-center text-xl max-w-2xl font-vidaloka">Fill out the form below and our team will get back to you within 24 hours</h3>
           </div>
 
           <div className="max-w-4xl mx-auto rounded-lg border border-gray-100 bg-white p-8 shadow-sm">
@@ -303,7 +301,7 @@ export default function ContactPage() {
 
               <Button 
                 type="submit" 
-                className="w-full py-6 rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] focus:outline-none focus:ring-2 focus:ring-[#d4b88e] focus:ring-offset-2 text-white text-lg"
+                className="w-full rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#d4b88e] focus:ring-offset-2"
                 disabled={formStatus.loading}
               >
                 {formStatus.loading ? 'Sending...' : 'Send Message'}
@@ -353,77 +351,63 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div className="space-y-4">
               <div>
-                <Image 
-                  src="/sello_art.svg" 
-                  alt="Logo" 
-                  width={156} 
-                  height={52}
-                  className="object-contain"
+                <video 
+                  src="/sello_art 2_2.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-[234px] h-[78px] object-contain"
                 />
               </div>
               <p className="text-sm text-gray-600">
                 We help e-commerce brands stand out with stunning visuals and strategic content.
               </p>
               <div className="flex space-x-4">
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-facebook-f fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-instagram fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-twitter fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-linkedin-in fa-lg text-black"></i>
-                </Link>
+                {["facebook-f", "instagram", "twitter", "linkedin-in"].map((icon) => (
+                  <Link key={icon} href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-110">
+                    <i className={`fab fa-${icon} fa-lg text-black`}></i>
+                  </Link>
+                ))}
               </div>
             </div>
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase">Services</h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Product Photography
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Retouching & Editing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Graphic Design
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Amazon Optimization
-                  </Link>
-                </li>
+                {[
+                  'Product Photography',
+                  'Retouching & Editing',
+                  'Graphic Design',
+                  'Amazon Optimization'
+                ].map((service) => (
+                  <li key={service}>
+                    <Link href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
+                      {service}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase">Company</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>
-                  <Link href="/" className="hover:text-gray-900">
+                  <Link href="/" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Home
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about" className="hover:text-gray-900">
+                  <Link href="/about" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/portfolio" className="hover:text-gray-900">
+                  <Link href="/portfolio" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Portfolio
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-gray-900">
+                  <Link href="/contact" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Contact
                   </Link>
                 </li>

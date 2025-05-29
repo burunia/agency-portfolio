@@ -25,21 +25,22 @@ export default function AboutPage() {
 
       <main className="flex-1">
         {/* Hero Section */}
-        <section className="container mx-auto py-20">
+        <section className="container mx-auto py-16">
           <div className="uppercase tracking-wider text-[#d4b88e] font-medium mb-4 ml-4 md:ml-0">ABOUT US</div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
-              <h1 className="text-5xl md:text-6xl font-bold leading-tight text-black">
+              <h1 className="text-5xl md:text-6xl font-bold leading-tight text-black font-vidaloka">
                 Creativity Without Borders
               </h1>
+              <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
               
-              <p className="text-lg md:text-xl text-black mt-6">
+              <p className="paragraph-main">
                 We're a global creative studio built for modern commerce. From product concept to polished visuals, we design, shoot, and deliver content that helps e-commerce brands grow — beautifully and strategically.
               </p>
               
               <Link href="/contact">
-                <Button className="mt-8 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg">
+                <Button className="mt-8 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                   Work With Us
                 </Button>
               </Link>
@@ -60,55 +61,43 @@ export default function AboutPage() {
         </section>
         
         {/* Content Sections */}
-        <section className="container mx-auto py-16 bg-[#f5f0e6] rounded-3xl my-16">
+        <section className="container mx-auto py-16 bg-[#f5f0e6] rounded-3xl mb-16">
           <div className="max-w-5xl mx-auto px-6">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 mb-20">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
               {/* Who We Are Section */}
               <div>
-                <div className="mb-6 flex items-center">
-                  <div className="h-[1px] w-10 bg-gray-300"></div>
-                  <h2 className="mx-4 text-lg font-light">who we are</h2>
-                  <div className="h-[1px] w-10 bg-gray-300"></div>
-                </div>
-                <p className="text-lg text-gray-700">
+                <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">who we are</h2>
+                <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
+                <p className="paragraph-main">
                   Our team spans multiple disciplines and cultures, with a core crew of copywriters, photographers, retouchers, and 2D/3D designers. We've spent years working behind the scenes for top-selling Amazon brands — and now, we're opening our doors to a wider world of product makers, DTC brands, and platforms like Etsy, Kickstarter, and Wayfair.
                 </p>
               </div>
 
               {/* What We Believe Section */}
               <div>
-                <div className="mb-6 flex items-center">
-                  <div className="h-[1px] w-10 bg-gray-300"></div>
-                  <h2 className="mx-4 text-lg font-light">what we believe</h2>
-                  <div className="h-[1px] w-10 bg-gray-300"></div>
-                </div>
-                <p className="text-lg text-gray-700">
+                <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">what we believe</h2>
+                <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
+                <p className="paragraph-main">
                   We believe that great products deserve great storytelling. That high-performing content doesn't have to be boring. That smart design and striking visuals can bridge the gap between a brand and its audience — no matter where they are in the world.
                 </p>
               </div>
             </div>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {/* Where We Work Section */}
               <div>
-                <div className="mb-6 flex items-center">
-                  <div className="h-[1px] w-10 bg-gray-300"></div>
-                  <h2 className="mx-4 text-lg font-light">where we work</h2>
-                  <div className="h-[1px] w-10 bg-gray-300"></div>
-                </div>
-                <p className="text-lg text-gray-700">
+                <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">where we work</h2>
+                <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
+                <p className="paragraph-main">
                   While our production roots are in China, our clients span the globe — from the U.S. to Europe. Whether you're a manufacturer entering Western markets or a digital-first brand looking to scale, we know how to turn your ideas into assets that convert.
                 </p>
               </div>
 
               {/* How We Work Section */}
               <div>
-                <div className="mb-6 flex items-center">
-                  <div className="h-[1px] w-10 bg-gray-300"></div>
-                  <h2 className="mx-4 text-lg font-light">how we work</h2>
-                  <div className="h-[1px] w-10 bg-gray-300"></div>
-                </div>
-                <p className="text-lg text-gray-700">
+                <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">how we work</h2>
+                <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
+                <p className="paragraph-main">
                   We're lean, agile, and collaborative. We don't do bloated creative decks — just efficient, focused content that gets results. Our process is fast, transparent, and tailored to your needs.
                 </p>
               </div>
@@ -120,25 +109,22 @@ export default function AboutPage() {
         <section className="container mx-auto py-16 mb-20">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
             <div className="md:col-span-2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight">
-                Record and send videos to reach prospects, connect with customers
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight font-vidaloka">
+              Personalized content that performs
               </h2>
-              <Button className="mt-4 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg">
+              <Button className="mt-4 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                 Get Started
               </Button>
             </div>
             
             <div className="md:col-span-3">
               <div className="p-8 bg-white rounded-2xl shadow-lg">
-                <div className="mb-6 flex items-center">
-                  <div className="h-[1px] w-10 bg-gray-300"></div>
-                  <h2 className="mx-4 text-lg font-light">our promise</h2>
-                  <div className="h-[1px] w-10 bg-gray-300"></div>
-                </div>
-                <h3 className="text-2xl font-medium mb-6 text-[#d4b88e]">
+                <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">our promise</h2>
+                <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
+                <h3 className="text-2xl font-medium mb-6 text-[#d4b88e] font-vidaloka">
                   Global Perspective. Local Craft. Performance-Driven.
                 </h3>
-                <p className="text-lg text-gray-700">
+                <p className="paragraph-main">
                   That's our promise — from concept to conversion. We're built for business. Our platform goes beyond just creative services. Connect with viewers through personalized visual experiences and explore analytical insights about your audience to continuously improve and optimize your content.
                 </p>
               </div>
@@ -153,84 +139,70 @@ export default function AboutPage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div className="space-y-4">
               <div>
-                <Image 
-                  src="/sello_art.svg" 
-                  alt="Logo" 
-                  width={156} 
-                  height={52}
-                  className="object-contain"
+                <video 
+                  src="/sello_art 2_2.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-[234px] h-[78px] object-contain"
                 />
               </div>
               <p className="text-sm text-gray-600">
                 We help e-commerce brands stand out with stunning visuals and strategic content.
               </p>
               <div className="flex space-x-4">
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-facebook-f fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-instagram fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-twitter fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-linkedin-in fa-lg text-black"></i>
-                </Link>
+                {["facebook-f", "instagram", "twitter", "linkedin-in"].map((icon) => (
+                  <Link key={icon} href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-110">
+                    <i className={`fab fa-${icon} fa-lg text-black`}></i>
+                  </Link>
+                ))}
               </div>
             </div>
             <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase">Services</h3>
+              <h3 className="mb-4 text-sm font-semibold uppercase font-vidaloka">Services</h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Product Photography
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Retouching & Editing
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Graphic Design
-                  </Link>
-                </li>
-                <li>
-                  <Link href="#" className="hover:text-gray-900">
-                    Amazon Optimization
-                  </Link>
-                </li>
+                {[
+                  'Product Photography',
+                  'Retouching & Editing',
+                  'Graphic Design',
+                  'Amazon Optimization'
+                ].map((service) => (
+                  <li key={service}>
+                    <Link href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
+                      {service}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </div>
             <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase">Company</h3>
+              <h3 className="mb-4 text-sm font-semibold uppercase font-vidaloka">Company</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>
-                  <Link href="/about" className="hover:text-gray-900">
+                  <Link href="/about" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/portfolio" className="hover:text-gray-900">
+                  <Link href="/portfolio" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Portfolio
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-900">
+                  <Link href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-900">
+                  <Link href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Contact
                   </Link>
                 </li>
               </ul>
             </div>
             <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase">Contact</h3>
+              <h3 className="mb-4 text-sm font-semibold uppercase font-vidaloka">Contact</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>contact@chromepress.com</li>
                 <li>1611 W. Warren St</li>

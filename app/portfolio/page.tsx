@@ -294,25 +294,15 @@ export default function PortfolioPage() {
       <Header />
 
       <main className="flex-1">
-        {/* Portfolio Page Title */}
-        <section className="py-16 bg-[#f5f0e6]">
-          <div className="container mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Our Portfolio</h1>
-            <p className="max-w-2xl mx-auto text-gray-600">
-              Explore our creative work across various disciplines. Each project represents our commitment to quality and attention to detail.
-            </p>
-          </div>
-        </section>
-
         {/* Filter Categories */}
         <section className="py-8 container mx-auto">
-          <div className="flex flex-wrap justify-center gap-4 mb-10">
+          <div className="flex flex-wrap justify-center gap-8 mb-10">
             {categories.map((category) => (
               <Button
                 key={category}
                 onClick={() => setActiveFilter(category)}
                 variant={activeFilter === category ? "default" : "outline"}
-                className={`rounded-full px-6 ${
+                className={`rounded-full px-6 transition-all duration-300 transform hover:scale-105 hover:shadow-lg ${
                   activeFilter === category 
                   ? "bg-[#d4b88e] hover:bg-[#c5a97f] text-white border-[#d4b88e]" 
                   : "hover:bg-[#f5f0e6] hover:text-[#d4b88e] border-gray-200"
@@ -516,7 +506,7 @@ export default function PortfolioPage() {
                       
                       <div className="mb-8">
                         <h3 className="text-lg font-medium mb-2">About this project</h3>
-                        <p className="text-gray-600 leading-relaxed">
+                        <p className="paragraph-main">
                           {selectedItem.description || "A beautifully crafted project showcasing our expertise in " + selectedItem.category.join(', ') + "."}
                         </p>
                       </div>
@@ -527,7 +517,7 @@ export default function PortfolioPage() {
                       </div>
                       
                       <Link href="/contact" onClick={() => { document.body.style.overflow = 'auto'; }}>
-                        <Button className="w-full py-6 rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] text-white">
+                        <Button className="w-full py-6 rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
                           Contact Us About This Project
                         </Button>
                       </Link>
@@ -542,12 +532,13 @@ export default function PortfolioPage() {
         {/* CTA Section */}
         <section className="py-16 bg-[#f5f0e6]">
           <div className="container mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Ready to Start Your Project?</h2>
-            <p className="max-w-2xl mx-auto text-gray-600 mb-8">
+            <h2 className="text-3xl md:text-4xl font-bold font-vidaloka mt-8">Ready to Start Your Project?</h2>
+            <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded mx-auto"></div>
+            <p className="paragraph-main">
               Let's create something amazing together. Our creative team is ready to help you bring your vision to life.
             </p>
             <Link href="/contact">
-              <Button className="rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] px-8 py-2 text-white">
+              <Button className="rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] px-8 py-2 text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg mt-6">
                 Contact Us
               </Button>
             </Link>
@@ -561,47 +552,41 @@ export default function PortfolioPage() {
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div className="space-y-4">
               <div>
-                <Image 
-                  src="/sello_art.svg" 
-                  alt="Logo" 
-                  width={156} 
-                  height={52}
-                  className="object-contain"
+                <video 
+                  src="/sello_art 2_2.mp4"
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-[234px] h-[78px] object-contain"
                 />
               </div>
               <p className="text-sm text-gray-600">
                 We help e-commerce brands stand out with stunning visuals and strategic content.
               </p>
               <div className="flex space-x-4">
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-facebook-f fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-instagram fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-twitter fa-lg text-black"></i>
-                </Link>
-                <Link href="#" className="hover:text-gray-900">
-                  <i className="fab fa-linkedin-in fa-lg text-black"></i>
-                </Link>
+                {["facebook-f", "instagram", "twitter", "linkedin-in"].map((icon) => (
+                  <Link key={icon} href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-110">
+                    <i className={`fab fa-${icon} fa-lg text-black`}></i>
+                  </Link>
+                ))}
               </div>
             </div>
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase">Services</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>
-                  <Link href="#" className="hover:text-gray-900">
+                  <Link href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Product Photography
                   </Link>
                 </li>
                 <li>
-                  <Link href="/portfolio" className="hover:text-gray-900">
+                  <Link href="/portfolio" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Portfolio
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-900">
+                  <Link href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Blog
                   </Link>
                 </li>
@@ -611,22 +596,22 @@ export default function PortfolioPage() {
               <h3 className="mb-4 text-sm font-semibold uppercase">Company</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>
-                  <Link href="/about" className="hover:text-gray-900">
+                  <Link href="/about" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/portfolio" className="hover:text-gray-900">
+                  <Link href="/portfolio" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Portfolio
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-900">
+                  <Link href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Blog
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="hover:text-gray-900">
+                  <Link href="/contact" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Contact
                   </Link>
                 </li>

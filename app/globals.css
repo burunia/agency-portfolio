@@ -10,6 +10,9 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  .paragraph-main {
+    @apply font-roboto text-xl text-[#484d56] leading-relaxed mt-6;
+  }
 }
 
 @layer base {
@@ -169,4 +172,10 @@ svg path {
   z-index: 0;
   filter: brightness(0.6);
   pointer-events: none;
+}
+
+@layer components {
+  .paragraph-main {
+    @apply font-roboto text-xl text-[#484d56] leading-relaxed mt-6;
+  }
 }

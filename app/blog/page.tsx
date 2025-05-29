@@ -45,30 +45,30 @@ export default function BlogPage() {
 
       <main className="flex-1">
         <div className="container mx-auto px-4 py-16">
-          <h1 className="text-4xl font-bold text-center mb-12">Blog</h1>
+          <h1 className="text-4xl font-bold text-center mb-12 font-vidaloka">Blog</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {blogPosts.map((post) => (
-              <article key={post.id} className="bg-card rounded-lg overflow-hidden shadow-lg transition-transform hover:scale-105">
+              <article key={post.id} className="bg-card rounded-lg overflow-hidden shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-xl">
                 <Link href={`/blog/${post.slug}`}>
                   <div className="relative h-48 w-full">
                     <Image
                       src={post.thumbnail}
                       alt={post.title}
                       fill
-                      className="object-cover"
+                      className="object-cover transition-transform duration-300 hover:scale-110"
                     />
                   </div>
                   <div className="p-6">
-                    <div className="text-sm text-muted-foreground mb-2">
+                    <div className="text-sm text-muted-foreground mb-2 font-roboto">
                       {new Date(post.date).toLocaleDateString()}
                     </div>
-                    <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-                    <p className="text-muted-foreground mb-4">{post.description}</p>
-                    <div className="text-primary hover:underline inline-flex items-center">
+                    <h2 className="text-xl font-semibold mb-2 font-vidaloka">{post.title}</h2>
+                    <p className="paragraph-main">{post.description}</p>
+                    <div className="text-primary hover:underline inline-flex items-center transition-all duration-300 transform hover:scale-105 hover:text-[#d4b88e]">
                       Read more
                       <svg
-                        className="w-4 h-4 ml-2"
+                        className="w-4 h-4 ml-2 transition-transform duration-300 group-hover:translate-x-1"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

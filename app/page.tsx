@@ -173,6 +173,11 @@ export default function AgencyPortfolio() {
         crossOrigin="anonymous" 
         referrerPolicy="no-referrer" 
       />
+      {/* Google Fonts */}
+      <link
+        href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Roboto:wght@300;400;500;700&display=swap"
+        rel="stylesheet"
+      />
       
       <Header showAnimations={true} />
 
@@ -184,7 +189,7 @@ export default function AgencyPortfolio() {
           </div>
           <div className="container absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-[30%] mx-auto text-center z-10 flex flex-col items-center justify-center">
             <motion.h1
-              className="mb-4 text-5xl font-bold uppercase tracking-tight md:text-6xl"
+              className="mb-4 text-5xl font-bold uppercase tracking-tight md:text-6xl font-vidaloka"
               initial={{ opacity: 0 }}
               animate={showHeadline ? { opacity: 1 } : {}}
               transition={{ duration: 0.7, ease: "easeOut" }}
@@ -194,7 +199,7 @@ export default function AgencyPortfolio() {
               </span>
             </motion.h1>
             <motion.p
-              className="text-xl md:text-2xl"
+              className="text-xl md:text-2xl font-roboto"
               initial={{ opacity: 0 }}
               animate={showHeadline ? { opacity: 1 } : {}}
               transition={{ duration: 0.7, ease: "easeOut" }}
@@ -234,52 +239,74 @@ export default function AgencyPortfolio() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
         >
-          <div className="mb-12 flex flex-col items-center">
-            <div className="mb-4 flex items-center">
-              <div className="h-[1px] w-10 bg-gray-300"></div>
-              <h2 className="mx-4 text-lg font-light">how we help you</h2>
-              <div className="h-[1px] w-10 bg-gray-300"></div>
+          <div className="mb-12 flex flex-col items-center prose prose-lg prose-headings:font-bold prose-headings:tracking-tight prose-headings:mb-4 prose-p:text-gray-700 prose-p:mb-6 prose-p:leading-relaxed prose-p:text-lg max-w-4xl mx-auto">
+            <div className="mb-8 flex items-center">
+              <h1 className="text-5xl md:text-6xl font-bold leading-tight text-black font-vidaloka">how we help you</h1>
             </div>
-            <h3 className="mb-4 text-center text-xl">Inspired Creations for Global Sellers</h3>
-            <p className="max-w-2xl text-center text-gray-600">
+            <p className="font-roboto">
               We're a global, multidisciplinary creative team with 40+ years combined 
               experience in assisting eCommerce brands to thrive in busy and 
               crowded marketplaces. From Amazon to Etsy, Kickstarter or your 
               very own online store—we craft compelling visuals and exciting 
-              content that make your products impossible to ignore 
+              content that make your products impossible to ignore.
             </p>
           </div>
 
-          <motion.div 
-            className="flex flex-wrap justify-center gap-4 md:gap-6 lg:gap-8 mt-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: "easeOut", delay: 0.8 }}
-          >
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
             {[
-              'Amazon Listing Optimization',
-              'Packaging & Print Design',
-              'Retouching & Editing',
-              'Brand Marketing & Copywriting',
-              'Product Photography',
-              '2D & 3D Product Design'
-            ].map((service, index) => (
-              <div key={service} className="flex flex-col items-center text-center group">
-                <div className="w-[160px] h-[160px] md:w-[180px] md:h-[180px] rounded-full border border-[#d4b88e]/50 flex items-center justify-center mb-4 transition-all hover:bg-[#f5f0e6]">
-                  <span className="text-[#d4b88e] text-center px-4">{service}</span>
+              {
+                icon: 'fa-amazon',
+                iconType: 'fab',
+                label: 'Amazon Listing Optimization',
+                desc: 'Boost your Amazon sales with optimized listings.'
+              },
+              {
+                icon: 'fa-box-open',
+                iconType: 'fas',
+                label: 'Packaging & Print Design',
+                desc: 'Eye-catching packaging and print materials.'
+              },
+              {
+                icon: 'fa-magic',
+                iconType: 'fas',
+                label: 'Retouching & Editing',
+                desc: 'Professional retouching and image editing.'
+              },
+              {
+                icon: 'fa-bullhorn',
+                iconType: 'fas',
+                label: 'Brand Marketing & Copywriting',
+                desc: 'Compelling brand stories and marketing copy.'
+              },
+              {
+                icon: 'fa-camera-retro',
+                iconType: 'fas',
+                label: 'Product Photography',
+                desc: 'High-quality product photography for all platforms.'
+              },
+              {
+                icon: 'fa-cube',
+                iconType: 'fas',
+                label: '2D & 3D Product Design',
+                desc: 'Stunning 2D/3D visuals for your products.'
+              }
+            ].map((item) => (
+              <div key={item.label} className="flex flex-col items-center text-center bg-white rounded-xl shadow-md p-8">
+                <div className="mb-6 flex items-center justify-center text-[#d4b88e] text-3xl">
+                  <i className={`${item.iconType} ${item.icon}`}></i>
                 </div>
+                <div className="font-semibold text-lg mb-2 text-gray-900">{item.label}</div>
+                <div className="text-gray-500 text-sm">{item.desc}</div>
               </div>
             ))}
-          </motion.div>
+          </div>
         </motion.section>
 
         {/* Selected Work Section */}
         <section className="container mx-auto py-16 overflow-hidden">
           <div className="mb-12 flex flex-col items-center">
             <div className="mb-4 flex items-center">
-              <div className="h-[1px] w-10 bg-gray-300"></div>
-              <h2 className="mx-4 text-lg font-light">selected work</h2>
-              <div className="h-[1px] w-10 bg-gray-300"></div>
+              <h2 className="text-5xl md:text-6xl font-bold leading-tight text-black font-vidaloka">selected work</h2>
             </div>
           </div>
 
@@ -287,7 +314,7 @@ export default function AgencyPortfolio() {
             <div className="work-carousel relative" style={{ height: "500px", margin: "0 auto" }}>
               <button 
                 onClick={handlePrevSlide}
-                className="absolute left-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
+                className="absolute left-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                 aria-label="Previous slide"
               >
                 <i className="fas fa-chevron-left text-black"></i>
@@ -295,7 +322,7 @@ export default function AgencyPortfolio() {
               
               <button 
                 onClick={handleNextSlide}
-                className="absolute right-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-colors"
+                className="absolute right-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
                 aria-label="Next slide"
               >
                 <i className="fas fa-chevron-right text-black"></i>
@@ -375,13 +402,11 @@ export default function AgencyPortfolio() {
           <div className="container mx-auto">
             <div className="mb-16 flex flex-col items-center">
               <div className="mb-6 flex items-center">
-                <div className="h-[1px] w-10 bg-white/60"></div>
-                <h2 className="mx-4 text-lg font-light text-white">why choose us?</h2>
-                <div className="h-[1px] w-10 bg-white/60"></div>
+                <h2 className="text-5xl md:text-6xl font-bold leading-tight text-white font-vidaloka">why choose us?</h2>
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-16 md:grid-cols-3">
+            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
               {[
                 {
                   icon: 'fa-laptop-code',
@@ -420,21 +445,19 @@ export default function AgencyPortfolio() {
         >
           <div className="mb-12 flex flex-col items-center">
             <div className="mb-4 flex items-center">
-              <div className="h-[1px] w-10 bg-gray-300"></div>
-              <h2 className="mx-4 text-lg font-light">ready to create together?</h2>
-              <div className="h-[1px] w-10 bg-gray-300"></div>
+              <h2 className="text-5xl md:text-6xl font-bold leading-tight text-black font-vidaloka">ready to create together?</h2>
             </div>
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2">
             <div className="flex flex-col justify-center">
-              <h3 className="mb-4 text-2xl font-medium">Let's elevate your brand</h3>
+              <h3 className="mb-4 text-2xl font-medium font-vidaloka">Let's elevate your brand</h3>
               <div className="mb-4 h-1 w-12 bg-[#d4b88e]"></div>
-              <p className="mb-6 text-gray-600">
+              <p className="mb-6 text-gray-600 font-roboto">
                 Ready to stand out in the competitive e-commerce landscape? Our team of experts is here to help you
                 create visuals and content that convert. Fill out the form, and we'll get back to you within 24 hours.
               </p>
-              <div className="mt-6 space-y-4 md:mt-8">
+              <div className="mt-8 space-y-4 md:mt-8">
                 <div className="flex items-center space-x-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5f0e6] text-[#d4b88e]">
                     <i className="fas fa-phone fa-lg"></i>
@@ -539,7 +562,7 @@ export default function AgencyPortfolio() {
 
                 <Button 
                   type="submit" 
-                  className="w-full rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] focus:outline-none focus:ring-2 focus:ring-[#d4b88e] focus:ring-offset-2"
+                  className="w-full rounded-md bg-[#d4b88e] hover:bg-[#c5a97f] text-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#d4b88e] focus:ring-offset-2"
                   disabled={formStatus.loading}
                 >
                   {formStatus.loading ? 'Sending...' : 'Send Message'}
@@ -604,14 +627,14 @@ export default function AgencyPortfolio() {
               </p>
               <div className="flex space-x-4">
                 {["facebook-f", "instagram", "twitter", "linkedin-in"].map((icon) => (
-                  <Link key={icon} href="#" className="hover:text-gray-900">
+                  <Link key={icon} href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-110">
                     <i className={`fab fa-${icon} fa-lg text-black`}></i>
                   </Link>
                 ))}
               </div>
             </div>
             <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase">Services</h3>
+              <h3 className="mb-4 text-sm font-semibold uppercase font-vidaloka">Services</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 {[
                   'Product Photography',
@@ -620,7 +643,7 @@ export default function AgencyPortfolio() {
                   'Amazon Optimization'
                 ].map((service) => (
                   <li key={service}>
-                    <Link href="#" className="hover:text-gray-900">
+                    <Link href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                       {service}
                     </Link>
                   </li>
@@ -628,7 +651,7 @@ export default function AgencyPortfolio() {
               </ul>
             </div>
             <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase">Company</h3>
+              <h3 className="mb-4 text-sm font-semibold uppercase font-vidaloka">Company</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 {[
                   { name: 'About Us', href: '/about' },
@@ -637,7 +660,7 @@ export default function AgencyPortfolio() {
                   { name: 'Contact', href: '#' }
                 ].map((item) => (
                   <li key={item.name}>
-                    <Link href={item.href} className="hover:text-gray-900">
+                    <Link href={item.href} className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                       {item.name}
                     </Link>
                   </li>
@@ -645,7 +668,7 @@ export default function AgencyPortfolio() {
               </ul>
             </div>
             <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase">Contact</h3>
+              <h3 className="mb-4 text-sm font-semibold uppercase font-vidaloka">Contact</h3>
               <ul className="space-y-2 text-sm text-gray-600">
                 <li>contact@chromepress.com</li>
                 <li>1611 W. Warren St</li>

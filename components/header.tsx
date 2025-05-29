@@ -76,7 +76,7 @@ export default function Header({ showAnimations = false }: HeaderProps) {
                 <Link
                   key={item.name}
                   href={item.href}
-                  className="text-4xl md:text-5xl font-light text-white/80 hover:text-white transition-all duration-300 transform hover:scale-110"
+                  className="text-4xl md:text-5xl font-light text-white/80 hover:text-white transition-all duration-300 transform hover:scale-110 font-vidaloka"
                   onClick={() => setMenuOpen(false)}
                   passHref
                 >

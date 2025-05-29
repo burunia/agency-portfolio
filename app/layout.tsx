@@ -14,7 +14,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <head>
+        <link
+          href="https://fonts.googleapis.com/css2?family=Vidaloka&family=Roboto:wght@300;400;500;700&display=swap"
+          rel="stylesheet"
+        />
+      </head>
+      <body className="font-roboto">
+        {children}
+      </body>
     </html>
   )
 }
