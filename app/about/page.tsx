@@ -107,26 +107,44 @@ export default function AboutPage() {
         
         {/* Call to Action Section */}
         <section className="container mx-auto py-16 mb-20">
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-center">
-            <div className="md:col-span-2">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 leading-tight font-vidaloka">
-              Personalized content that performs
-              </h2>
-              <Button className="mt-4 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
-                Get Started
-              </Button>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
+            {/* Left: Our Promise */}
+            <div className="md:col-span-3 flex flex-col h-full justify-start">
+              <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">our promise</h2>
+              <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
+              <h3 className="text-2xl font-medium mb-6 text-[#d4b88e] font-vidaloka">
+                Global Perspective. Local Craft. Performance-Driven.
+              </h3>
+              <p className="paragraph-main">
+                That's our promise — from concept to conversion. We're built for business. Our platform goes beyond just creative services. Connect with viewers through personalized visual experiences and explore analytical insights about your audience to continuously improve and optimize your content.
+              </p>
+              <Link href="/contact">
+                <Button className="mt-8 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg w-fit">
+                  Get Started
+                </Button>
+              </Link>
             </div>
-            
-            <div className="md:col-span-3">
-              <div className="p-8 bg-white rounded-2xl shadow-lg">
-                <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">our promise</h2>
-                <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
-                <h3 className="text-2xl font-medium mb-6 text-[#d4b88e] font-vidaloka">
-                  Global Perspective. Local Craft. Performance-Driven.
-                </h3>
-                <p className="paragraph-main">
-                  That's our promise — from concept to conversion. We're built for business. Our platform goes beyond just creative services. Connect with viewers through personalized visual experiences and explore analytical insights about your audience to continuously improve and optimize your content.
-                </p>
+            {/* Right: Features */}
+            <div className="md:col-span-2 flex flex-col h-full">
+              <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">prsonalized content that performs</h2>
+              <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-6 rounded"></div>
+              <div className="flex flex-row justify-between items-center gap-6 mb-8">
+                <div className="flex flex-col items-center flex-1 min-w-0">
+                  <i className="fas fa-desktop text-5xl text-[#d4b88e] mb-2"></i>
+                  <span className="font-roboto text-base text-gray-800 mt-2 text-center">Smart design</span>
+                </div>
+                <div className="flex flex-col items-center flex-1 min-w-0">
+                  <i className="fas fa-bullseye text-5xl text-[#d4b88e] mb-2"></i>
+                  <span className="font-roboto text-base text-gray-800 mt-2 text-center">Audience targeting</span>
+                </div>
+                <div className="flex flex-col items-center flex-1 min-w-0">
+                  <i className="fas fa-globe text-5xl text-[#d4b88e] mb-2"></i>
+                  <span className="font-roboto text-base text-gray-800 mt-2 text-center">Global reach</span>
+                </div>
+                <div className="flex flex-col items-center flex-1 min-w-0">
+                  <i className="fas fa-chart-line text-5xl text-[#d4b88e] mb-2"></i>
+                  <span className="font-roboto text-base text-gray-800 mt-2 text-center">Actionable insights</span>
+                </div>
               </div>
             </div>
           </div>

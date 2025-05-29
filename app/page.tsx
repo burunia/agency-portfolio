@@ -619,7 +619,7 @@ export default function AgencyPortfolio() {
                   loop
                   muted
                   playsInline
-                  className="w-[156px] h-[52px] object-contain"
+                  className="w-[234px] h-[78px] object-contain"
                 />
               </div>
               <p className="text-sm text-gray-600">
