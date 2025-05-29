@@ -609,7 +609,7 @@ export default function AgencyPortfolio() {
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white py-12">
-        <div className="container mx-auto px-4">
+        <div className="container mx-auto px-4 main-container">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div className="space-y-4">
               <div>
