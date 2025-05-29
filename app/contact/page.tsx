@@ -143,7 +143,18 @@ export default function ContactPage() {
           <div className="uppercase tracking-wider text-[#d4b88e] font-medium mb-4 ml-4 md:ml-0">GET IN TOUCH</div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
+            <div className="relative order-1 md:order-2">
+              <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-[#d4b88e]/20"></div>
+              <Image 
+                src="/website speach bubbles-01.png?height=500&width=500" 
+                alt="Contact us"
+                width={600} 
+                height={600}
+                // className="rounded-full border-4 border-white shadow-xl"
+              />
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-[#d4b88e] -z-10"></div>
+            </div>
+            <div className="space-y-6 order-2 md:order-1">
               <h1 className="text-5xl md:text-6xl font-bold leading-tight text-gray-800 font-vidaloka">
                 Let's <span className="relative inline-block">
                   Create Together
@@ -187,18 +198,6 @@ export default function ContactPage() {
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <div className="relative">
-              <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-[#d4b88e]/20"></div>
-              <Image 
-                src="/website speach bubbles-01.png?height=500&width=500" 
-                alt="Contact us"
-                width={600} 
-                height={600}
-                // className="rounded-full border-4 border-white shadow-xl"
-              />
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-[#d4b88e] -z-10"></div>
             </div>
           </div>
         </section>

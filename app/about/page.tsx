@@ -29,7 +29,18 @@ export default function AboutPage() {
           <div className="uppercase tracking-wider text-[#d4b88e] font-medium mb-4 ml-4 md:ml-0">ABOUT US</div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div className="space-y-6">
+            <div className="relative order-1 md:order-2">
+              <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-[#d4b88e]/20"></div>
+              <Image 
+                src="/website png-05.png?height=500&width=500" 
+                alt="Creative work environment"
+                width={700} 
+                height={700}
+                // className="rounded-full border-4 border-white shadow-xl"
+              />
+              <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-[#d4b88e] -z-10"></div>
+            </div>
+            <div className="space-y-6 order-2 md:order-1">
               <h1 className="text-5xl md:text-6xl font-bold leading-tight text-black font-vidaloka">
                 Creativity Without Borders
               </h1>
@@ -44,18 +55,6 @@ export default function AboutPage() {
                   Work With Us
                 </Button>
               </Link>
-            </div>
-            
-            <div className="relative">
-              <div className="absolute -z-10 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[90%] h-[90%] rounded-full bg-[#d4b88e]/20"></div>
-              <Image 
-                src="/website png-05.png?height=500&width=500" 
-                alt="Creative work environment"
-                width={700} 
-                height={700}
-                // className="rounded-full border-4 border-white shadow-xl"
-              />
-              <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-[#d4b88e] -z-10"></div>
             </div>
           </div>
         </section>
@@ -108,24 +107,8 @@ export default function AboutPage() {
         {/* Call to Action Section */}
         <section className="container mx-auto py-16 mb-20 main-container">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
-            {/* Left: Our Promise */}
-            <div className="md:col-span-3 flex flex-col h-full justify-start">
-              <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">our promise</h2>
-              <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
-              <h3 className="text-2xl font-medium mb-6 text-[#d4b88e] font-vidaloka">
-                Global Perspective. Local Craft. Performance-Driven.
-              </h3>
-              <p className="paragraph-main">
-                That's our promise — from concept to conversion. We're built for business. Our platform goes beyond just creative services. Connect with viewers through personalized visual experiences and explore analytical insights about your audience to continuously improve and optimize your content.
-              </p>
-              <Link href="/contact">
-                <Button className="mt-8 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg w-fit">
-                  Get Started
-                </Button>
-              </Link>
-            </div>
-            {/* Right: Features */}
-            <div className="md:col-span-2 flex flex-col h-full">
+            {/* Right: Features - move to top on mobile */}
+            <div className="md:col-span-2 flex flex-col h-full order-1 md:order-2">
               <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">prsonalized content that performs</h2>
               <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-6 rounded"></div>
               <div className="flex flex-row justify-between items-center gap-6 mb-8">
@@ -146,6 +129,22 @@ export default function AboutPage() {
                   <span className="font-roboto text-base text-gray-800 mt-2 text-center">Actionable insights</span>
                 </div>
               </div>
+            </div>
+            {/* Left: Our Promise */}
+            <div className="md:col-span-3 flex flex-col h-full justify-start order-2 md:order-1">
+              <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">our promise</h2>
+              <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>
+              <h3 className="text-2xl font-medium mb-6 text-[#d4b88e] font-vidaloka">
+                Global Perspective. Local Craft. Performance-Driven.
+              </h3>
+              <p className="paragraph-main">
+                That's our promise — from concept to conversion. We're built for business. Our platform goes beyond just creative services. Connect with viewers through personalized visual experiences and explore analytical insights about your audience to continuously improve and optimize your content.
+              </p>
+              <Link href="/contact">
+                <Button className="mt-8 bg-[#d4b88e] hover:bg-[#c5a97f] text-white px-8 py-6 rounded-lg text-lg transition-all duration-300 transform hover:scale-105 hover:shadow-lg w-fit">
+                  Get Started
+                </Button>
+              </Link>
             </div>
           </div>
         </section>

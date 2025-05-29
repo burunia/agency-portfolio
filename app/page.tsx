@@ -394,50 +394,6 @@ export default function AgencyPortfolio() {
           </div>
         </section>
 
-        {/* Why Choose Us Section */}
-        <motion.section
-          className="py-24 bg-[#d4b88e] w-screen"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
-        >
-          <div className="container mx-auto">
-            <div className="mb-16 flex flex-col items-center">
-              <div className="mb-6 flex items-center">
-                <h2 className="text-5xl md:text-6xl font-bold leading-tight text-white font-vidaloka">why choose us?</h2>
-              </div>
-            </div>
-
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
-              {[
-                {
-                  icon: 'fa-laptop-code',
-                  title: 'All-around Creative Help',
-                  description: 'Our flexible team takes you from concept to final visuals'
-                },
-                {
-                  icon: 'fa-amazon',
-                  title: 'Proven Amazon Expertise',
-                  description: 'Helping brands grow on Amazon by turning browsers into buyers'
-                },
-                {
-                  icon: 'fa-chart-line',
-                  title: 'Creativity that Converts',
-                  description: 'Our eye-catching designs help drive your revenue.'
-                }
-              ].map((item) => (
-                <div key={item.title} className="flex flex-col items-center text-center">
-                  <div className="mb-6 text-white">
-                    <i className={`${item.icon === 'fa-amazon' ? 'fab' : 'fas'} ${item.icon} fa-3x`}></i>
-                  </div>
-                  <h3 className="mb-4 text-xl font-medium text-white">{item.title}</h3>
-                  <p className="text-sm text-white/80">{item.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </motion.section>
-
         {/* Contact Form Section */}
         <motion.section
           className="container main-container mx-auto py-16"
@@ -608,6 +564,50 @@ export default function AgencyPortfolio() {
           </div>
         </motion.section>
       </main>
+
+      {/* Why Choose Us Section - moved outside main for full-bleed background */}
+      <motion.section
+        className="py-24 bg-[#d4b88e] w-screen"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
+      >
+        <div className="container mx-auto">
+          <div className="mb-16 flex flex-col items-center">
+            <div className="mb-6 flex items-center">
+              <h2 className="text-5xl md:text-6xl font-bold leading-tight text-white font-vidaloka">why choose us?</h2>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {[
+              {
+                icon: 'fa-laptop-code',
+                title: 'All-around Creative Help',
+                description: 'Our flexible team takes you from concept to final visuals'
+              },
+              {
+                icon: 'fa-amazon',
+                title: 'Proven Amazon Expertise',
+                description: 'Helping brands grow on Amazon by turning browsers into buyers'
+              },
+              {
+                icon: 'fa-chart-line',
+                title: 'Creativity that Converts',
+                description: 'Our eye-catching designs help drive your revenue.'
+              }
+            ].map((item) => (
+              <div key={item.title} className="flex flex-col items-center text-center">
+                <div className="mb-6 text-white">
+                  <i className={`${item.icon === 'fa-amazon' ? 'fab' : 'fas'} ${item.icon} fa-3x`}></i>
+                </div>
+                <h3 className="mb-4 text-xl font-medium text-white">{item.title}</h3>
+                <p className="text-sm text-white/80">{item.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
 
       {/* Footer */}
       <footer className="border-t border-gray-200 bg-white py-12">
