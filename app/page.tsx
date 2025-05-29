@@ -351,7 +351,7 @@ export default function AgencyPortfolio() {
                   return (
                     <div 
                       key={item.src} 
-                      className={`work-carousel-item absolute transition-all duration-500 ease-in-out ${
+                      className={`work-carousel-item absolute transition-all duration-500 ease-in-out w-[90vw] h-[90vw] md:w-[400px] md:h-[400px] ${
                         isActive ? 'active' : 
                         isPrev ? 'prev' : 
                         isPrev2 ? 'prev-2' : 
@@ -359,6 +359,9 @@ export default function AgencyPortfolio() {
                         isNext2 ? 'next-2' : ''
                       }`}
                       style={{ 
+                        left: '50%',
+                        top: '50%',
+                        transformOrigin: 'center center',
                         transform: isActive ? 'translate(-50%, -50%) scale(1.3)' : 
                                  isPrev ? 'translate(-120%, -50%) scale(0.9)' :
                                  isPrev2 ? 'translate(-180%, -50%) scale(0.8)' :
@@ -370,11 +373,6 @@ export default function AgencyPortfolio() {
                                 isPrev2 || isNext2 ? 0.5 : 0,
                         zIndex: isActive ? 2 :
                                 isPrev || isNext ? 1 : 0,
-                        width: '400px',
-                        height: '400px',
-                        left: '50%',
-                        top: '50%',
-                        transformOrigin: 'center center'
                       }}
                     >
                       <Link href="/portfolio">
