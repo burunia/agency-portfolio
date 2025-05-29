@@ -146,7 +146,7 @@ export default function Header({ showAnimations = false }: HeaderProps) {
               hidden: {},
               visible: { transition: { staggerChildren: 0.15 } }
             }}
-            className="flex items-center space-x-6"
+            className="hidden md:flex items-center space-x-6"
           >
             {socialIcons.map((icon) => (
               <motion.div
