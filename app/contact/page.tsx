@@ -137,9 +137,9 @@ export default function ContactPage() {
       
       <Header />
 
-      <main className="flex-1">
+      <main className="flex-1 main-container">
         {/* Hero Section */}
-        <section className="container mx-auto py-16">
+        <section className="container mx-auto py-16 main-container">
           <div className="uppercase tracking-wider text-[#d4b88e] font-medium mb-4 ml-4 md:ml-0">GET IN TOUCH</div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -204,7 +204,7 @@ export default function ContactPage() {
         </section>
         
         {/* Contact Form Section */}
-        <section className="container mx-auto py-16 mb-20">
+        <section className="container mx-auto py-16 mb-20 main-container">
           <div className="mb-12 flex flex-col items-center">
             <h2 className="text-3xl md:text-4xl font-bold font-vidaloka">send us a message</h2>
             <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded"></div>

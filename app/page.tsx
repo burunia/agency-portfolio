@@ -181,7 +181,7 @@ export default function AgencyPortfolio() {
       
       <Header showAnimations={true} />
 
-      <main className="flex-1">
+      <main className="flex-1 main-container">
         {/* Hero Section */}
         <section className="relative h-[calc(100vh-80px)] w-screen overflow-hidden">
           <div className="absolute inset-0 w-full h-full">
@@ -234,7 +234,7 @@ export default function AgencyPortfolio() {
 
         {/* What We Do Section */}
         <motion.section
-          className="container mx-auto py-16"
+          className="py-16 main-container"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
@@ -252,58 +252,60 @@ export default function AgencyPortfolio() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
-            {[
-              {
-                icon: 'fa-amazon',
-                iconType: 'fab',
-                label: 'Amazon Listing Optimization',
-                desc: 'Boost your Amazon sales with optimized listings.'
-              },
-              {
-                icon: 'fa-box-open',
-                iconType: 'fas',
-                label: 'Packaging & Print Design',
-                desc: 'Eye-catching packaging and print materials.'
-              },
-              {
-                icon: 'fa-magic',
-                iconType: 'fas',
-                label: 'Retouching & Editing',
-                desc: 'Professional retouching and image editing.'
-              },
-              {
-                icon: 'fa-bullhorn',
-                iconType: 'fas',
-                label: 'Brand Marketing & Copywriting',
-                desc: 'Compelling brand stories and marketing copy.'
-              },
-              {
-                icon: 'fa-camera-retro',
-                iconType: 'fas',
-                label: 'Product Photography',
-                desc: 'High-quality product photography for all platforms.'
-              },
-              {
-                icon: 'fa-cube',
-                iconType: 'fas',
-                label: '2D & 3D Product Design',
-                desc: 'Stunning 2D/3D visuals for your products.'
-              }
-            ].map((item) => (
-              <div key={item.label} className="flex flex-col items-center text-center bg-white rounded-xl shadow-md p-8">
-                <div className="mb-6 flex items-center justify-center text-[#d4b88e] text-3xl">
-                  <i className={`${item.iconType} ${item.icon}`}></i>
+          <div className="max-w-7xl mx-auto w-full">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+              {[
+                {
+                  icon: 'fa-amazon',
+                  iconType: 'fab',
+                  label: 'Amazon Listing Optimization',
+                  desc: 'Boost your Amazon sales with optimized listings.'
+                },
+                {
+                  icon: 'fa-box-open',
+                  iconType: 'fas',
+                  label: 'Packaging & Print Design',
+                  desc: 'Eye-catching packaging and print materials.'
+                },
+                {
+                  icon: 'fa-magic',
+                  iconType: 'fas',
+                  label: 'Retouching & Editing',
+                  desc: 'Professional retouching and image editing.'
+                },
+                {
+                  icon: 'fa-bullhorn',
+                  iconType: 'fas',
+                  label: 'Brand Marketing & Copywriting',
+                  desc: 'Compelling brand stories and marketing copy.'
+                },
+                {
+                  icon: 'fa-camera-retro',
+                  iconType: 'fas',
+                  label: 'Product Photography',
+                  desc: 'High-quality product photography for all platforms.'
+                },
+                {
+                  icon: 'fa-cube',
+                  iconType: 'fas',
+                  label: '2D & 3D Product Design',
+                  desc: 'Stunning 2D/3D visuals for your products.'
+                }
+              ].map((item) => (
+                <div key={item.label} className="flex flex-col items-center text-center bg-white rounded-xl shadow-md p-8">
+                  <div className="mb-6 flex items-center justify-center text-[#d4b88e] text-3xl">
+                    <i className={`${item.iconType} ${item.icon}`}></i>
+                  </div>
+                  <div className="font-semibold text-lg mb-2 text-gray-900">{item.label}</div>
+                  <div className="text-gray-500 text-sm">{item.desc}</div>
                 </div>
-                <div className="font-semibold text-lg mb-2 text-gray-900">{item.label}</div>
-                <div className="text-gray-500 text-sm">{item.desc}</div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </motion.section>
 
         {/* Selected Work Section */}
-        <section className="container mx-auto py-16 overflow-hidden">
+        <section className="container mx-auto py-16 overflow-hidden main-container">
           <div className="mb-12 flex flex-col items-center">
             <div className="mb-4 flex items-center">
               <h2 className="text-5xl md:text-6xl font-bold leading-tight text-black font-vidaloka">selected work</h2>
@@ -438,7 +440,7 @@ export default function AgencyPortfolio() {
 
         {/* Contact Form Section */}
         <motion.section
-          className="container mx-auto py-16"
+          className="container main-container mx-auto py-16"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}

@@ -43,8 +43,8 @@ export default function BlogPage() {
         referrerPolicy="no-referrer" 
       />
 
-      <main className="flex-1">
-        <div className="container mx-auto px-4 py-16">
+      <main className="flex-1 main-container">
+        <div className="container mx-auto px-4 py-16 main-container">
           <h1 className="text-4xl font-bold text-center mb-12 font-vidaloka">Blog</h1>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

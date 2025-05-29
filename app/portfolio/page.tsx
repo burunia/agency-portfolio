@@ -50,7 +50,6 @@ export default function PortfolioPage() {
         { src: "/id13/id13_23-219-02.jpg", alt: "" },
         { src: "/id13/id13_23-219-03.jpg", alt: "" },
         { src: "/id13/id13_23-219-04.jpg", alt: "" },
-        { src: "/id13/id13_23-219-04.jpg", alt: "" },
         { src: "/id13/id13_23-219-05.jpg", alt: "" },
         { src: "/id13/id13_23-219-06.jpg", alt: "" }
       ]
@@ -293,9 +292,9 @@ export default function PortfolioPage() {
       
       <Header />
 
-      <main className="flex-1">
+      <main className="flex-1 main-container">
         {/* Filter Categories */}
-        <section className="py-8 container mx-auto">
+        <section className="py-8 container mx-auto main-container">
           <div className="flex flex-wrap justify-center gap-8 mb-10">
             {categories.map((category) => (
               <Button
@@ -315,7 +314,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* Portfolio Grid - Custom Masonry Layout */}
-        <section className="py-8 container mx-auto px-4">
+        <section className="py-8 container mx-auto px-4 main-container">
           <style jsx>{`
             .masonry-grid {
               display: grid;
@@ -530,7 +529,7 @@ export default function PortfolioPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="py-16 bg-[#f5f0e6]">
+        <section className="py-16 bg-[#f5f0e6] main-container">
           <div className="container mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold font-vidaloka mt-8">Ready to Start Your Project?</h2>
             <div className="h-1 w-16 bg-[#d4b88e] mt-2 mb-4 rounded mx-auto"></div>

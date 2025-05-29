@@ -23,9 +23,9 @@ export default function AboutPage() {
       
       <Header />
 
-      <main className="flex-1">
+      <main className="flex-1 main-container">
         {/* Hero Section */}
-        <section className="container mx-auto py-16">
+        <section className="container mx-auto py-16 main-container">
           <div className="uppercase tracking-wider text-[#d4b88e] font-medium mb-4 ml-4 md:ml-0">ABOUT US</div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
@@ -61,7 +61,7 @@ export default function AboutPage() {
         </section>
         
         {/* Content Sections */}
-        <section className="container mx-auto py-16 bg-[#f5f0e6] rounded-3xl mb-16">
+        <section className="container mx-auto py-16 bg-[#f5f0e6] rounded-3xl mb-16 main-container">
           <div className="max-w-5xl mx-auto px-6">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
               {/* Who We Are Section */}
@@ -106,7 +106,7 @@ export default function AboutPage() {
         </section>
         
         {/* Call to Action Section */}
-        <section className="container mx-auto py-16 mb-20">
+        <section className="container mx-auto py-16 mb-20 main-container">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-8 items-start">
             {/* Left: Our Promise */}
             <div className="md:col-span-3 flex flex-col h-full justify-start">

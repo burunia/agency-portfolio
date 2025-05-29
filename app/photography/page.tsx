@@ -10,9 +10,9 @@ export default function Photography() {
   return (
     <div className="flex min-h-screen flex-col bg-[#fffdf9] relative">
       <Header showAnimations={false} />
-      <main className="flex-1">
+      <main className="flex-1 main-container">
         {/* Hero Section */}
-        <section className="container mx-auto py-16">
+        <section className="container mx-auto py-16 main-container">
           <div className="uppercase tracking-wider text-[#d4b88e] font-medium mb-6 ml-4 md:ml-0">PHOTOGRAPHY</div>
           <div className="w-full mb-10">
             <Image 
