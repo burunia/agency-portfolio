@@ -306,14 +306,14 @@ export default function AgencyPortfolio() {
 
         {/* Selected Work Section */}
         <section className="container mx-auto py-16 overflow-hidden main-container">
-          <div className="mb-12 flex flex-col items-center">
+          <div className="mb-6 md:mb-12 flex flex-col items-center">
             <div className="mb-4 flex items-center">
               <h2 className="text-5xl md:text-6xl font-bold leading-tight text-black font-vidaloka">selected work</h2>
             </div>
           </div>
 
           <div className="relative mx-auto max-w-6xl">
-            <div className="work-carousel relative" style={{ height: "500px", margin: "0 auto" }}>
+            <div className="work-carousel relative w-full overflow-hidden" style={{ height: "500px", margin: "0 auto" }}>
               <button 
                 onClick={handlePrevSlide}
                 className="absolute left-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
@@ -330,7 +330,7 @@ export default function AgencyPortfolio() {
                 <i className="fas fa-chevron-right text-black"></i>
               </button>
 
-              <div className="relative w-full h-full">
+              <div className="relative w-full h-full mt-6 md:mt-10">
                 {[
                   { src: "/id1/id1_25-036-01.jpg", alt: "Calendar design" },
                   { src: "/id3/id3_23-137-01.jpg", alt: "Storage boxes" },
