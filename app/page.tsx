@@ -313,7 +313,7 @@ export default function AgencyPortfolio() {
           </div>
 
           <div className="relative mx-auto max-w-6xl">
-            <div className="work-carousel relative w-full overflow-hidden" style={{ height: "500px", margin: "0 auto" }}>
+            <div className="work-carousel relative w-full overflow-hidden" style={{ height: "80vw", maxHeight: "600px", margin: "0 auto" }}>
               <button 
                 onClick={handlePrevSlide}
                 className="absolute left-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
@@ -362,7 +362,7 @@ export default function AgencyPortfolio() {
                         left: '50%',
                         top: '50%',
                         transformOrigin: 'center center',
-                        transform: isActive ? 'translate(-50%, -50%) scale(1.3)' : 
+                        transform: isActive ? (typeof window !== 'undefined' && window.innerWidth < 768 ? 'translate(-50%, -50%) scale(1)' : 'translate(-50%, -50%) scale(1.3)') : 
                                  isPrev ? 'translate(-120%, -50%) scale(0.9)' :
                                  isPrev2 ? 'translate(-180%, -50%) scale(0.8)' :
                                  isNext ? 'translate(20%, -50%) scale(0.9)' :
@@ -619,7 +619,7 @@ export default function AgencyPortfolio() {
                   loop
                   muted
                   playsInline
-                  className="w-[234px] h-[78px] object-contain"
+                  className="w-full max-w-[234px] h-[78px] object-contain"
                 />
               </div>
               <p className="text-sm text-gray-600">
