@@ -183,7 +183,7 @@ export default function AgencyPortfolio() {
 
       <main className="flex-1 main-container">
         {/* Hero Section */}
-        <section className="relative h-[calc(100vh-80px)] w-screen overflow-hidden">
+        <section className="relative h-[calc(100vh-80px)] w-full overflow-hidden">
           <div className="absolute inset-0 w-full h-full">
             <AnimatedRibbon />
           </div>
@@ -234,7 +234,7 @@ export default function AgencyPortfolio() {
 
         {/* What We Do Section */}
         <motion.section
-          className="py-16 main-container"
+          className="py-16 main-container overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
@@ -330,7 +330,7 @@ export default function AgencyPortfolio() {
                 <i className="fas fa-chevron-right text-black"></i>
               </button>
 
-              <div className="relative w-full h-[90vw] md:h-[400px] mt-6 md:mt-10">
+              <div className="relative w-full h-[103.5vw] md:h-[460px] mt-6 md:mt-10">
                 {[
                   { src: "/id1/id1_25-036-01.jpg", alt: "Calendar design" },
                   { src: "/id3/id3_23-137-01.jpg", alt: "Storage boxes" },
@@ -394,7 +394,7 @@ export default function AgencyPortfolio() {
 
         {/* Contact Form Section */}
         <motion.section
-          className="container main-container mx-auto py-16"
+          className="container main-container mx-auto py-16 overflow-hidden"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, ease: "easeOut", delay: 0.2 }}
@@ -565,7 +565,7 @@ export default function AgencyPortfolio() {
 
       {/* Why Choose Us Section - moved outside main for full-bleed background */}
       <motion.section
-        className="py-16 bg-[#d4b88e] w-screen"
+        className="py-16 bg-[#d4b88e] main-container overflow-hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
@@ -608,7 +608,7 @@ export default function AgencyPortfolio() {
       </motion.section>
 
       {/* Footer */}
-      <footer className="border-t border-gray-200 bg-white py-12">
+      <footer className="border-t border-gray-200 bg-white py-12 overflow-hidden">
         <div className="container mx-auto px-4 main-container">
           <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
             <div className="space-y-4">
