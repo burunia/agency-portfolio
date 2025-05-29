@@ -313,7 +313,7 @@ export default function AgencyPortfolio() {
           </div>
 
           <div className="relative mx-auto max-w-6xl">
-            <div className="work-carousel relative w-full overflow-hidden" style={{ height: "80vw", maxHeight: "600px", margin: "0 auto" }}>
+            <div className="work-carousel relative w-full overflow-hidden">
               <button 
                 onClick={handlePrevSlide}
                 className="absolute left-4 top-1/2 z-40 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white shadow-md hover:bg-gray-50 active:bg-gray-100 transition-all duration-300 transform hover:scale-110 hover:shadow-lg"
@@ -330,7 +330,7 @@ export default function AgencyPortfolio() {
                 <i className="fas fa-chevron-right text-black"></i>
               </button>
 
-              <div className="relative w-full h-full mt-6 md:mt-10">
+              <div className="relative w-full h-[90vw] md:h-[400px] mt-6 md:mt-10">
                 {[
                   { src: "/id1/id1_25-036-01.jpg", alt: "Calendar design" },
                   { src: "/id3/id3_23-137-01.jpg", alt: "Storage boxes" },
@@ -565,7 +565,7 @@ export default function AgencyPortfolio() {
 
       {/* Why Choose Us Section - moved outside main for full-bleed background */}
       <motion.section
-        className="py-24 bg-[#d4b88e] w-screen"
+        className="py-16 bg-[#d4b88e] w-screen"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.7, ease: "easeOut", delay: 0.1 }}
