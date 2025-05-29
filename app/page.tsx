@@ -587,7 +587,7 @@ export default function AgencyPortfolio() {
               {
                 icon: 'fa-amazon',
                 title: 'Proven Amazon Expertise',
-                description: 'Helping brands grow on Amazon by turning browsers into buyers'
+                description: 'Driving Amazon growth through conversion'
               },
               {
                 icon: 'fa-chart-line',
