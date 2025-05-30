@@ -276,8 +276,9 @@ export default function PortfolioPage() {
       description: "A fun and interactive digital sticker book designed to spark creativity and imagination in children. Featuring colorful illustrations, intuitive drag-and-drop functionality, and themed pages, the app encourages storytelling and playful learning in a safe, child-friendly environment.",
       additionalImages: [
         { src: "/id17/id17_2.jpg", alt: "Book spread" },
-        { src: "/id17/id17_2.jpg", alt: "Book detail" },
-        { src: "/id17/id17_2.jpg", alt: "Infographic" }
+        { src: "/id17/id17_3.jpg", alt: "Book detail" },
+        { src: "/id17/id17_4.jpg", alt: "Infographic" },
+        { src: "/id17/id17_5.jpg", alt: "Infographic" }
       ]
     },
 
