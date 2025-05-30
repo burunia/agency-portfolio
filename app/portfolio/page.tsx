@@ -56,16 +56,17 @@ export default function PortfolioPage() {
     },
     {
       id: 2,
-      title: "Adult Coloring Book",
+      title: "Couples Game Cards",
       category: ["Print Design","Product Photography"],
-      image: "/id2/id2_25-036-01.jpg",
+      image: "/id16/id16_23-259-1.jpg",
       client: "Stationery Brand",
       gridClass: "col-span-3 row-span-3",
-      description: "Adult Coloring Book. This set of two adult coloring books promotes self-expression and relaxation through art. Each book features 64 pages of unique designs paired with inspirational quotes, offering a soothing, creative escape.",
+      description: "A conversation game for couples designed to spark deeper connection through thoughtful questions and playful prompts—all wrapped in a warm, modern aesthetic",
       additionalImages: [
-        { src: "/id2/id2_25-036-02.jpg", alt: "Book spread" },
-        { src: "/id2/id2_25-036-03.jpg", alt: "Book detail" },
-        { src: "/id2/id2_25-036-04.jpg", alt: "Infographic" }
+        { src: "/id16/id16_23-259-2.jpg", alt: "Book spread" },
+        { src: "/id16/id16_23-259-3.jpg", alt: "Book detail" },
+        { src: "/id16/id16_23-259-4.jpg", alt: "Infographic" },
+        { src: "/id16/id16_23-259-5.jpg", alt: "Infographic" }
       ]
     },
     {
@@ -208,11 +209,26 @@ export default function PortfolioPage() {
       ]
     },
     {
+      id: 14,
+      title: "Nature Inspired Notebook",
+      category: ["Print Design"],
+      image: "/id15/id15_1.jpg",
+      client: "Stationery Brand",
+      gridClass: "col-span-6 row-span-5",
+      description: "Magnetic Calendar. This sleek magnetic calendar combines minimal design with everyday practicality, making it perfect for brightening up kitchens, home offices or dorms. The spacious monthly layout and striking typography offer an elegant solution for organizing schedules at a glance.",
+      additionalImages: [
+        { src: "/id15/id15_2.jpg", alt: "Calendar detail" },
+        { src: "/id15/id15_3.jpg", alt: "Calendar spread" },
+        { src: "/id15/id15_4.jpg", alt: "Front cover" },
+        { src: "/id15/id15_5.jpg", alt: "Front cover" },
+      ]
+    },
+    {
       id: 12,
       title: "Tummy Time Sensory Toy",
       category: ["Product Design","Product Photography"],
       image: "/id12/id12_23-217-01.jpg",
-      gridClass: "col-span-6 row-span-5",
+      gridClass: "col-span-3 row-span-3",
       client: "Children's Toys",
       description: "Vibrant, high-res images of the Tummy Time Sensory Toy showcase its textures and features, clearly communicating quality and sensory benefits. Featuring a baby in use adds emotional appeal and builds trust, helping parents feel confident in their purchase",
       additionalImages: [
@@ -235,7 +251,38 @@ export default function PortfolioPage() {
         { src: "/id1/id1_25-036-03.jpg", alt: "Calendar spread" },
         { src: "/id1/id1_25-036-04.jpg", alt: "Front cover" }
       ]
-    }
+    },
+    {
+      id: 15,
+      title: "Adult Coloring Book",
+      category: ["Print Design","Product Photography"],
+      image: "/id2/id2_25-036-01.jpg",
+      client: "Stationery Brand",
+      gridClass: "col-span-3 row-span-3",
+      description: "Adult Coloring Book. This set of two adult coloring books promotes self-expression and relaxation through art. Each book features 64 pages of unique designs paired with inspirational quotes, offering a soothing, creative escape.",
+      additionalImages: [
+        { src: "/id2/id2_25-036-02.jpg", alt: "Book spread" },
+        { src: "/id2/id2_25-036-03.jpg", alt: "Book detail" },
+        { src: "/id2/id2_25-036-04.jpg", alt: "Infographic" }
+      ]
+    },
+    {
+      id: 16,
+      title: "Sticker Book for Kids",
+      category: ["Print Design","Product Photography"],
+      image: "/id17/id17_1.jpg",
+      client: "Stationery Brand",
+      gridClass: "col-span-3 row-span-3",
+      description: "A fun and interactive digital sticker book designed to spark creativity and imagination in children. Featuring colorful illustrations, intuitive drag-and-drop functionality, and themed pages, the app encourages storytelling and playful learning in a safe, child-friendly environment.",
+      additionalImages: [
+        { src: "/id17/id17_2.jpg", alt: "Book spread" },
+        { src: "/id17/id17_2.jpg", alt: "Book detail" },
+        { src: "/id17/id17_2.jpg", alt: "Infographic" }
+      ]
+    },
+
+
+
   ]
 
   // Filter categories 
