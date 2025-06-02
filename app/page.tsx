@@ -47,7 +47,7 @@ export default function AgencyPortfolio() {
   // Custom typing effect for headline and subtitle
   useEffect(() => {
     if (showHeadline) {
-      const headline = "WE DESIGN,_"
+      const headline = "WE DESIGN"
       let currentIndex = 0
       
       const interval = setInterval(() => {
@@ -57,7 +57,7 @@ export default function AgencyPortfolio() {
         } else {
           clearInterval(interval)
           // Start typing subtitle after headline is done
-          const subtitle = "Enhancing the Way your Brand Sells"
+          const subtitle = "Enhancing the Way Your Brand Sells"
           let subtitleIndex = 0
           
           const subtitleInterval = setInterval(() => {
@@ -245,7 +245,7 @@ export default function AgencyPortfolio() {
             </div>
             <p className="font-roboto">
               We're a global, multidisciplinary creative team with 40+ years combined 
-              experience in assisting eCommerce brands to thrive in busy and 
+              experience in assisting e-commerce brands to thrive in busy and 
               crowded marketplaces. From Amazon to Etsy, Kickstarter or your 
               very own online store—we craft compelling visuals and exciting 
               content that make your products impossible to ignore.
@@ -411,7 +411,7 @@ export default function AgencyPortfolio() {
               <div className="mb-4 h-1 w-12 bg-[#d4b88e]"></div>
               <p className="mb-6 text-gray-600 font-roboto">
                 Ready to stand out in the competitive e-commerce landscape? Our team of experts is here to help you
-                create visuals and content that convert. Fill out the form, and we'll get back to you within 24 hours.
+                create visuals and content that converts. Fill out the form, and we'll get back to you within 24 hours.
               </p>
               <div className="mt-8 space-y-4 md:mt-8">
                 <div className="flex items-center space-x-3">
@@ -582,12 +582,12 @@ export default function AgencyPortfolio() {
               {
                 icon: 'fa-laptop-code',
                 title: 'All-around Creative Help',
-                description: 'Our flexible team takes you from concept to final visuals'
+                description: 'Our flexible team takes you from concept to final visuals.'
               },
               {
                 icon: 'fa-amazon',
                 title: 'Proven Amazon Expertise',
-                description: 'Driving Amazon growth through conversion'
+                description: 'Driving Amazon growth through conversion.'
               },
               {
                 icon: 'fa-chart-line',

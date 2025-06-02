@@ -75,7 +75,7 @@ export default function ArticlePage() {
               Whether you're launching a new line or refining an existing brand, we're here to make your design and photography process smooth, strategic, and impactful.
             </p>
             <p className="font-roboto">
-              📩 Want to chat? Email us at your@email.com<br />
+              📩 Want to chat? Email us at contact.sello.art@gmail.com<br />
               👉 <a href="#" className="text-[#d4b88e] hover:underline">Explore our portfolio</a>
             </p>
             <p className="font-roboto">

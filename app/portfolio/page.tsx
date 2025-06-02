@@ -181,7 +181,7 @@ export default function PortfolioPage() {
     },
     {
       id: 10,
-      title: "Boucle pouf ottoman",
+      title: "Boucle Pouf Ottoman",
       category: ["3D Modeling", "Product Photography"],
       image: "/id10/id10_24-086-01.jpg",
       gridClass: "col-span-6 row-span-6",
@@ -195,7 +195,7 @@ export default function PortfolioPage() {
     },
     {
       id: 11,
-      title: "Concrete book end packaging",
+      title: "Concrete Bookend Packaging",
       category: ["Print Design","Graphic Design"],
       image: "/id11/modern bookends1 mockup.jpg",
       gridClass: "col-span-6 row-span-3",
