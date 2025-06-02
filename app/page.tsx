@@ -121,7 +121,7 @@ export default function AgencyPortfolio() {
 
       try {
         await emailjs.send(
-          'service_n02r79q',
+          'service_qpgi7fx',
           'template_dvnupyv',
           templateParams
         );
@@ -418,13 +418,13 @@ export default function AgencyPortfolio() {
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5f0e6] text-[#d4b88e]">
                     <i className="fas fa-phone fa-lg"></i>
                   </div>
-                  <span className="text-sm text-gray-600">+1 (555) 123-4567</span>
+                  <span className="text-sm text-gray-600">+1 (208) 631-3301</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f5f0e6] text-[#d4b88e]">
                     <i className="fas fa-envelope fa-lg"></i>
                   </div>
-                  <span className="text-sm text-gray-600">contact@chromepress.com</span>
+                  <span className="text-sm text-gray-600">contact.sello.art@gmail.com</span>
                 </div>
               </div>
             </div>
@@ -619,7 +619,7 @@ export default function AgencyPortfolio() {
                   loop
                   muted
                   playsInline
-                  className="w-full max-w-[234px] h-[78px] object-contain"
+                  className="w-[234px] h-[78px] object-contain"
                 />
               </div>
               <p className="text-sm text-gray-600">
@@ -670,7 +670,7 @@ export default function AgencyPortfolio() {
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase font-vidaloka">Contact</h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>contact@chromepress.com</li>
+                <li>contact.sello.art@gmail.com</li>
                 <li>1611 W. Warren St</li>
                 <li>Boise, Idaho</li>
                 <li>83706</li>

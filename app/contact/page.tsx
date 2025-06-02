@@ -87,7 +87,7 @@ export default function ContactPage() {
       try {
         // Send email using EmailJS
         const response = await emailjs.send(
-          'service_n02r79q',
+          'service_qpgi7fx',
           'template_dvnupyv',
           templateParams
         );
@@ -184,7 +184,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-medium font-vidaloka">Phone Number</h3>
-                    <p className="text-gray-600 font-roboto">+1 (555) 123-4567</p>
+                    <p className="text-gray-600 font-roboto">+1 (208) 631-3301</p>
                   </div>
                 </div>
                 
@@ -194,7 +194,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-medium font-vidaloka">Email Address</h3>
-                    <p className="text-gray-600 font-roboto">contact@chromepress.com</p>
+                    <p className="text-gray-600 font-roboto">contact.sello.art@gmail.com</p>
                   </div>
                 </div>
               </div>
@@ -415,7 +415,7 @@ export default function ContactPage() {
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase">Contact</h3>
               <ul className="space-y-2 text-sm text-gray-600">
-                <li>contact@chromepress.com</li>
+                <li>contact.sello.art@gmail.com</li>
                 <li>1611 W. Warren St</li>
                 <li>Boise, Idaho</li>
                 <li>83706</li>

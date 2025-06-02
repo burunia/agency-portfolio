@@ -8,12 +8,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           <div className="space-y-4">
             <div>
-              <Image 
-                src="/sello_art.svg" 
-                alt="Logo" 
-                width={156} 
-                height={52}
-                className="object-contain"
+              <video 
+                src="/sello_art 2_2.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-[234px] h-[78px] object-contain"
               />
             </div>
             <p className="text-sm text-gray-600">
@@ -87,7 +88,7 @@ export default function Footer() {
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase">Contact</h3>
             <ul className="space-y-2 text-sm text-gray-600">
-              <li>contact@chromepress.com</li>
+              <li>contact.sello.art@gmail.com</li>
               <li>1611 W. Warren St</li>
               <li>Boise, Idaho</li>
               <li>83706</li>
