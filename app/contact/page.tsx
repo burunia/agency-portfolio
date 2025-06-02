@@ -72,6 +72,15 @@ export default function ContactPage() {
         throw new Error("Please fill out all required fields")
       }
 
+      // Log environment variables (only in development)
+      if (process.env.NODE_ENV === "development") {
+        console.log("EmailJS Config:", {
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+          serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+        })
+      }
+
       // Prepare template parameters
       const templateParams = {
         name: `${formData.firstName} ${formData.lastName}`,
@@ -92,6 +101,8 @@ export default function ContactPage() {
           templateParams
         );
         
+        console.log("EmailJS Response:", response);
+        
         // Reset form and show success message
         setFormData({
           firstName: '',
@@ -107,9 +118,11 @@ export default function ContactPage() {
           setFormStatus(prev => ({ ...prev, success: false }));
         }, 5000);
       } catch (emailError: any) {
+        console.error("EmailJS Error:", emailError);
         throw new Error(emailError.text || 'Failed to send email. Please check your network connection and try again.');
       }
     } catch (error: any) {
+      console.error("Form Error:", error);
       setFormStatus({ 
         loading: false, 
         success: false, 

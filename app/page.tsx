@@ -108,6 +108,15 @@ export default function AgencyPortfolio() {
         throw new Error("Please fill out all required fields")
       }
 
+      // Log environment variables (only in development)
+      if (process.env.NODE_ENV === "development") {
+        console.log("EmailJS Config:", {
+          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+          serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+          templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+        })
+      }
+
       const templateParams = {
         name: `${formData.firstName} ${formData.lastName}`,
         from_name: `${formData.firstName} ${formData.lastName}`,
@@ -120,11 +129,13 @@ export default function AgencyPortfolio() {
       }
 
       try {
-        await emailjs.send(
+        const response = await emailjs.send(
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
           templateParams
         );
+        
+        console.log("EmailJS Response:", response);
         
         setFormData({
           firstName: '',
@@ -139,9 +150,11 @@ export default function AgencyPortfolio() {
           setFormStatus(prev => ({ ...prev, success: false }));
         }, 5000);
       } catch (emailError: any) {
+        console.error("EmailJS Error:", emailError);
         throw new Error(emailError.text || 'Failed to send email. Please check your network connection and try again.');
       }
     } catch (error: any) {
+      console.error("Form Error:", error);
       setFormStatus({ 
         loading: false, 
         success: false, 
