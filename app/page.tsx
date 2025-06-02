@@ -93,18 +93,8 @@ export default function AgencyPortfolio() {
     setFormStatus({ loading: true, success: false, error: false, errorMessage: '' })
 
     try {
-      let recaptchaToken = "development_token"
-      
-      if (recaptchaRef.current && process.env.NODE_ENV !== "development") {
-        try {
-          console.log("Attempting to get reCAPTCHA token...");
-          recaptchaToken = await recaptchaRef.current.executeAsync() || "token_error"
-          console.log("reCAPTCHA token received:", recaptchaToken);
-          recaptchaRef.current.reset()
-        } catch (recaptchaError) {
-          console.error("reCAPTCHA error:", recaptchaError)
-        }
-      }
+      // Remove reCAPTCHA logic
+      let recaptchaToken = "not_used"
 
       if (!formData.firstName || !formData.lastName || !formData.email || !formData.service || !formData.message) {
         throw new Error("Please fill out all required fields")
@@ -130,7 +120,7 @@ export default function AgencyPortfolio() {
 
       console.log("Sending email with params:", {
         ...templateParams,
-        message: templateParams.message.slice(0, 50) + '...' // Log only first 50 chars of message
+        message: templateParams.message.slice(0, 50) + '...'
       });
 
       try {
