@@ -653,7 +653,7 @@ export default function PortfolioPage() {
                   </Link>
                 </li>
                 <li>
-                  <Link href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
+                  <Link href="/blog" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
                     Blog
                   </Link>
                 </li>
@@ -675,7 +675,7 @@ export default function PortfolioPage() {
             </div>
           </div>
           <div className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-600">
-            <p>© {new Date().getFullYear()} Agency Name. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Sello.art. All rights reserved.</p>
           </div>
         </div>
       </footer>

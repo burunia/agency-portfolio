@@ -96,7 +96,7 @@ export default function Footer() {
           </div>
         </div>
         <div className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-600">
-          <p>© {new Date().getFullYear()} Chrome Press. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} Sello.art. All rights reserved.</p>
         </div>
       </div>
     </footer>

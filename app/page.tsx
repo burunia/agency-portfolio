@@ -656,8 +656,8 @@ export default function AgencyPortfolio() {
                 {[
                   { name: 'About Us', href: '/about' },
                   { name: 'Portfolio', href: '/portfolio' },
-                  { name: 'Blog', href: '#' },
-                  { name: 'Contact', href: '#' }
+                  { name: 'Blog', href: '/blog' },
+                  { name: 'Contact', href: '/contact' }
                 ].map((item) => (
                   <li key={item.name}>
                     <Link href={item.href} className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
@@ -678,7 +678,7 @@ export default function AgencyPortfolio() {
             </div>
           </div>
           <div className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-600">
-            <p>© {new Date().getFullYear()} Agency Name. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Sello.art. All rights reserved.</p>
           </div>
         </div>
       </footer>

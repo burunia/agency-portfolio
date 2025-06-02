@@ -1,9 +1,47 @@
 import Link from 'next/link'
 import Footer from '@/components/footer'
+import Script from 'next/script'
 
 export default function ArticlePage() {
   return (
     <div className="flex min-h-screen flex-col bg-[#fffdf9]">
+      <Script
+        id="article-structured-data"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            "headline": "Our Design Process: What You Can Expect From Working With Us",
+            "description": "Learn about our comprehensive design process for creating product visuals. Discover how we transform concepts into high-converting e-commerce content through collaboration and strategic design.",
+            "image": "/blog/photo3.jpg",
+            "datePublished": "2024-04-10T00:00:00.000Z",
+            "dateModified": "2024-04-10T00:00:00.000Z",
+            "author": {
+              "@type": "Organization",
+              "name": "Sello.art",
+              "url": "https://sello.art"
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Sello.art",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://sello.art/logo.png"
+              }
+            },
+            "mainEntityOfPage": {
+              "@type": "WebPage",
+              "@id": "https://sello.art/blog/design-proces"
+            },
+            "keywords": "design process, product design, e-commerce design, visual design, design workflow",
+            "articleSection": "Design Process",
+            "inLanguage": "en-US",
+            "wordCount": "1500",
+            "timeRequired": "PT6M"
+          })
+        }}
+      />
       <main className="flex-1">
         <article className="container mx-auto px-4 py-16">
           {/* Article Header */}
@@ -103,80 +141,7 @@ export default function ArticlePage() {
         </article>
       </main>
 
-      <footer className="border-t border-gray-200 bg-white py-12 overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
-            <div className="space-y-4">
-              <div>
-                <video 
-                  src="/sello_art 2_2.mp4"
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full max-w-[234px] h-[78px] object-contain"
-                />
-              </div>
-              <p className="text-sm text-gray-600">
-                We help e-commerce brands stand out with stunning visuals and strategic content.
-              </p>
-              <div className="flex space-x-4">
-                {["facebook-f", "instagram", "twitter", "linkedin-in"].map((icon) => (
-                  <Link key={icon} href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-110">
-                    <i className={`fab fa-${icon} fa-lg text-black`}></i>
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase font-vidaloka">Services</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                {[
-                  'Product Photography',
-                  'Retouching & Editing',
-                  'Graphic Design',
-                  'Amazon Optimization'
-                ].map((service) => (
-                  <li key={service}>
-                    <Link href="#" className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
-                      {service}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase font-vidaloka">Company</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                {[
-                  { name: 'About Us', href: '/about' },
-                  { name: 'Portfolio', href: '/portfolio' },
-                  { name: 'Blog', href: '#' },
-                  { name: 'Contact', href: '#' }
-                ].map((item) => (
-                  <li key={item.name}>
-                    <Link href={item.href} className="hover:text-gray-900 transition-all duration-300 transform hover:scale-105">
-                      {item.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="mb-4 text-sm font-semibold uppercase">Contact</h3>
-              <ul className="space-y-2 text-sm text-gray-600">
-                <li>contact.sello.art@gmail.com</li>
-                <li>1611 W. Warren St</li>
-                <li>Boise, Idaho</li>
-                <li>83706</li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-12 border-t border-gray-200 pt-8 text-center text-sm text-gray-600">
-            <p>© {new Date().getFullYear()} Agency Name. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   )
 } 
