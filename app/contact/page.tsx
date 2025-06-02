@@ -60,10 +60,12 @@ export default function ContactPage() {
       // Only try to get a real reCAPTCHA token if not in development
       if (recaptchaRef.current && process.env.NODE_ENV !== "development") {
         try {
+          console.log("Attempting to get reCAPTCHA token...");
           recaptchaToken = await recaptchaRef.current.executeAsync() || "token_error"
+          console.log("reCAPTCHA token received:", recaptchaToken);
           recaptchaRef.current.reset()
         } catch (recaptchaError) {
-          console.warn("reCAPTCHA error:", recaptchaError)
+          console.error("reCAPTCHA error:", recaptchaError)
         }
       }
 
@@ -72,14 +74,13 @@ export default function ContactPage() {
         throw new Error("Please fill out all required fields")
       }
 
-      // Log environment variables (only in development)
-      if (process.env.NODE_ENV === "development") {
-        console.log("EmailJS Config:", {
-          publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
-          serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-          templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
-        })
-      }
+      // Log environment variables and configuration
+      console.log("Environment:", process.env.NODE_ENV);
+      console.log("EmailJS Config:", {
+        publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY?.slice(0, 5) + '...',
+        serviceId: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        templateId: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID
+      });
 
       // Prepare template parameters
       const templateParams = {
@@ -89,17 +90,27 @@ export default function ContactPage() {
         from_email: formData.email,
         title: `${formData.service} Inquiry`,
         service: formData.service,
-        message: formData.message,
-        'g-recaptcha-response': recaptchaToken
+        message: formData.message
       }
 
+      console.log("Sending email with params:", {
+        ...templateParams,
+        message: templateParams.message.slice(0, 50) + '...' // Log only first 50 chars of message
+      });
+
       try {
-        // Send email using EmailJS
-        const response = await emailjs.send(
+        // Add timeout to prevent infinite loading
+        const timeoutPromise = new Promise((_, reject) => {
+          setTimeout(() => reject(new Error('Request timeout')), 10000);
+        });
+
+        const emailPromise = emailjs.send(
           process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
           process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
           templateParams
         );
+
+        const response = await Promise.race([emailPromise, timeoutPromise]);
         
         console.log("EmailJS Response:", response);
         
@@ -118,11 +129,19 @@ export default function ContactPage() {
           setFormStatus(prev => ({ ...prev, success: false }));
         }, 5000);
       } catch (emailError: any) {
-        console.error("EmailJS Error:", emailError);
+        console.error("EmailJS Error:", {
+          message: emailError.message,
+          text: emailError.text,
+          status: emailError.status,
+          stack: emailError.stack
+        });
         throw new Error(emailError.text || 'Failed to send email. Please check your network connection and try again.');
       }
     } catch (error: any) {
-      console.error("Form Error:", error);
+      console.error("Form Error:", {
+        message: error.message,
+        stack: error.stack
+      });
       setFormStatus({ 
         loading: false, 
         success: false, 
