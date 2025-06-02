@@ -22,11 +22,27 @@ const blogPosts: BlogPost[] = [
   },
   {
     id: '2',
-    title: 'Advanced Editing Techniques',
-    description: 'Master the art of photo editing with these professional techniques.',
+    title: 'Advanced Editing Techniques in Photoshop: Elevate Your Product Visuals',
+    description: 'Discover advanced Photoshop techniques for clean, conversion-focused, and professional product visuals.',
     thumbnail: '/blog/photo2.jpg',
-    date: '2024-03-18',
-    slug: 'advanced-editing-techniques'
+    date: '2024-04-11',
+    slug: 'advenced_editing_techniques'
+  },
+  {
+    id: '3',
+    title: 'Our Design Process: What You Can Expect From Working With Us',
+    description: 'Discover our step-by-step design process and how we ensure your vision is brought to life through clear communication and collaboration.',
+    thumbnail: '/blog/photo3.jpg',
+    date: '2024-04-10',
+    slug: 'design-proces'
+  },
+  {
+    id: '4',
+    title: 'Top 5 Photo Angles Every Product Needs',
+    description: 'Discover the five essential photography angles that will make your products stand out and drive more sales.',
+    thumbnail: '/blog/photo4.jpg',
+    date: '2024-04-12',
+    slug: 'photo_angles'
   },
   // Add more blog posts as needed
 ]
