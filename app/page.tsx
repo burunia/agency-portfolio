@@ -36,7 +36,7 @@ export default function AgencyPortfolio() {
   // Initialize EmailJS
   useEffect(() => {
     emailjs.init({
-      publicKey: 't-nDITmlVwB7mSBbT'
+      publicKey: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
     });
   }, []);
 
@@ -121,8 +121,8 @@ export default function AgencyPortfolio() {
 
       try {
         await emailjs.send(
-          'service_qpgi7fx',
-          'template_dvnupyv',
+          process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!,
+          process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!,
           templateParams
         );
         
@@ -512,7 +512,7 @@ export default function AgencyPortfolio() {
                   <ReCAPTCHA
                     ref={recaptchaRef}
                     size="invisible"
-                    sitekey="6Lef-G4pAAAAANJNzqnYf3IW9Nk7n01JQzSngig2"
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!}
                   />
                 </div>
 
