@@ -78,7 +78,7 @@ export default function ArticlePage() {
             <hr className="my-8" />
             <h2 className="text-2xl font-bold mt-12 mb-6 font-vidaloka">Let's Make Your Products Shine</h2>
             <p className="font-roboto">
-              📩 Email us at your@email.com<br />
+              📩 Email us at contact.sello.art@gmail.com<br />
               👉 <a href="#" className="text-[#d4b88e] hover:underline">Explore our portfolio</a>
             </p>
             <p className="font-roboto">
