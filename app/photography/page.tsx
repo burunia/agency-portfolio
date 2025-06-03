@@ -47,7 +47,7 @@ It belongs in the spotlight.
             </div>
             {/* Right: Two Images */}
             <div className="relative flex flex-col gap-8 items-center md:items-end">
-              <div className="relative w-[720px] h-[780px] rounded-2xl">
+              <div className="relative w-[700px] h-[670px] rounded-2xl">
                 <Image
                   src="/Photographer3.png"
                   alt="Fotografo in studio"
