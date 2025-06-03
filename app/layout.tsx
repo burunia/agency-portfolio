@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import './globals.css'
+import { Analytics } from '@vercel/analytics/react'
 
 export const metadata: Metadata = {
   title: 'Sello.art | Professional Product Photography & Design Services',
@@ -118,6 +119,7 @@ export default function RootLayout({
       </head>
       <body className="font-roboto">
         {children}
+        <Analytics />
       </body>
     </html>
   )
