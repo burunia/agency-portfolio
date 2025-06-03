@@ -35,7 +35,7 @@ export default function AboutPage() {
                 src="/website png-05.png?height=500&width=500" 
                 alt="Creative work environment"
                 width={700} 
-                height={700}
+                height={500}
                 // className="rounded-full border-4 border-white shadow-xl"
               />
               <div className="absolute -bottom-4 -right-4 w-32 h-32 rounded-full bg-[#d4b88e] -z-10"></div>
